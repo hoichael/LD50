@@ -15,6 +15,8 @@ public class pl_move : MonoBehaviour
 
     private Vector3 currentDir;
 
+    private float currentMult;
+
     private void Awake()
     {
         rb.freezeRotation = true;
@@ -27,7 +29,22 @@ public class pl_move : MonoBehaviour
 
     private void FixedUpdate()
     {
+        SetStateRelatedValues();
         ApplyMovement();
+    }
+
+    private void SetStateRelatedValues()
+    {
+        if(pl_state.Instance.grounded)
+        {
+            rb.drag = pl_settings.Instance.dragGround;
+            currentMult = 1;
+        }
+        else
+        {
+            rb.drag = pl_settings.Instance.dragAir;
+            currentMult = pl_settings.Instance.moveAirMult;
+        }
     }
 
     private void GetMoveDirection()
@@ -38,6 +55,6 @@ public class pl_move : MonoBehaviour
 
     private void ApplyMovement()
     {
-        rb.AddForce(currentDir * pl_settings.Instance.moveSpeed, ForceMode.Acceleration);
+        rb.AddForce(currentDir * pl_settings.Instance.moveSpeed * currentMult, ForceMode.Acceleration);
     }
 }
