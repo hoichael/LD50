@@ -5,4 +5,6 @@ using UnityEngine;
 public class pl_settings : ut_singleton<pl_settings>
 {
     public float mouseSens;
+
+    public float moveSpeed;
 }
