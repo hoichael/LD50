@@ -17,6 +17,8 @@ public class pl_move : MonoBehaviour
 
     private float currentMult;
 
+    private bool currentlySprinting;
+
     private void Awake()
     {
         rb.freezeRotation = true;
@@ -26,6 +28,7 @@ public class pl_move : MonoBehaviour
     {
         GetMoveDirection();
         CalcCamTilt();
+        CalcCamFOV();
     }
 
     private void FixedUpdate()
@@ -36,10 +39,22 @@ public class pl_move : MonoBehaviour
 
     private void SetStateRelatedValues()
     {
+        // this is ugly (even for jam code =D)
+        currentlySprinting = false;
+
         if(pl_state.Instance.grounded)
         {
             rb.drag = pl_settings.Instance.dragGround;
-            currentMult = 1;
+
+            if(input.sprintKey && input.moveY > 0)
+            {
+                currentMult = pl_settings.Instance.moveSprintMult;
+                currentlySprinting = true;
+            }
+            else
+            {
+                currentMult = 1;
+            }
         }
         else
         {
@@ -65,5 +80,15 @@ public class pl_move : MonoBehaviour
             pl_state.Instance.camTilt, 
             input.moveX * pl_settings.Instance.camTiltMoveAmount,
             pl_settings.Instance.camTiltMoveFactor * Time.deltaTime);
+    }
+
+    private void CalcCamFOV()
+    {
+        float valToLerpTo = currentlySprinting ? pl_settings.Instance.FovSprintAmount : pl_settings.Instance.FovBase;
+
+        pl_state.Instance.camFov = Mathf.Lerp(
+            pl_state.Instance.camFov,
+            valToLerpTo,
+            pl_settings.Instance.FovSprintFactor * Time.deltaTime);
     }
 }

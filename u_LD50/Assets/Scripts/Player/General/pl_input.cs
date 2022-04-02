@@ -10,6 +10,8 @@ public class pl_input : MonoBehaviour
 
     public bool jumpKeyDown;
 
+    public bool sprintKey;
+
     private void Update()
     {
         mouseX = Input.GetAxisRaw("Mouse X");
@@ -19,5 +21,7 @@ public class pl_input : MonoBehaviour
         moveY = Input.GetAxisRaw("Vertical");
 
         jumpKeyDown = Input.GetKeyDown(KeyCode.Space);
+
+        sprintKey = Input.GetKey(KeyCode.LeftShift);
     }
 }

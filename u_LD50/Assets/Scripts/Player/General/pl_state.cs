@@ -7,4 +7,6 @@ public class pl_state : ut_singleton<pl_state>
     public bool grounded;
 
     public float camTilt;
+
+    public float camFov;
 }

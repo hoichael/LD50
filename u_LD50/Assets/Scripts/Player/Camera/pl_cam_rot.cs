@@ -32,10 +32,6 @@ public class pl_cam_rot : MonoBehaviour
 
     private void HandleInput()
     {
-        // db -----------------
-        print("ROT X" + rotX);
-        print("ROT Y: " + rotY);
-
         rotY += input.mouseX * pl_settings.Instance.mouseSens;
         rotX -= input.mouseY * pl_settings.Instance.mouseSens;
 
