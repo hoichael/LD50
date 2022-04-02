@@ -23,6 +23,10 @@ public class pl_move : MonoBehaviour
     private void Update()
     {
         GetMoveDirection();
+    }
+
+    private void FixedUpdate()
+    {
         ApplyMovement();
     }
 

@@ -11,7 +11,7 @@ public class nv_lightcycle : MonoBehaviour
 
     void Update()
     {
-        anchorRotX += 0.1f;
+        anchorRotX += 0.04f;
         sunAnchor.localRotation = Quaternion.Euler(anchorRotX, 0, 0);
     }
 }
