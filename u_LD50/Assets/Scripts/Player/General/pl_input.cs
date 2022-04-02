@@ -8,6 +8,8 @@ public class pl_input : MonoBehaviour
 
     public float moveX, moveY;
 
+    public bool jumpKeyDown;
+
     private void Update()
     {
         mouseX = Input.GetAxisRaw("Mouse X");
@@ -15,5 +17,7 @@ public class pl_input : MonoBehaviour
 
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
+
+        jumpKeyDown = Input.GetKeyDown(KeyCode.Space);
     }
 }
