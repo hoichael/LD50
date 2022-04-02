@@ -13,6 +13,9 @@ public class pl_cam_rot : MonoBehaviour
     [SerializeField]
     private Transform orientation;
 
+    [SerializeField]
+    private Transform toolsContainer;
+
     private float rotX, rotY;
 
     private void Start()
@@ -41,7 +44,16 @@ public class pl_cam_rot : MonoBehaviour
 
     private void ApplyRotation()
     {
-        cam.transform.localRotation = Quaternion.Euler(rotX, rotY, 0);
+        // Rotate cam (mouse input based rotation + action based offset)
+        cam.transform.localRotation = Quaternion.Euler(rotX, rotY, pl_state.Instance.camTilt);
+
+        // Apply action based offset to tool in hand
+        toolsContainer.localRotation = Quaternion.Euler(
+            0,
+            0,
+            pl_state.Instance.camTilt * -1);
+
+        // Rotate orientation ref obj horizontally based on mouse input
         orientation.transform.rotation = Quaternion.Euler(0, rotY, 0);
     }
 }

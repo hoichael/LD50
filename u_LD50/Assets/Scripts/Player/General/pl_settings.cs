@@ -6,6 +6,8 @@ public class pl_settings : ut_singleton<pl_settings>
 {
     [Header("Camera")]
     public float mouseSens;
+    public float camTiltMoveAmount;
+    public float camTiltMoveFactor;
 
     [Header("Move")]
     public float moveSpeed;
@@ -18,6 +20,7 @@ public class pl_settings : ut_singleton<pl_settings>
 
     [Header("Gravity")]
     public float baseGravity;
+    public float growthFactor;
 
     [Header("Misc")]
     public float groundCheckRadius;

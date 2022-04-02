@@ -25,6 +25,7 @@ public class pl_move : MonoBehaviour
     private void Update()
     {
         GetMoveDirection();
+        CalcCamTilt();
     }
 
     private void FixedUpdate()
@@ -56,5 +57,13 @@ public class pl_move : MonoBehaviour
     private void ApplyMovement()
     {
         rb.AddForce(currentDir * pl_settings.Instance.moveSpeed * currentMult, ForceMode.Acceleration);
+    }
+
+    private void CalcCamTilt()
+    {
+        pl_state.Instance.camTilt = Mathf.Lerp(
+            pl_state.Instance.camTilt, 
+            input.moveX * pl_settings.Instance.camTiltMoveAmount,
+            pl_settings.Instance.camTiltMoveFactor * Time.deltaTime);
     }
 }

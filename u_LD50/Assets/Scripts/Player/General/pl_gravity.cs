@@ -32,7 +32,7 @@ public class pl_gravity : MonoBehaviour
             // handle additional gravity
             if (rb.velocity.y < 0)
             {
-                growingForce += 0.017f;
+                growingForce += pl_settings.Instance.growthFactor;
                 extraGravity = Mathf.Clamp(extraGravity * growingForce, 1f, 16f);
                 rb.AddForce(new Vector3(rb.velocity.x, -extraGravity, rb.velocity.z), ForceMode.Acceleration);
             }
