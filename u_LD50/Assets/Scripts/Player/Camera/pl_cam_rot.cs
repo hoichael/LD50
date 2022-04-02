@@ -13,6 +13,9 @@ public class pl_cam_rot : MonoBehaviour
     [SerializeField]
     private Transform orientation;
 
+    [SerializeField]
+    private Transform flashTrans;
+
     private float rotX, rotY;
 
     private void Start()
@@ -41,7 +44,7 @@ public class pl_cam_rot : MonoBehaviour
 
     private void ApplyRotation()
     {
-        cam.transform.localRotation = Quaternion.Euler(rotX, rotY, 0);
+        cam.transform.localRotation = flashTrans.localRotation = Quaternion.Euler(rotX, rotY, 0);
         orientation.transform.rotation = Quaternion.Euler(0, rotY, 0);
     }
 }
