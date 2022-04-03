@@ -14,9 +14,6 @@ public class item_con_base : item_base
     protected IEnumerator currentCooldownRoutine;
 
     [SerializeField]
-    protected int consumptionStepsAmount;
-
-    [SerializeField]
     protected int currentConsumptionStep;
 
     [SerializeField]
@@ -24,7 +21,7 @@ public class item_con_base : item_base
 
     protected virtual void Start()
     {
-        currentConsumptionStep = consumptionStepsAmount;
+        currentConsumptionStep = consumptionModelSteps.Count - 1;
     }
 
     public override void Use()
@@ -33,9 +30,7 @@ public class item_con_base : item_base
         
         base.Use();
 
-        currentConsumptionStep--;
-
-        if(currentConsumptionStep > 0)
+        if(currentConsumptionStep > 1)
         {
             canUse = false;
             currentCooldownRoutine = UseCooldown();
@@ -51,6 +46,10 @@ public class item_con_base : item_base
     protected virtual void HandleConsumption()
     {
         print("init consume. current step: " + currentConsumptionStep);
+
+        consumptionModelSteps[currentConsumptionStep].SetActive(false);
+        currentConsumptionStep--;
+        consumptionModelSteps[currentConsumptionStep].SetActive(true);
     }
 
     protected virtual void HandleDepletion()

@@ -106,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4110388999820378109}
   - component: {fileID: 4110388999820378111}
-  - component: {fileID: 4110388999820378110}
   - component: {fileID: 4110388999820378104}
   m_Layer: 0
   m_Name: pu_fruit_A
@@ -143,21 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
---- !u!114 &4110388999820378110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4110388999820378108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab6bfe441239524d9a56dd8691e76ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: Consumable
-  isDynamic: 1
+  isItem: 1
+  itemType: Consumable
   dynamicItemPrefab: {fileID: 5612893778938996081, guid: 7bf0fcb586a598e4c8e7d3bbff0d7140, type: 3}
+  instantiationPosOffset: {x: 0.45, y: -0.45, z: -0.8}
 --- !u!54 &4110388999820378104
 Rigidbody:
   m_ObjectHideFlags: 0

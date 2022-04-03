@@ -34,6 +34,11 @@ public class pl_interact : MonoBehaviour
         CheckForInteractable();
         if (retCurrentSize == currentRetLerpTarget) return;
         ResizeReticle();
+
+        if(Input.GetMouseButtonDown(2) && retCurrentSize != retDefaultSize)
+        {
+            InitInteraction();
+        }
     }
 
     private bool CheckForInteractable()
@@ -43,7 +48,6 @@ public class pl_interact : MonoBehaviour
         {
             if(hit.transform.gameObject.CompareTag("Interactable"))
             {
-                print("YO");
                 currentRetLerpTarget = retTriggerSize;
                 return true;
             }
@@ -54,6 +58,16 @@ public class pl_interact : MonoBehaviour
 
     private void InitInteraction()
     {
+        int_base itemInfo = GetInteractable();
+
+        // this should never be null here but getting some weird inconsistencies with the raycast
+        if (itemInfo == null) return;
+
+        if(itemInfo.isItem)
+        {
+            itemManager.Pickup(itemInfo.gameObject.GetComponent<int_item>());
+        }
+
     //    itemManager.Pickup(GetInteractable());
         GetInteractable().Init();
     }
@@ -62,7 +76,7 @@ public class pl_interact : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(camTrans.position, camTrans.forward, out hit, 10f);
-        return hit.transform.gameObject.GetComponent<int_base>();
+        return hit.transform.gameObject.GetComponentInParent<int_base>();
     }
 
     private void ResizeReticle()

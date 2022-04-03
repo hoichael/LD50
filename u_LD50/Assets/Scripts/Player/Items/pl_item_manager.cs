@@ -5,7 +5,7 @@ using UnityEngine;
 public class pl_item_manager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject dynItemContainer;
+    private GameObject itemHolder;
 
     [SerializeField]
     private Transform orientation;
@@ -18,16 +18,20 @@ public class pl_item_manager : MonoBehaviour
     [SerializeField]
     private float chargeStep;
 
-    public void Pickup(item_base itemInfo)  // called from pl_interact
+    public void Pickup(int_item pickupInfo)  // called from pl_interact
     {
+        print("hola");
         // if currently holding item, drop item
         if(currentItemInfo != null)
         {
             HandleDrop();
         }
 
-        currentItemInfo = itemInfo;
+        GameObject itemInstance = Instantiate(pickupInfo.dynamicItemPrefab,
+            itemHolder.transform);
+     //   itemInstance.transform.SetParent(dynItemContainer.transform);
 
+        currentItemInfo = itemInstance.GetComponent<item_base>();
     }
 
     private void Update()
@@ -52,7 +56,7 @@ public class pl_item_manager : MonoBehaviour
 
     private void HandleDrop()
     {
-        GameObject dropInstance = Instantiate(currentItemInfo.pickupPrefab, transform.position, Quaternion.identity);
+        GameObject dropInstance = Instantiate(currentItemInfo.pickupPrefab, itemHolder.transform.position, Quaternion.identity);
         dropInstance.GetComponent<Rigidbody>().AddForce(orientation.forward * currentCharge, ForceMode.Force);
 
         Destroy(currentItemInfo.gameObject);
