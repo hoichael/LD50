@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class int_base : MonoBehaviour
 {
+    [SerializeField]
     protected string ID;
     public virtual void Init()
     {
         print("pickup " + ID);
-        Destroy(gameObject);
     }
 }

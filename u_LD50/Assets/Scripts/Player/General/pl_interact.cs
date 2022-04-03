@@ -6,6 +6,9 @@ using UnityEngine;
 public class pl_interact : MonoBehaviour
 {
     [SerializeField]
+    private pl_item_manager itemManager;
+
+    [SerializeField]
     private Transform camTrans;
 
     [SerializeField]
@@ -36,7 +39,7 @@ public class pl_interact : MonoBehaviour
     private bool CheckForInteractable()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 10f))
+        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 5f))
         {
             if(hit.transform.gameObject.CompareTag("Interactable"))
             {
@@ -51,6 +54,7 @@ public class pl_interact : MonoBehaviour
 
     private void InitInteraction()
     {
+    //    itemManager.Pickup(GetInteractable());
         GetInteractable().Init();
     }
 
