@@ -8,9 +8,15 @@ public class pl_item_manager : MonoBehaviour
     private GameObject itemHolder;
 
     [SerializeField]
-    private Transform orientation;
+    private Transform camTrans;
 
     private item_base currentItemInfo;
+
+    [SerializeField]
+    private float baseCharge;
+
+    [SerializeField]
+    private float maxCharge;
 
     private float currentCharge;
     private bool currentlyCharging;
@@ -43,13 +49,14 @@ public class pl_item_manager : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1) && currentlyCharging)
         {
+            currentlyCharging = false;
             HandleDrop();
         }
     }
 
     private void FixedUpdate()
     {
-        if (!currentlyCharging) return;
+        if (!currentlyCharging || currentCharge > maxCharge) return;
 
         currentCharge += chargeStep;
     }
@@ -57,9 +64,12 @@ public class pl_item_manager : MonoBehaviour
     private void HandleDrop()
     {
         GameObject dropInstance = Instantiate(currentItemInfo.pickupPrefab, itemHolder.transform.position, Quaternion.identity);
-        dropInstance.GetComponent<Rigidbody>().AddForce(orientation.forward * currentCharge, ForceMode.Force);
 
+        dropInstance.GetComponent<Rigidbody>().AddForce(camTrans.forward * (baseCharge + currentCharge), ForceMode.Force);
+
+        currentCharge = 0;
         Destroy(currentItemInfo.gameObject);
+        currentItemInfo = null;
     }
 
 }

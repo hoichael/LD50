@@ -9,6 +9,9 @@ public class pl_interact : MonoBehaviour
     private pl_item_manager itemManager;
 
     [SerializeField]
+    private LayerMask playerLayerMask;
+
+    [SerializeField]
     private Transform camTrans;
 
     [SerializeField]
@@ -44,7 +47,7 @@ public class pl_interact : MonoBehaviour
     private bool CheckForInteractable()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 5f))
+        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 3.5f, ~playerLayerMask))
         {
             if(hit.transform.gameObject.CompareTag("Interactable"))
             {
