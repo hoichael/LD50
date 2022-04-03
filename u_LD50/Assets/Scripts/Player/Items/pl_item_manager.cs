@@ -12,6 +12,8 @@ public class pl_item_manager : MonoBehaviour
 
     private item_base currentItemInfo;
 
+    private Transform currentItemTrans;
+
     [SerializeField]
     private float baseCharge;
 
@@ -26,7 +28,6 @@ public class pl_item_manager : MonoBehaviour
 
     public void Pickup(int_item pickupInfo)  // called from pl_interact
     {
-        print("hola");
         // if currently holding item, drop item
         if(currentItemInfo != null)
         {
@@ -38,6 +39,7 @@ public class pl_item_manager : MonoBehaviour
      //   itemInstance.transform.SetParent(dynItemContainer.transform);
 
         currentItemInfo = itemInstance.GetComponent<item_base>();
+        currentItemTrans = itemInstance.transform;
     }
 
     private void Update()
@@ -58,12 +60,18 @@ public class pl_item_manager : MonoBehaviour
     {
         if (!currentlyCharging || currentCharge > maxCharge) return;
 
+        HandleCharge();
+    }
+
+    private void HandleCharge()
+    {
         currentCharge += chargeStep;
+        currentItemTrans.position = itemHolder.transform.position - ((currentItemTrans.forward * (currentCharge / 1600)) * 1);
     }
 
     private void HandleDrop()
     {
-        GameObject dropInstance = Instantiate(currentItemInfo.pickupPrefab, itemHolder.transform.position, Quaternion.identity);
+        GameObject dropInstance = Instantiate(currentItemInfo.pickupPrefab, currentItemTrans.position, Quaternion.identity);
 
         dropInstance.GetComponent<Rigidbody>().AddForce(camTrans.forward * (baseCharge + currentCharge), ForceMode.Force);
 

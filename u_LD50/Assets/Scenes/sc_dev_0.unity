@@ -895,7 +895,7 @@ MonoBehaviour:
   itemHolder: {fileID: 1599909647}
   camTrans: {fileID: 703818510}
   baseCharge: 120
-  maxCharge: 900
+  maxCharge: 780
   chargeStep: 5
 --- !u!1 &360917835
 GameObject:
