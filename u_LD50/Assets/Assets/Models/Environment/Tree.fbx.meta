@@ -1,14 +1,24 @@
 fileFormatVersion: 2
-guid: dd086f84119e1b348a89995a07d88629
+guid: 4b0a3c40b4bd45041a14031126081bd6
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 15a10b740533faf458fd4d2e22fd55c8, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: test
-    second: {fileID: 2800000, guid: cecb37aefd7ab334fb9197160ba28f17, type: 3}
+      name: Ps1TreeTexture
+    second: {fileID: 2800000, guid: 0285b83e9d02a3748b9263c4be1f0fd8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tree.2
+    second: {fileID: 2800000, guid: e95e44b3b834a844db75f61dcd4e91f9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
