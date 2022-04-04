@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class item_base : MonoBehaviour
 {
-    public GameObject pickupPrefab;
+    public Rigidbody rb;
+
+    public Collider col;
 
     // public GameObject modelObj;
 

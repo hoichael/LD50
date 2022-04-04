@@ -5,16 +5,18 @@ using UnityEngine;
 public class pl_item_manager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject itemHolder;
+    private Transform itemHolder;
 
     [SerializeField]
     private Transform camTrans;
+
+    private GameObject currentItemObj;
 
     private item_base currentItemInfo;
 
     private Transform currentItemTrans;
 
-    private GameObject currentModel;
+//    private GameObject currentModel;
 
     [SerializeField]
     private float baseCharge;
@@ -28,7 +30,7 @@ public class pl_item_manager : MonoBehaviour
     [SerializeField]
     private float chargeStep;
 
-    public void Pickup(int_item pickupInfo)  // called from pl_interact
+    public void InitPickup(int_item pickupInfo)  // called from pl_interact
     {
         // if currently holding item, drop item
         if(currentItemInfo != null)
@@ -36,25 +38,27 @@ public class pl_item_manager : MonoBehaviour
             HandleDrop();
         }
 
-        InstantiatePickedUpObj(pickupInfo);
-
+        HandlePickup(pickupInfo);
     }
 
-    private void InstantiatePickedUpObj(int_item pickupInfo)
+    private void HandlePickup(int_item pickupInfo)
     {
-        // spawn parent object
-        GameObject itemInstance = Instantiate(pickupInfo.itemParentPrefab,
-        itemHolder.transform);
+        currentItemObj = pickupInfo.gameObject;
 
-        // set item values
-        currentItemInfo = itemInstance.GetComponent<item_base>();
-        currentItemTrans = itemInstance.transform;
+        currentItemTrans = currentItemObj.transform;
 
-        // handle child object containing model
-        currentModel = pickupInfo.modelObj;
-        currentModel.transform.localPosition = Vector3.zero;
-        currentModel.transform.SetParent(currentItemTrans);
-        currentModel.tag = "Item";
+        currentItemTrans.SetParent(itemHolder);
+        currentItemTrans.localPosition = Vector3.zero;
+        currentItemTrans.localRotation = Quaternion.identity;
+
+        currentItemInfo = currentItemObj.GetComponent<item_base>();
+        currentItemInfo.enabled = true;
+
+        Destroy(currentItemInfo.rb);
+
+        currentItemInfo.col.enabled = false;
+
+        currentItemObj.tag = "Item";
     }
 
     private void Update()
@@ -81,24 +85,27 @@ public class pl_item_manager : MonoBehaviour
     private void HandleCharge()
     {
         currentCharge += chargeStep;
-        currentItemTrans.position = itemHolder.transform.position - ((currentItemTrans.forward * (currentCharge / 1600)) * 1);
+        currentItemTrans.position = itemHolder.position - ((currentItemTrans.forward * (currentCharge / 1600)) * 1);
     }
 
     private void HandleDrop()
     {
-        GameObject dropInstance = Instantiate(currentItemInfo.pickupPrefab, currentItemTrans.position, Quaternion.identity);
+        currentItemTrans.SetParent(null);
 
-        dropInstance.GetComponent<Rigidbody>().AddForce(camTrans.forward * (baseCharge + currentCharge), ForceMode.Force);
+        // this is retarded
+        Rigidbody rb = currentItemObj.AddComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Extrapolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        currentItemInfo.rb = rb;
 
+        rb.AddForce(camTrans.forward * (baseCharge + currentCharge), ForceMode.Force);
         currentCharge = 0;
-        Destroy(currentItemInfo.gameObject);
+
+        currentItemInfo.col.enabled = true;
+        currentItemObj.tag = "Interactable";
+
+        currentItemInfo.enabled = false;
+
         currentItemInfo = null;
-
-
-
-
-
-        //         currentModel.tag = "Interactable";
     }
-
 }

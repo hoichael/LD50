@@ -8,13 +8,13 @@ public class int_item : int_base
 
     public string itemType;
 
-    public GameObject itemParentPrefab;
-
-    public GameObject modelObj;
-
     public override void Init()
     {
         base.Init();
-        Destroy(gameObject);
+
+        // remove "Interactable" tag that pl_interact raycast looks for
+        tag.Remove(0);
+
+     //   Destroy(gameObject);
     }
 }

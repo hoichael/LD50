@@ -67,7 +67,7 @@ public class pl_interact : MonoBehaviour
 
         if(itemInfo.isItem)
         {
-            itemManager.Pickup(itemInfo.gameObject.GetComponent<int_item>());
+            itemManager.InitPickup(itemInfo.gameObject.GetComponent<int_item>());
         }
 
     //    itemManager.Pickup(GetInteractable());
@@ -78,6 +78,8 @@ public class pl_interact : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(camHolderTrans.position, camHolderTrans.forward, out hit, 3.5f, ~playerLayerMask);
+        if (hit.transform == null) return null;
+
         if(hit.transform.gameObject.CompareTag("Interactable"))
         {
             return hit.transform.gameObject.GetComponent<int_base>();
