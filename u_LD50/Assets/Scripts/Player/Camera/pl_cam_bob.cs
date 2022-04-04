@@ -46,16 +46,13 @@ public class pl_cam_bob : MonoBehaviour
             ApplyMotion(CalcMotion());
         }
 
-            ResetBob();
-
+        ResetBob();
 
         if (stabilize) StabilizeView();
     }
 
     private bool TimeToBob()
     {
-        print(rbPlayer.velocity.magnitude);
-
         return (pl_state.Instance.grounded && rbPlayer.velocity.magnitude > triggerSpeed);
     }
 

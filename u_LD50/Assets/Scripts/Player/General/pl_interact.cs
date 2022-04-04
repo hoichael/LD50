@@ -12,7 +12,7 @@ public class pl_interact : MonoBehaviour
     private LayerMask playerLayerMask;
 
     [SerializeField]
-    private Transform camTrans;
+    private Transform camHolderTrans;
 
     [SerializeField]
     private RectTransform retTrans;
@@ -47,7 +47,7 @@ public class pl_interact : MonoBehaviour
     private bool CheckForInteractable()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 3.5f, ~playerLayerMask))
+        if (Physics.Raycast(camHolderTrans.position, camHolderTrans.forward, out hit, 3.5f, ~playerLayerMask))
         {
             if(hit.transform.gameObject.CompareTag("Interactable"))
             {
@@ -63,7 +63,6 @@ public class pl_interact : MonoBehaviour
     {
         int_base itemInfo = GetInteractable();
 
-        // this should never be null here but getting some weird inconsistencies with the raycast
         if (itemInfo == null) return;
 
         if(itemInfo.isItem)
@@ -72,14 +71,18 @@ public class pl_interact : MonoBehaviour
         }
 
     //    itemManager.Pickup(GetInteractable());
-        GetInteractable().Init();
+        itemInfo.Init();
     }
 
     private int_base GetInteractable()
     {
         RaycastHit hit;
-        Physics.Raycast(camTrans.position, camTrans.forward, out hit, 10f);
-        return hit.transform.gameObject.GetComponentInParent<int_base>();
+        Physics.Raycast(camHolderTrans.position, camHolderTrans.forward, out hit, 3.5f, ~playerLayerMask);
+        if(hit.transform.gameObject.CompareTag("Interactable"))
+        {
+            return hit.transform.gameObject.GetComponent<int_base>();
+        }
+        return null;
     }
 
     private void ResizeReticle()

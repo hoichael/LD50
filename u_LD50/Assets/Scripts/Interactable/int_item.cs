@@ -8,7 +8,9 @@ public class int_item : int_base
 
     public string itemType;
 
-    public GameObject dynamicItemPrefab;
+    public GameObject itemParentPrefab;
+
+    public GameObject modelObj;
 
     public override void Init()
     {

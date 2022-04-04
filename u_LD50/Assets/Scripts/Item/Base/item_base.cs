@@ -6,6 +6,8 @@ public abstract class item_base : MonoBehaviour
 {
     public GameObject pickupPrefab;
 
+    // public GameObject modelObj;
+
     public string type;
 
     int size; // used later for bag

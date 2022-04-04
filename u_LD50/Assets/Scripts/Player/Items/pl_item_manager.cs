@@ -14,6 +14,8 @@ public class pl_item_manager : MonoBehaviour
 
     private Transform currentItemTrans;
 
+    private GameObject currentModel;
+
     [SerializeField]
     private float baseCharge;
 
@@ -34,12 +36,25 @@ public class pl_item_manager : MonoBehaviour
             HandleDrop();
         }
 
-        GameObject itemInstance = Instantiate(pickupInfo.dynamicItemPrefab,
-            itemHolder.transform);
-     //   itemInstance.transform.SetParent(dynItemContainer.transform);
+        InstantiatePickedUpObj(pickupInfo);
 
+    }
+
+    private void InstantiatePickedUpObj(int_item pickupInfo)
+    {
+        // spawn parent object
+        GameObject itemInstance = Instantiate(pickupInfo.itemParentPrefab,
+        itemHolder.transform);
+
+        // set item values
         currentItemInfo = itemInstance.GetComponent<item_base>();
         currentItemTrans = itemInstance.transform;
+
+        // handle child object containing model
+        currentModel = pickupInfo.modelObj;
+        currentModel.transform.localPosition = Vector3.zero;
+        currentModel.transform.SetParent(currentItemTrans);
+        currentModel.tag = "Item";
     }
 
     private void Update()
@@ -78,6 +93,12 @@ public class pl_item_manager : MonoBehaviour
         currentCharge = 0;
         Destroy(currentItemInfo.gameObject);
         currentItemInfo = null;
+
+
+
+
+
+        //         currentModel.tag = "Interactable";
     }
 
 }
