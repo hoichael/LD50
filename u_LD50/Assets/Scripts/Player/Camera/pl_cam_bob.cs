@@ -5,62 +5,91 @@ using UnityEngine;
 public class pl_cam_bob : MonoBehaviour
 {
     [SerializeField]
+    private Rigidbody rbPlayer;
+
+    [SerializeField, Range(0, 0.1f)]
+    private float amplitude;
+
+    [SerializeField, Range(0, 40)]
+    private float frequency;
+
+    [SerializeField]
+    private float resetLerpFactor;
+
+    [SerializeField]
+    private bool stabilize;
+
+    [SerializeField]
+    private float stabilizeTargetDist;
+
+    [SerializeField]
+    private Transform camTrans;
+
+    [SerializeField]
+    private Transform camHolderTrans;
+
+    private float triggerSpeed = 3.4f;
+    private Vector3 initPos;
+
     private pl_input input;
 
-    [SerializeField]
-    private float bobOffsetY;
-
-    [SerializeField]
-    private float lerpFactor;
-
-    [SerializeField]
-    private float currentLerpTarget;
-
-    [SerializeField]
-    private float currentOffsetY;
-
-    private float defaultCamY;
-
-    [SerializeField]
-    private int currentDirMult = 1;
 
     private void Start()
     {
-        defaultCamY = transform.localPosition.y;
+        initPos = camTrans.localPosition;
     }
 
     private void Update()
     {
-        if (input.moveX == 0 && input.moveY == 0)
+        if(TimeToBob())
         {
-            currentLerpTarget = 0;
-        }
-        else
-        {
-            currentLerpTarget = bobOffsetY * currentDirMult;
+            ApplyMotion(CalcMotion());
         }
 
-        ////////////////////////////////////////////
-        
-        transform.position = new Vector3(transform.position.x, 0.5f + currentOffsetY, transform.position.z);
+            ResetBob();
 
-        ////////////////////////////////////////////
-        
-        if (currentLerpTarget == 0)
-        {
-            if (Mathf.Abs(currentLerpTarget * 0.1f - currentOffsetY) < 0.001f)
-            {
-                currentOffsetY = 0;
-            }
-        }
-        else if (Mathf.Abs(currentLerpTarget * 0.1f - currentOffsetY) < 0.001f)
-        {
-            currentDirMult *= -1;
-        }
 
-        currentOffsetY = Mathf.Lerp(
-        currentOffsetY,
-        currentLerpTarget,
-        lerpFactor * Time.deltaTime);
+        if (stabilize) StabilizeView();
+    }
+
+    private bool TimeToBob()
+    {
+        print(rbPlayer.velocity.magnitude);
+
+        return (pl_state.Instance.grounded && rbPlayer.velocity.magnitude > triggerSpeed);
+    }
+
+    private Vector3 CalcMotion()
+    {
+        Vector3 newPos = Vector3.zero;
+
+        newPos.x += Mathf.Cos(Time.time * frequency / 2) * amplitude;
+        newPos.y += Mathf.Sin(Time.time * frequency) * amplitude * 1.4f;
+
+        return newPos;
+    }
+
+    private void ApplyMotion(Vector3 newPos)
+    {
+        camTrans.localPosition += newPos;
+    }
+
+    private void ResetBob()
+    {
+        if (camTrans.localPosition == initPos) return;
+        camTrans.localPosition = Vector3.Lerp(camTrans.localPosition, initPos, resetLerpFactor * Time.deltaTime);
+    }
+
+    private void StabilizeView()
+    {
+        // calc stabilization
+        Vector3 stabilizedView = new Vector3(
+            rbPlayer.transform.position.x,
+            rbPlayer.transform.position.y + camHolderTrans.localPosition.y,
+            rbPlayer.transform.position.z) 
+            + camHolderTrans.forward * stabilizeTargetDist;
+
+        //apply stabilization
+        camTrans.LookAt(stabilizedView);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class pl_cam_rot : MonoBehaviour
 {
     [SerializeField]
-    private Camera cam;
+    private Transform camHolder;
 
     [SerializeField]
     private pl_input input;
@@ -41,7 +41,7 @@ public class pl_cam_rot : MonoBehaviour
     private void ApplyRotation()
     {
         // Rotate cam (mouse input based rotation + action based offset)
-        cam.transform.localRotation = Quaternion.Euler(rotX, rotY, pl_state.Instance.camTilt);
+        camHolder.localRotation = Quaternion.Euler(rotX, rotY, pl_state.Instance.camTilt);
 
         // Apply action based offset to tool in hand
         toolsContainer.localRotation = Quaternion.Euler(
