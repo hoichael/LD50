@@ -16,7 +16,10 @@ public class pl_item_manager : MonoBehaviour
 
     private Transform currentItemTrans;
 
-//    private GameObject currentModel;
+    [SerializeField]
+    private float pickupLerpFactor;
+
+    private bool currentlyInPickupAnim;
 
     [SerializeField]
     private float baseCharge;
@@ -48,8 +51,11 @@ public class pl_item_manager : MonoBehaviour
         currentItemTrans = currentItemObj.transform;
 
         currentItemTrans.SetParent(itemHolder);
+        /*
         currentItemTrans.localPosition = Vector3.zero;
         currentItemTrans.localRotation = Quaternion.identity;
+        */
+        currentlyInPickupAnim = true;
 
         currentItemInfo = currentItemObj.GetComponent<item_base>();
         currentItemInfo.enabled = true;
@@ -63,8 +69,17 @@ public class pl_item_manager : MonoBehaviour
 
     private void Update()
     {
+        if(currentlyInPickupAnim)
+        {
+            HandlePickupAnim();
+        }
+
         if(Input.GetMouseButtonDown(1) && currentItemInfo != null)
         {
+            currentlyInPickupAnim = false;
+            currentItemTrans.localPosition = Vector3.zero;
+            currentItemTrans.localRotation = Quaternion.identity;
+
             currentlyCharging = true;
         }
 
@@ -81,6 +96,30 @@ public class pl_item_manager : MonoBehaviour
 
         HandleCharge();
     }
+
+    private void HandlePickupAnim()
+    {
+        // lerp position
+        currentItemTrans.localPosition = Vector3.Lerp(
+            currentItemTrans.localPosition,
+            Vector3.zero,
+            pickupLerpFactor * Time.deltaTime
+            );
+
+        // lerp rotation
+        currentItemTrans.localRotation = Quaternion.Lerp(
+            currentItemTrans.localRotation,
+            Quaternion.identity,
+            pickupLerpFactor * Time.deltaTime
+            );
+        
+        if(currentItemTrans.localPosition == Vector3.zero && currentItemTrans.localRotation == Quaternion.identity)
+        {
+            currentlyInPickupAnim = false;
+        }
+       
+    }
+
 
     private void HandleCharge()
     {

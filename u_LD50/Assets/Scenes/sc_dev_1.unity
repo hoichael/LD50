@@ -942,9 +942,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemHolder: {fileID: 1599909648}
   camTrans: {fileID: 703818510}
+  pickupLerpFactor: 12
   baseCharge: 120
   maxCharge: 780
-  chargeStep: 5
+  chargeStep: 8
 --- !u!1001 &369768945
 PrefabInstance:
   m_ObjectHideFlags: 0

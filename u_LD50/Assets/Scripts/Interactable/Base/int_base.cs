@@ -11,6 +11,6 @@ public class int_base : MonoBehaviour
 
     public virtual void Init()
     {
-        print("pickup " + ID);
+    //    print("pickup " + ID);
     }
 }
