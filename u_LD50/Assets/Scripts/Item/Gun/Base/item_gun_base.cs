@@ -11,13 +11,41 @@ public class item_gun_base : item_base
     private List<item_ammo_base> shellInfoList;
 
     [SerializeField]
+    private int shellCapacity;
+
+    [SerializeField]
     private float shootCD;
 
     private bool canShoot;
 
-    public void HandleAmmoPickup()
-    {
+    [SerializeField]
+    private List<Transform> currentPickupShells = new List<Transform>();
 
+    [SerializeField]
+    private float pickupLerpFactor;
+
+    public void InitAmmoPickup(item_ammo_base ammoInfo)
+    {
+        if(shellInfoList.Count == shellCapacity)
+        {
+            // play sfx
+            return;
+        }
+
+        HandleAmmoPickup(ammoInfo);
+    }
+
+    private void HandleAmmoPickup(item_ammo_base ammoInfo)
+    {
+        if(currentPickupShells.Contains(ammoInfo.transform))
+        {
+            return;
+        }
+
+        // add shell transform to pickup animation list
+        currentPickupShells.Add(ammoInfo.transform);
+
+        ammoInfo.transform.SetParent(shellPosList[shellPosList.Count - 1]);
     }
 
     private void Update()
@@ -27,9 +55,17 @@ public class item_gun_base : item_base
             Shoot();
             StartCoroutine(HandleFirerate());
         }
+
+        if (currentPickupShells.Count == 0) return;
+        HandlePickupAnim();
     }
 
     private void Shoot()
+    {
+
+    }
+
+    public void EjectShell()
     {
 
     }
@@ -40,5 +76,30 @@ public class item_gun_base : item_base
         canShoot = false;
         yield return new WaitForSeconds(shootCD);
         canShoot = true;
+    }
+
+    private void HandlePickupAnim()
+    {
+        for(int i = 0; i < currentPickupShells.Count; i++)
+        {
+            // lerp position
+            currentPickupShells[i].localPosition = Vector3.Lerp(
+                currentPickupShells[i].localPosition,
+                Vector3.zero,
+                pickupLerpFactor * Time.deltaTime
+                );
+
+            // lerp rotation
+            currentPickupShells[i].localRotation = Quaternion.Lerp(
+                currentPickupShells[i].localRotation,
+                Quaternion.identity,
+                pickupLerpFactor * Time.deltaTime
+                );
+
+            if (currentPickupShells[i].localPosition == Vector3.zero && currentPickupShells[i].localRotation == Quaternion.identity)
+            {
+                currentPickupShells.RemoveAt(i);
+            }
+        }
     }
 }

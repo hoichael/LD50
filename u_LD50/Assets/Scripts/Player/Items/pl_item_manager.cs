@@ -36,12 +36,19 @@ public class pl_item_manager : MonoBehaviour
     public void InitPickup(int_item pickupInfo)  // called from pl_interact
     {
         // if currently holding item, drop item
-        if(currentItemInfo != null)
+        if(pickupInfo.itemType == "Ammo" && currentItemInfo.type == "Shotgun")
         {
-            HandleDrop();
+            currentItemInfo.GetComponent<item_gun_base>().InitAmmoPickup(pickupInfo.GetComponent<item_ammo_base>());
         }
+        else
+        {
+            if (currentItemInfo != null)
+            {
+                HandleDrop();
+            }
 
-        HandlePickup(pickupInfo);
+            HandlePickup(pickupInfo);
+        }
     }
 
     private void HandlePickup(int_item pickupInfo)
@@ -117,7 +124,6 @@ public class pl_item_manager : MonoBehaviour
         {
             currentlyInPickupAnim = false;
         }
-       
     }
 
 
