@@ -70,7 +70,6 @@ public class pl_interact : MonoBehaviour
             itemManager.InitPickup(itemInfo.gameObject.GetComponent<int_item>());
         }
 
-    //    itemManager.Pickup(GetInteractable());
         itemInfo.Init();
     }
 
