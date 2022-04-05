@@ -334,7 +334,7 @@ MonoBehaviour:
   shellCapacity: 6
   shootCD: 0.4
   currentPickupShells: []
-  pickupLerpFactor: 2
+  pickupLerpFactor: 8
 --- !u!114 &3598359742266054349
 MonoBehaviour:
   m_ObjectHideFlags: 0

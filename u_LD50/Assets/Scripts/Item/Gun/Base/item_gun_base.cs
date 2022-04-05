@@ -26,7 +26,7 @@ public class item_gun_base : item_base
 
     public void InitAmmoPickup(item_ammo_base ammoInfo)
     {
-        if(shellInfoList.Count == shellCapacity)
+        if(shellInfoList.Count + 1 > shellCapacity)
         {
             // play sfx
             return;
@@ -37,15 +37,15 @@ public class item_gun_base : item_base
 
     private void HandleAmmoPickup(item_ammo_base ammoInfo)
     {
-        if(currentPickupShells.Contains(ammoInfo.transform))
-        {
-            return;
-        }
-
-        // add shell transform to pickup animation list
+        // add shell refs to local lists
         currentPickupShells.Add(ammoInfo.transform);
+        shellInfoList.Add(ammoInfo);
 
-        ammoInfo.transform.SetParent(shellPosList[shellPosList.Count - 1]);
+        // remove phyiscs from shell
+        Destroy(ammoInfo.rb);
+        ammoInfo.col.enabled = false;
+
+        ammoInfo.transform.SetParent(shellPosList[shellInfoList.Count - 1]);
     }
 
     private void Update()

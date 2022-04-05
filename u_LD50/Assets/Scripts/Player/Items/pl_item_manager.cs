@@ -36,7 +36,7 @@ public class pl_item_manager : MonoBehaviour
     public void InitPickup(int_item pickupInfo)  // called from pl_interact
     {
         // if currently holding item, drop item
-        if(pickupInfo.itemType == "Ammo" && currentItemInfo.type == "Shotgun")
+        if(pickupInfo.itemType == "Ammo" && currentItemInfo != null && currentItemInfo.type == "Shotgun")
         {
             currentItemInfo.GetComponent<item_gun_base>().InitAmmoPickup(pickupInfo.GetComponent<item_ammo_base>());
         }
