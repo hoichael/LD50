@@ -139,7 +139,7 @@ public class pl_item_manager : MonoBehaviour
 
         // this is retarded
         Rigidbody rb = currentItemObj.AddComponent<Rigidbody>();
-        rb.interpolation = RigidbodyInterpolation.Extrapolate;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         currentItemInfo.rb = rb;
 

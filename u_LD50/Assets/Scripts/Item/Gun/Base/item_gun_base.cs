@@ -16,7 +16,7 @@ public class item_gun_base : item_base
     [SerializeField]
     private float shootCD;
 
-    private bool canShoot;
+    private bool canShoot = true;
 
     [SerializeField]
     private List<Transform> currentPickupShells = new List<Transform>();
@@ -46,6 +46,8 @@ public class item_gun_base : item_base
         ammoInfo.col.enabled = false;
 
         ammoInfo.transform.SetParent(shellPosList[shellInfoList.Count - 1]);
+
+        ammoInfo.currentAssociatedWeapon = this;
     }
 
     private void Update()
@@ -62,12 +64,37 @@ public class item_gun_base : item_base
 
     private void Shoot()
     {
+        if (shellInfoList.Count == 0) return;
 
+        if(currentPickupShells.Contains(shellInfoList[shellInfoList.Count - 1].transform))
+        {
+            currentPickupShells.Remove(shellInfoList[shellInfoList.Count - 1].transform);
+        }
+
+        shellInfoList[shellInfoList.Count - 1].Use();
     }
 
     public void EjectShell()
     {
+        item_ammo_base shellInfo = shellInfoList[shellInfoList.Count - 1];
 
+        shellInfoList.Remove(shellInfo);
+
+        shellInfo.transform.SetParent(null);
+
+        Rigidbody rb = shellInfo.gameObject.AddComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        shellInfo.rb = rb;
+
+        rb.AddForce(Vector3.up * 200, ForceMode.Force);
+        rb.AddTorque(new Vector3(Random.Range(-0.9f, 0.9f), 0, Random.Range(-0.9f, 0.9f)) * 150);
+
+        shellInfo.type = "Prop";
+        shellInfo.tag = "Interactable";
+
+        // this is ugly
+        StartCoroutine(EnableEjectedShellCol(shellInfo.col));
     }
 
     // coroutine needs to be tracked and stopped if active while weapon drop
@@ -101,5 +128,11 @@ public class item_gun_base : item_base
                 currentPickupShells.RemoveAt(i);
             }
         }
+    }
+
+    private IEnumerator EnableEjectedShellCol(Collider col)
+    {
+        yield return new WaitForSeconds(0.2f);
+        col.enabled = true;
     }
 }

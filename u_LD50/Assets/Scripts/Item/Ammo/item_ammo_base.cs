@@ -7,8 +7,10 @@ public class item_ammo_base : item_base
     [SerializeField]
     private string ammoType;
 
-    public int totalUses;
-    public int currentUse;
+    [SerializeField]
+    private int totalUses;
+
+    private int currentUse;
 
     [SerializeField]
     private float usePosOffset;
@@ -23,13 +25,13 @@ public class item_ammo_base : item_base
 
     private void Start()
     {
-        currentUse = totalUses;
         modelDefault.SetActive(true);
         modelDepleted.SetActive(false);
     }
 
     public override void Use()
     {
+        print("ammo use init");
         //   base.Use();
         currentUse++;
 
@@ -37,15 +39,17 @@ public class item_ammo_base : item_base
         {
             HandleDepletion();
         }
-        
+        else
+        {
+            transform.position -= transform.up * usePosOffset;
+        }
     }
 
     private void HandleDepletion()
     {
+        print("depletion");
         modelDefault.SetActive(false);
         modelDepleted.SetActive(true);
-
-     //    tag.Remove(0);
 
         currentAssociatedWeapon.EjectShell();
     }
