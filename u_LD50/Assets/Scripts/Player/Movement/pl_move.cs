@@ -20,13 +20,14 @@ public class pl_move : MonoBehaviour
     private bool currentlySprinting;
 
     //caching for performance
-    private float sprintMult, hungerMult;
+    private float sprintMult; 
+    private int hungerMult;
 
     private void Start()
     {
         rb.freezeRotation = true;
         sprintMult = pl_settings.Instance.moveSprintMult;
-        hungerMult = pl_settings.Instance.hugerMultSprint;
+        hungerMult = pl_settings.Instance.hungerMultSprint;
     }
 
     private void Update()

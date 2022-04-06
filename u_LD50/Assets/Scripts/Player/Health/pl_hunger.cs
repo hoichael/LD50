@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class pl_hunger : MonoBehaviour
 {
+    [SerializeField]
     private float interval;
+
+    [SerializeField]
+    private pl_health_ui healthUI;
 
     private void Start()
     {
-        interval = pl_settings.Instance.hungerInterval;
         StartCoroutine(HungerInterval());
     }
 
@@ -16,7 +19,15 @@ public class pl_hunger : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
 
-        pl_state.Instance.health--;
+        pl_state.Instance.health = pl_state.Instance.health - 1 * pl_state.Instance.currentHungerMult;
+        print("HUNGER HEALTH LOSS");
+        healthUI.HealthChange();
+
+        RestartHungerRoutine();
+    }
+
+    private void RestartHungerRoutine()
+    {
         StartCoroutine(HungerInterval());
     }
 }

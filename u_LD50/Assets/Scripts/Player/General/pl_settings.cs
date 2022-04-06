@@ -30,8 +30,9 @@ public class pl_settings : ut_singleton<pl_settings>
     public float growthFactor;
 
     [Header("Health")]
-    public float hungerInterval;
-    public float hugerMultSprint;
+    public int maxHealth = 1000;
+//    public float hungerInterval;
+    public int hungerMultSprint;
 
     [Header("Misc")]
     public float groundCheckRadius;

@@ -11,6 +11,6 @@ public class pl_state : ut_singleton<pl_state>
     public float currentFovOffsetSprint;
     public float currentFovOffsetRecoil;
 
-    public int health = 100;
-    public float currentHungerMult = 1;
+    public int health = 1000;
+    public int currentHungerMult = 1;
 }
