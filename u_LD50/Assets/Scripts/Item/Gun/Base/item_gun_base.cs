@@ -27,6 +27,9 @@ public class item_gun_base : item_base
     [SerializeField]
     private item_gun_recoil recoil;
 
+    [SerializeField]
+    private item_gun_flash flash;
+
     public void InitAmmoPickup(item_ammo_base ammoInfo)
     {
         if(shellInfoList.Count + 1 > shellCapacity)
@@ -72,11 +75,14 @@ public class item_gun_base : item_base
         if(currentPickupShells.Contains(shellInfoList[shellInfoList.Count - 1].transform))
         {
             currentPickupShells.Remove(shellInfoList[shellInfoList.Count - 1].transform);
+            shellInfoList[shellInfoList.Count - 1].transform.localPosition = Vector3.zero;
+            shellInfoList[shellInfoList.Count - 1].transform.localRotation = Quaternion.identity;
         }
 
         shellInfoList[shellInfoList.Count - 1].Use();
 
         recoil.Init();
+        flash.Init();
     }
 
     public void EjectShell()

@@ -5,7 +5,10 @@ using UnityEngine;
 public class pl_D_flashlight : MonoBehaviour
 {
     [SerializeField]
-    private Light flashlight;
+    private Light lightPrimary;
+
+    [SerializeField]
+    private Light lightSecondary;
 
     [SerializeField]
     private float xRotHide;
@@ -21,7 +24,7 @@ public class pl_D_flashlight : MonoBehaviour
 
     private void Start()
     {
-        currentlyEnabled = flashlight.enabled;
+        currentlyEnabled = lightPrimary.enabled;
 
         if(!currentlyEnabled)
         {
@@ -47,7 +50,8 @@ public class pl_D_flashlight : MonoBehaviour
         currentLerpTarget = currentlyEnabled ? xRotHide : 0;
 
         currentlyEnabled = !currentlyEnabled;
-        flashlight.enabled = currentlyEnabled;
+
+        lightPrimary.enabled = lightSecondary.enabled = currentlyEnabled;
     }
 
     private void HandleToggleAnim()

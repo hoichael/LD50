@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class item_gun_flash : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Light lightComponent;
+
+    [SerializeField]
+    private float flashDuration;
+
+    public void Init()
     {
-        
+        lightComponent.enabled = true;
+        StartCoroutine(TurnOffLight());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator TurnOffLight()
     {
-        
+        yield return new WaitForSeconds(flashDuration);
+        lightComponent.enabled = false;
     }
 }

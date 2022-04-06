@@ -59,10 +59,10 @@ public class pl_item_manager : MonoBehaviour
 
         currentItemTrans.SetParent(itemHolder);
         
-        currentItemTrans.localPosition = Vector3.zero;
-        currentItemTrans.localRotation = Quaternion.identity;
+     //    currentItemTrans.localPosition = Vector3.zero;
+     //    currentItemTrans.localRotation = Quaternion.identity;
         
-    //    currentlyInPickupAnim = true;
+        currentlyInPickupAnim = true;
 
         currentItemInfo = currentItemObj.GetComponent<item_base>();
         currentItemInfo.enabled = true;
@@ -106,13 +106,20 @@ public class pl_item_manager : MonoBehaviour
 
     private void HandlePickupAnim()
     {
+        
         // lerp position
         currentItemTrans.localPosition = Vector3.Lerp(
             currentItemTrans.localPosition,
             Vector3.zero,
             pickupLerpFactor * Time.deltaTime
             );
-
+        /*
+        currentItemTrans.localPosition = Vector3.MoveTowards(
+            currentItemTrans.localPosition,
+            Vector3.zero,
+            pickupLerpFactor * Time.deltaTime
+            );
+        */
         // lerp rotation
         currentItemTrans.localRotation = Quaternion.Lerp(
             currentItemTrans.localRotation,
@@ -124,6 +131,7 @@ public class pl_item_manager : MonoBehaviour
         {
             currentlyInPickupAnim = false;
         }
+        
     }
 
 
