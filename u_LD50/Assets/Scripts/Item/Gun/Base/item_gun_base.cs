@@ -58,14 +58,18 @@ public class item_gun_base : item_base
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && canShoot)
+        if (currentPickupShells.Count == 0) return;
+        HandlePickupAnim();
+    }
+
+    public override void Use()
+    {
+        base.Use();
+        if (Input.GetMouseButtonDown(0) && canShoot)
         {
             Shoot();
             StartCoroutine(HandleFirerate());
         }
-
-        if (currentPickupShells.Count == 0) return;
-        HandlePickupAnim();
     }
 
     private void Shoot()

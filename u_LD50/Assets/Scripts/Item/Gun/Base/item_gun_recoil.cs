@@ -68,7 +68,6 @@ public class item_gun_recoil : MonoBehaviour
 
         if (posCurrentTarget == posOffset && Mathf.Approximately(posCurrentOffset, posOffset))
         {
-            print("hit target");
             posCurrentOffset = posOffset;
             posCurrentTarget = 0;
             posCurrentFactor = posFactorReset;
@@ -85,7 +84,6 @@ public class item_gun_recoil : MonoBehaviour
 
         if (fovCurrentTarget == fovOffset && Mathf.Approximately(fovCurrentOffset, fovOffset))
         {
-            print("hit target");
             fovCurrentOffset = fovOffset;
             fovCurrentTarget = 0;
             fovCurrentFactor = fovFactorReset;

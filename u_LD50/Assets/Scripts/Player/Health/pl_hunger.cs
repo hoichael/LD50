@@ -20,7 +20,6 @@ public class pl_hunger : MonoBehaviour
         yield return new WaitForSeconds(interval);
 
         pl_state.Instance.health = pl_state.Instance.health - 1 * pl_state.Instance.currentHungerMult;
-        print("HUNGER HEALTH LOSS");
         healthUI.HealthChange();
 
         RestartHungerRoutine();

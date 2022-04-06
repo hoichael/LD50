@@ -12,14 +12,14 @@ public class pl_item_manager : MonoBehaviour
 
     private GameObject currentItemObj;
 
-    private item_base currentItemInfo;
+    public item_base currentItemInfo;
 
     private Transform currentItemTrans;
 
     [SerializeField]
     private float pickupLerpFactor;
 
-    private bool currentlyInPickupAnim;
+    public bool currentlyInPickupAnim;
 
     [SerializeField]
     private float baseCharge;
@@ -32,6 +32,9 @@ public class pl_item_manager : MonoBehaviour
 
     [SerializeField]
     private float chargeStep;
+
+    [SerializeField]
+    private pl_health_ui healthUI;
 
     public void InitPickup(int_item pickupInfo)  // called from pl_interact
     {
@@ -72,6 +75,13 @@ public class pl_item_manager : MonoBehaviour
         currentItemInfo.col.enabled = false;
 
         currentItemObj.tag = "Item";
+
+        if(pickupInfo.itemType == "Consumable")
+        {
+            item_con_base conInfo = currentItemObj.GetComponent<item_con_base>();
+            conInfo.itemManager = this;
+            conInfo.healthUI = healthUI;
+        }
     }
 
     private void Update()
@@ -81,13 +91,21 @@ public class pl_item_manager : MonoBehaviour
             HandlePickupAnim();
         }
 
-        if(Input.GetMouseButtonDown(1) && currentItemInfo != null)
+        if(currentItemInfo != null)
         {
-            currentlyInPickupAnim = false;
-            currentItemTrans.localPosition = Vector3.zero;
-            currentItemTrans.localRotation = Quaternion.identity;
+            if (Input.GetMouseButtonDown(1))
+            {
+                currentlyInPickupAnim = false;
+                currentItemTrans.localPosition = Vector3.zero;
+                currentItemTrans.localRotation = Quaternion.identity;
 
-            currentlyCharging = true;
+                currentlyCharging = true;
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                currentItemInfo.Use();
+            }
         }
 
         if (Input.GetMouseButtonUp(1) && currentlyCharging)

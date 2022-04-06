@@ -6,7 +6,7 @@ public class item_con_base : item_base
 {
     public int hpAmount;
 
-    protected bool canUse;
+    protected bool canUse = true;
 
     [SerializeField]
     protected float useCooldown;
@@ -19,10 +19,8 @@ public class item_con_base : item_base
     [SerializeField]
     protected List<GameObject> consumptionModelSteps;
 
-    protected virtual void Start()
-    {
-        currentConsumptionStep = consumptionModelSteps.Count - 1;
-    }
+    public pl_item_manager itemManager;
+    public pl_health_ui healthUI;
 
     public override void Use()
     {
@@ -30,17 +28,10 @@ public class item_con_base : item_base
         
         base.Use();
 
-        if(currentConsumptionStep > 1)
-        {
-            canUse = false;
-            currentCooldownRoutine = UseCooldown();
-            StartCoroutine(currentCooldownRoutine);
-            HandleConsumption();
-        }
-        else
-        {
-            HandleDepletion();
-        }
+        canUse = false;
+        currentCooldownRoutine = UseCooldown();
+        StartCoroutine(currentCooldownRoutine);
+        HandleConsumption();
     }
 
     protected virtual void HandleConsumption()
@@ -48,13 +39,32 @@ public class item_con_base : item_base
         print("init consume. current step: " + currentConsumptionStep);
 
         consumptionModelSteps[currentConsumptionStep].SetActive(false);
-        currentConsumptionStep--;
-        consumptionModelSteps[currentConsumptionStep].SetActive(true);
+        currentConsumptionStep++;
+
+        pl_state.Instance.health += hpAmount;
+        if (pl_state.Instance.health > pl_settings.Instance.maxHealth)
+        {
+            pl_state.Instance.health = pl_settings.Instance.maxHealth;
+        }
+        healthUI.HealthChange();
+
+        if (currentConsumptionStep == consumptionModelSteps.Count)
+        {
+            HandleDepletion();
+        }
+        else
+        {
+            consumptionModelSteps[currentConsumptionStep].SetActive(true);
+            col = consumptionModelSteps[currentConsumptionStep].GetComponent<Collider>();
+        }
     }
 
     protected virtual void HandleDepletion()
     {
+        itemManager.currentItemInfo = null;
+        itemManager.currentlyInPickupAnim = false;
         print("consumable depleted");
+        Destroy(gameObject);
     }
 
     protected virtual IEnumerator UseCooldown()
