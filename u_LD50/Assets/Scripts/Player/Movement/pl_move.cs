@@ -84,10 +84,10 @@ public class pl_move : MonoBehaviour
 
     private void CalcCamFOV()
     {
-        float valToLerpTo = currentlySprinting ? pl_settings.Instance.FovSprintAmount : pl_settings.Instance.FovBase;
+        float valToLerpTo = currentlySprinting ? pl_settings.Instance.FovSprintAmount : 0;
 
-        pl_state.Instance.camFov = Mathf.Lerp(
-            pl_state.Instance.camFov,
+        pl_state.Instance.currentFovOffsetSprint = Mathf.Lerp(
+            pl_state.Instance.currentFovOffsetSprint,
             valToLerpTo,
             pl_settings.Instance.FovSprintFactor * Time.deltaTime);
     }

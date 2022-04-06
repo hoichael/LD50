@@ -58,11 +58,11 @@ public class pl_item_manager : MonoBehaviour
         currentItemTrans = currentItemObj.transform;
 
         currentItemTrans.SetParent(itemHolder);
-        /*
+        
         currentItemTrans.localPosition = Vector3.zero;
         currentItemTrans.localRotation = Quaternion.identity;
-        */
-        currentlyInPickupAnim = true;
+        
+    //    currentlyInPickupAnim = true;
 
         currentItemInfo = currentItemObj.GetComponent<item_base>();
         currentItemInfo.enabled = true;

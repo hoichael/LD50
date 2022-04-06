@@ -7,13 +7,17 @@ public class pl_cam_fov : MonoBehaviour
     [SerializeField]
     private Camera cam;
 
+    // caching for performance
+    private int baseFov;
+
     void Start()
     {
-        pl_state.Instance.camFov = pl_settings.Instance.FovBase;
+        baseFov = pl_settings.Instance.FovBase;
+        cam.fieldOfView = baseFov;
     }
 
     void Update()
     {
-        cam.fieldOfView = pl_state.Instance.camFov;
+        cam.fieldOfView = baseFov + pl_state.Instance.currentFovOffsetSprint + pl_state.Instance.currentFovOffsetRecoil;
     }
 }

@@ -24,6 +24,9 @@ public class item_gun_base : item_base
     [SerializeField]
     private float pickupLerpFactor;
 
+    [SerializeField]
+    private item_gun_recoil recoil;
+
     public void InitAmmoPickup(item_ammo_base ammoInfo)
     {
         if(shellInfoList.Count + 1 > shellCapacity)
@@ -72,6 +75,8 @@ public class item_gun_base : item_base
         }
 
         shellInfoList[shellInfoList.Count - 1].Use();
+
+        recoil.Init();
     }
 
     public void EjectShell()
@@ -134,5 +139,15 @@ public class item_gun_base : item_base
     {
         yield return new WaitForSeconds(0.2f);
         col.enabled = true;
+    }
+
+    private void OnEnable()
+    {
+        recoil.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        recoil.enabled = false;
     }
 }

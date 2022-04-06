@@ -31,10 +31,8 @@ public class item_ammo_base : item_base
 
     public override void Use()
     {
-        print("ammo use init");
         //   base.Use();
         currentUse++;
-
         if(currentUse == totalUses)
         {
             HandleDepletion();
@@ -47,7 +45,6 @@ public class item_ammo_base : item_base
 
     private void HandleDepletion()
     {
-        print("depletion");
         modelDefault.SetActive(false);
         modelDepleted.SetActive(true);
 

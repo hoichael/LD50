@@ -335,6 +335,7 @@ MonoBehaviour:
   shootCD: 0.4
   currentPickupShells: []
   pickupLerpFactor: 8
+  recoil: {fileID: 3598359742266054349}
 --- !u!114 &3598359742266054349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,11 +343,55 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3598359742266054346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 842b389fb8a71ec45b9819583b1d1318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posOffset: 0.6
+  posFactorGrow: 0
+  posFactorReset: 0
+  posOffsetDuration: 0.2
+  posCurveGrow:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  posCurveReset:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  posCurrentTarget: 0
+  posCurrentOffset: 0
+  posCurrentFactor: 0
+  posCurrentOrigin: {x: 0, y: 0, z: 0}
+  fovOffset: 0
+  fovGrowFactor: 0
+  fovResetFactor: 0
+  fovOffsetDuration: 0
+  posGrow: 0
+  posReset: 0
 --- !u!114 &3598359742266054351
 MonoBehaviour:
   m_ObjectHideFlags: 0

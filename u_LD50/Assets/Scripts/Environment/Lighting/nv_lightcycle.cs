@@ -7,11 +7,14 @@ public class nv_lightcycle : MonoBehaviour
     [SerializeField]
     private Transform sunAnchor;
 
-    private float anchorRotX, anchorRotY;
+    [SerializeField]
+    private float rotationStep;
+
+    private float currentRot;
 
     void Update()
     {
-        anchorRotX += 0.04f;
-        sunAnchor.localRotation = Quaternion.Euler(anchorRotX, 0, 0);
+        currentRot += rotationStep;
+        sunAnchor.localRotation = Quaternion.Euler(currentRot, 0, 0);
     }
 }
