@@ -22,6 +22,8 @@ public class pl_D_flashlight : MonoBehaviour
 
     private bool currentlyEnabled;
 
+    private IEnumerator currentFlickerExec;
+
     private void Start()
     {
         currentlyEnabled = lightPrimary.enabled;
@@ -48,10 +50,17 @@ public class pl_D_flashlight : MonoBehaviour
     private void ToggleFlashlight()
     {
         currentLerpTarget = currentlyEnabled ? xRotHide : 0;
-
         currentlyEnabled = !currentlyEnabled;
-
         lightPrimary.enabled = lightSecondary.enabled = currentlyEnabled;
+
+        if(!currentlyEnabled)
+        {
+            StopAllCoroutines();
+        }
+        else
+        {
+            StartCoroutine(FlickerCheck(10));
+        }
     }
 
     private void HandleToggleAnim()
@@ -63,5 +72,53 @@ public class pl_D_flashlight : MonoBehaviour
             );
 
         transform.localRotation = Quaternion.Euler(xRotCurrent, 0, 0);
+    }
+
+    private IEnumerator FlickerCheck(float delay)
+    {
+
+        yield return new WaitForSeconds(delay);
+
+        if(Random.Range(0, 10) > 5 && currentFlickerExec == null)
+        {
+            CallFlickerExec();
+        }
+
+        CallFlickerCheck();
+    }
+
+    private IEnumerator FlickerExec()
+    {
+        // mb play sfx for each flicker?
+
+        lightPrimary.enabled = lightSecondary.enabled = false;
+
+        yield return new WaitForSeconds(Random.Range(1f, 15) / 100);
+
+        lightPrimary.enabled = lightSecondary.enabled = true;
+
+        yield return new WaitForSeconds(Random.Range(1f, 30) / 100);
+
+        lightPrimary.enabled = lightSecondary.enabled = false;
+
+        yield return new WaitForSeconds(Random.Range(1f, 15) / 100);
+
+        lightPrimary.enabled = lightSecondary.enabled = true;
+
+        currentFlickerExec = null;
+        if (Random.Range(0, 10) > 6)
+        {
+            CallFlickerExec();
+        }
+    }
+    private void CallFlickerCheck()
+    {
+        StartCoroutine(FlickerCheck(Random.Range(4, 20)));
+    }
+
+    private void CallFlickerExec()
+    {
+        currentFlickerExec = FlickerExec();
+        StartCoroutine(currentFlickerExec);
     }
 }

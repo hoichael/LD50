@@ -15,7 +15,6 @@ public class pl_settings : ut_singleton<pl_settings>
     public float camTiltMoveAmount;
     public float camTiltMoveFactor;
 
-
     [Header("Move")]
     public float moveSpeed;
     public float moveSprintMult;
@@ -29,6 +28,10 @@ public class pl_settings : ut_singleton<pl_settings>
     [Header("Gravity")]
     public float baseGravity;
     public float growthFactor;
+
+    [Header("Health")]
+    public float hungerInterval;
+    public float hugerMultSprint;
 
     [Header("Misc")]
     public float groundCheckRadius;

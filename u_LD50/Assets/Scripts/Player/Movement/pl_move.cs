@@ -19,9 +19,14 @@ public class pl_move : MonoBehaviour
 
     private bool currentlySprinting;
 
-    private void Awake()
+    //caching for performance
+    private float sprintMult, hungerMult;
+
+    private void Start()
     {
         rb.freezeRotation = true;
+        sprintMult = pl_settings.Instance.moveSprintMult;
+        hungerMult = pl_settings.Instance.hugerMultSprint;
     }
 
     private void Update()
@@ -48,12 +53,14 @@ public class pl_move : MonoBehaviour
 
             if(input.sprintKey && input.moveY > 0)
             {
-                currentMult = pl_settings.Instance.moveSprintMult;
+                currentMult = sprintMult;
+                pl_state.Instance.currentHungerMult = hungerMult;
                 currentlySprinting = true;
             }
             else
             {
                 currentMult = 1;
+                pl_state.Instance.currentHungerMult = 1;
             }
         }
         else
