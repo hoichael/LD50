@@ -7,6 +7,9 @@ public class pl_health_ui : MonoBehaviour
     [SerializeField]
     private Transform healthBarTrans;
 
+    [SerializeField]
+    private pl_health_pp healthPP;
+
     private float healthBarDefaultScaleX;
     private float healthBarDefaultScaleY;
     private float healthBarDefaultScaleZ;
@@ -20,7 +23,14 @@ public class pl_health_ui : MonoBehaviour
 
     public void HealthChange()
     {
+        healthPP.HealthChange();
+
         healthBarTrans.localScale = new Vector3(pl_state.Instance.health * (healthBarDefaultScaleX / 1000), 
             healthBarDefaultScaleY, healthBarDefaultScaleZ);
+
+        if(healthBarTrans.localScale.x < 0)
+        {
+            healthBarTrans.localScale = Vector3.zero;
+        }
     }
 }
