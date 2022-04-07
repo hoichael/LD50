@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 3598359742266054351}
   - component: {fileID: 5887160755400350967}
   m_Layer: 0
-  m_Name: item_shotgun
+  m_Name: item_gun_D
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,6 +339,8 @@ MonoBehaviour:
   pickupLerpFactor: 8
   recoil: {fileID: 3598359742266054349}
   flash: {fileID: 5887160755400350967}
+  trailPrefab: {fileID: 6722609764201852811, guid: 73e20d6d01dc1734794383e46135c657, type: 3}
+  firePoint: {fileID: 0}
 --- !u!114 &3598359742266054349
 MonoBehaviour:
   m_ObjectHideFlags: 0

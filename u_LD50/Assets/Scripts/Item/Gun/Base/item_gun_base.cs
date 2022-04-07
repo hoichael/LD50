@@ -14,7 +14,7 @@ public class item_gun_base : item_base
     private int shellCapacity;
 
     [SerializeField]
-    private float shootCD;
+    protected float fireRate;
 
     private bool canShoot = true;
 
@@ -29,6 +29,9 @@ public class item_gun_base : item_base
 
     [SerializeField]
     private item_gun_flash flash;
+
+    [SerializeField]
+    protected Transform firePoint;
 
     public void InitAmmoPickup(item_ammo_base ammoInfo)
     {
@@ -65,17 +68,15 @@ public class item_gun_base : item_base
     public override void Use()
     {
         base.Use();
-        if (Input.GetMouseButtonDown(0) && canShoot)
+        if (canShoot && shellInfoList.Count > 0)
         {
             Shoot();
             StartCoroutine(HandleFirerate());
         }
     }
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
-        if (shellInfoList.Count == 0) return;
-
         if(currentPickupShells.Contains(shellInfoList[shellInfoList.Count - 1].transform))
         {
             currentPickupShells.Remove(shellInfoList[shellInfoList.Count - 1].transform);
@@ -116,7 +117,7 @@ public class item_gun_base : item_base
     private IEnumerator HandleFirerate()
     {
         canShoot = false;
-        yield return new WaitForSeconds(shootCD);
+        yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
 

@@ -18,6 +18,6 @@ public abstract class item_base : MonoBehaviour
 
     public virtual void Use()
     {
-        print("init Use of type " + type);
+    //    print("init Use of type " + type);
     }
 }

@@ -13,4 +13,6 @@ public class pl_state : ut_singleton<pl_state>
 
     public int health = 1000;
     public int currentHungerMult = 1;
+
+    public Camera GLOBAL_CAM_REF;
 }

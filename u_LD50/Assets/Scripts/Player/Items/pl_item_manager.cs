@@ -102,7 +102,7 @@ public class pl_item_manager : MonoBehaviour
                 currentlyCharging = true;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && currentItemInfo.type != "Ammo")
             {
                 currentItemInfo.Use();
             }
