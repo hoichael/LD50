@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class pl_box : MonoBehaviour
 {
+    [Header("External Refs")]
+
     [SerializeField]
     private pl_move move;
 
     [SerializeField]
     private Rigidbody rb;
+
+    [SerializeField]
+    private pl_cam_rot camRot;
+
+    [Header("Local Refs")]
 
     [SerializeField]
     private Transform anchorBox;
@@ -19,8 +26,10 @@ public class pl_box : MonoBehaviour
     [SerializeField]
     private GameObject containerObj;
 
+    [Header("Animation Handling")]
+
     [SerializeField]
-    private pl_cam_rot camRot;
+    private float transitionSpeed;
 
     [SerializeField]
     private Vector3 anchorBoxActivePos;
@@ -34,16 +43,24 @@ public class pl_box : MonoBehaviour
     [SerializeField]
     private Vector3 anchorLidActiveRot;
 
-    private List<GameObject> currentObjects;
+    private List<GameObject> currentObjects = new List<GameObject>();
 
     private bool currentlyActive;
-
-    [SerializeField]
-    private float transitionSpeed;
 
     public float transitionProgress;
     public float currentTransitionTarget;
     private bool transitionActive;
+
+    [Header("Item Handling")]
+
+    [SerializeField]
+    private Transform ItemColPosTrans;
+
+    [SerializeField]
+    private Vector3 itemColHalfExtents;
+
+    [SerializeField]
+    private Transform itemContainer;
 
     private void Start()
     {
@@ -92,6 +109,10 @@ public class pl_box : MonoBehaviour
             {
                 containerObj.SetActive(false);
             }
+            else
+            {
+                HandleItemsOnOpen();
+            }
         }
     }
 
@@ -114,6 +135,9 @@ public class pl_box : MonoBehaviour
 
     private void DeactivateBox()
     {
+        // add items currently "in box" to currentObjects and handle related logic
+        HandleItemsOnClose();
+
         move.currentMult = 1;
 
         rb.isKinematic = false;
@@ -124,5 +148,44 @@ public class pl_box : MonoBehaviour
         currentlyActive = false;
 
         camRot.InitCloseBox();
+    }
+
+    private void HandleItemsOnOpen()
+    {
+        if (currentObjects.Count == 0) return;
+
+        for(int i = 0; i < currentObjects.Count; i++)
+        {
+            // enable rb and collision
+            Rigidbody objRB = currentObjects[i].GetComponent<Rigidbody>();
+            objRB.isKinematic = false;
+            objRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            currentObjects[i].GetComponentInChildren<Collider>().enabled = true;
+        }
+    }
+
+    private void HandleItemsOnClose()
+    {
+        Collider[] hitColliders = Physics.OverlapBox(ItemColPosTrans.position, itemColHalfExtents, Quaternion.identity);
+
+        for(int i = 0; i < hitColliders.Length; i++)
+        {
+
+            if(hitColliders[i].CompareTag("Interactable"))
+            {
+                // disable collider
+                hitColliders[i].enabled = false;
+                // "disable" rb
+                Rigidbody hitRB = hitColliders[i].GetComponentInParent<Rigidbody>();
+                hitRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+                hitRB.isKinematic = true;
+                // add object to itemContainer and currentObjects list
+                if(!currentObjects.Contains(hitRB.gameObject))
+                {
+                    currentObjects.Add(hitRB.gameObject);
+                    hitRB.transform.SetParent(itemContainer);
+                }
+            }
+        }
     }
 }

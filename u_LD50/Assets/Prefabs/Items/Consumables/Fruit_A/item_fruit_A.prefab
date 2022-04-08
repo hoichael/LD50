@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6255775820402923411}
   - component: {fileID: 8833884984676657341}
   - component: {fileID: 2529188217902384183}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model_Step_1
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 3413640954382013114}
   - component: {fileID: 504841846847233632}
   - component: {fileID: 376151630100071748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: item_fruit_A
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 5089184169022220700}
   - component: {fileID: 2368551977399982708}
   - component: {fileID: 2975830146688260604}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model_Step_2
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 6601353161748653435}
   - component: {fileID: 6102330162431904972}
   - component: {fileID: 4609577388881128783}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model_Step_0
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 1396621722872190212}
   - component: {fileID: 606328262448105669}
   - component: {fileID: 136065631448637429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model_Step_3
   m_TagString: Interactable
   m_Icon: {fileID: 0}
