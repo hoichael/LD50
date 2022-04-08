@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 979755432722484024}
   - component: {fileID: 979755432722484025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

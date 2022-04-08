@@ -18,6 +18,9 @@ public class pl_cam_rot : MonoBehaviour
 
     private float rotX, rotY;
 
+    public bool lookAtBox;
+    public bool resetBoxLook;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -26,8 +29,31 @@ public class pl_cam_rot : MonoBehaviour
 
     private void Update()
     {
-        HandleInput();
+        if(lookAtBox)
+        {
+            LookAtBox();
+        }
+        else if(resetBoxLook)
+        {
+            ResetBoxLook();
+        }
+        else
+        {
+            HandleInput();
+        }
         ApplyRotation();
+    }
+
+    private void LookAtBox()
+    {
+        rotX = 90;
+    }
+
+    private void ResetBoxLook()
+    {
+        rotX = 0;
+        lookAtBox = false;
+        resetBoxLook = false;
     }
 
     private void HandleInput()

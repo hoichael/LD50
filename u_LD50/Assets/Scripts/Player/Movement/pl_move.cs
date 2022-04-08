@@ -15,7 +15,7 @@ public class pl_move : MonoBehaviour
 
     private Vector3 currentDir;
 
-    private float currentMult;
+    public float currentMult;
 
     private bool currentlySprinting;
 
