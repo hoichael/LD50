@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9f5b5b81da35a644db22bfd2d0f70f04
+guid: ad29f596f02cdd343a07161bcc694c5b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Tree3
-    second: {fileID: 2800000, guid: 26efe5b33b37243428d7dd6f1b95f95e, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Treebark2
-    second: {fileID: 2800000, guid: 4ea4944adeaeace468a1fbcc21d1fb16, type: 3}
+      name: Apple
+    second: {fileID: 2800000, guid: 1b8e0da7ee65bf444859e374686d6457, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
