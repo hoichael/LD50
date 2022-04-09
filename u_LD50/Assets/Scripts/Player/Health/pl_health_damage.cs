@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class pl_health_damage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private pl_health_ui healthUI;
 
-    // Update is called once per frame
-    void Update()
+    public void HandleDamage(dmg_base dmgInfo)
     {
-        
+        pl_state.Instance.health -= dmgInfo.dmgAmount;
+
+        healthUI.HealthChange();
     }
 }
