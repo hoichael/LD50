@@ -61,6 +61,7 @@ public class pl_item_manager : MonoBehaviour
         currentItemTrans = currentItemObj.transform;
 
         currentItemTrans.SetParent(itemHolder);
+        currentItemTrans.localScale = new Vector3(1, 1, 1);
         
      //    currentItemTrans.localPosition = Vector3.zero;
      //    currentItemTrans.localRotation = Quaternion.identity;
@@ -75,6 +76,7 @@ public class pl_item_manager : MonoBehaviour
         currentItemInfo.col.enabled = false;
 
         currentItemObj.tag = "Item";
+        currentItemInfo.col.tag = "Item";
 
         if(pickupInfo.itemType == "Consumable")
         {
@@ -174,6 +176,7 @@ public class pl_item_manager : MonoBehaviour
 
         currentItemInfo.col.enabled = true;
         currentItemObj.tag = "Interactable";
+        currentItemInfo.col.tag = "Interactable";
 
         currentItemInfo.enabled = false;
 

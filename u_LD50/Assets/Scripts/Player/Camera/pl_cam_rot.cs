@@ -26,6 +26,8 @@ public class pl_cam_rot : MonoBehaviour
     [SerializeField]
     private Vector3 boxActiveRot;
 
+    private Vector3 boxRotTarget;
+
     private bool transitionActive;
     private bool boxActive;
 
@@ -51,15 +53,16 @@ public class pl_cam_rot : MonoBehaviour
             initRot.x = 0 - (360 - initRot.x);
         }
 
-
-        boxActiveRot.y = transform.localRotation.eulerAngles.y;
-        print(initRot);
+        boxRotTarget = boxActiveRot;
+        boxRotTarget.y = transform.localRotation.eulerAngles.y;
+ 
         transitionActive = true;
     }
 
     public void InitCloseBox()
     {
         transitionActive = true;
+        boxRotTarget = transform.localEulerAngles;
     }
 
     private void Update()
@@ -79,7 +82,7 @@ public class pl_cam_rot : MonoBehaviour
     {
         transform.localRotation = Quaternion.Lerp(
             Quaternion.Euler(initRot),
-            Quaternion.Euler(boxActiveRot),
+            Quaternion.Euler(boxRotTarget),
             boxScript.transitionProgress);
 
         transform.localPosition = Vector3.Lerp(
@@ -112,12 +115,20 @@ public class pl_cam_rot : MonoBehaviour
 
     private void HandleInput()
     {
-        if (boxActive) return;
+     //   if (boxActive) return;
 
         rotY += input.mouseX * pl_settings.Instance.mouseSens;
         rotX -= input.mouseY * pl_settings.Instance.mouseSens;
 
-        rotX = Mathf.Clamp(rotX, -90f, 90f);
+        if(boxActive)
+        {
+            rotX = Mathf.Clamp(rotX, 30f, 89.5f);
+            rotY = Mathf.Clamp(rotY, boxRotTarget.y - 110f, boxRotTarget.y + 110f);
+        }
+        else
+        {
+            rotX = Mathf.Clamp(rotX, -89.5f, 89.5f);
+        }
     }
 
     private void ApplyRotation()
@@ -131,7 +142,8 @@ public class pl_cam_rot : MonoBehaviour
             0,
             pl_state.Instance.camTilt * -1);
 
-        // Rotate orientation ref obj horizontally based on mouse input
+        // if box not active rotate orientation ref obj horizontally based on mouse input
+        if (boxActive) return;
         orientation.transform.rotation = Quaternion.Euler(0, rotY, 0);
     }
 }

@@ -161,16 +161,20 @@ public class pl_box : MonoBehaviour
             objRB.isKinematic = false;
             objRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
             currentObjects[i].GetComponentInChildren<Collider>().enabled = true;
+
+         //   objRB.freezeRotation = false;
         }
     }
 
     private void HandleItemsOnClose()
     {
+        // empty the current items list. objects that are still "inside the box" will be added again in following code block
+        currentObjects.Clear();
+
         Collider[] hitColliders = Physics.OverlapBox(ItemColPosTrans.position, itemColHalfExtents, Quaternion.identity);
 
         for(int i = 0; i < hitColliders.Length; i++)
         {
-
             if(hitColliders[i].CompareTag("Interactable"))
             {
                 // disable collider
@@ -179,12 +183,21 @@ public class pl_box : MonoBehaviour
                 Rigidbody hitRB = hitColliders[i].GetComponentInParent<Rigidbody>();
                 hitRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
                 hitRB.isKinematic = true;
+
+             //   hitRB.freezeRotation = true;
+
+
                 // add object to itemContainer and currentObjects list
+                currentObjects.Add(hitRB.gameObject);
+                hitRB.transform.SetParent(itemContainer);
+
+                /*
                 if(!currentObjects.Contains(hitRB.gameObject))
                 {
                     currentObjects.Add(hitRB.gameObject);
                     hitRB.transform.SetParent(itemContainer);
                 }
+                */
             }
         }
     }

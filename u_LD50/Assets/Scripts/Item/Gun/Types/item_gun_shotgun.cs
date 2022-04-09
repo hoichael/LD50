@@ -93,14 +93,18 @@ public class item_gun_shotgun : item_gun_base
     // external pool would probably be better though
     private IEnumerator HandleTrailContainer()
     {
+        trailContainer.localScale = new Vector3(1, 1, 1);  // dont even ask
         trailContainer.SetParent(null);
         trailContainer.position = Vector3.zero;
         trailContainer.rotation = Quaternion.identity;
 
-        yield return new WaitForSeconds(trailDuration);
+        trailContainer.localScale = new Vector3(1, 1, 1);  // dont even ask
 
+        yield return new WaitForSeconds(trailDuration);
+        trailContainer.localScale = new Vector3(1, 1, 1);  // dont even ask
         trailContainer.SetParent(this.transform);
         trailContainer.localPosition = Vector3.zero;
         trailContainer.localRotation = Quaternion.identity;
+        trailContainer.localScale = new Vector3(1, 1, 1);  // dont even ask
     }
 }
