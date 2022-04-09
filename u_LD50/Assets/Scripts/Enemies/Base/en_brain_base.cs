@@ -13,7 +13,6 @@ public class en_brain_base : MonoBehaviour
     [SerializeField]
     private en_state_base initialState;
 
-
     protected virtual void Start()
     {
         currentState = initialState;

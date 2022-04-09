@@ -22,7 +22,7 @@ public class item_gun_shotgun : item_gun_base
     private LayerMask playerLayerMask;
 
     [SerializeField]
-    private dmg_base dmgInfo;
+    private dmg_hitscan dmgInfo;
 
     [SerializeField]
     private Transform trailContainer;
@@ -63,6 +63,7 @@ public class item_gun_shotgun : item_gun_base
 
                 if (hit.transform.gameObject.CompareTag("Enemy"))
                 {
+                    dmgInfo.origin = firePoint.position;
                     hit.transform.GetComponent<en_health_base>().HandleDamage(dmgInfo);
                 }
             }

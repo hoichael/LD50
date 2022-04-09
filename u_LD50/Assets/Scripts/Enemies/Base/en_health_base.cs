@@ -15,15 +15,15 @@ public class en_health_base : MonoBehaviour
         hpCurrent = hpMax;
     }
 
-    public virtual void HandleDamage(dmg_base damageInfo)
+    public virtual void HandleDamage(dmg_base dmgInfo)
     {
-        hpCurrent -= damageInfo.dmgAmount;
-        print("received damage (" + damageInfo.dmgAmount + ") remaining hp: " + hpCurrent);
+        hpCurrent -= dmgInfo.dmgAmount;
+        print("received damage (" + dmgInfo.dmgAmount + ") remaining hp: " + hpCurrent);
 
-        if (hpCurrent <= 0) HandleDeath();
+        if (hpCurrent <= 0) HandleDeath(dmgInfo);
     }
 
-    protected virtual void HandleDeath()
+    protected virtual void HandleDeath(dmg_base dmgInfo)
     {
         print("ded lel");
     }

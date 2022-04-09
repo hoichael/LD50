@@ -8,4 +8,8 @@ public class en_info_base : MonoBehaviour
 
     public Transform trans;
     public Rigidbody rb;
+
+    [Header("Settings")]
+
+    public float knockbackMult; // basically "weight" property, but higher value = lower weight
 }

@@ -1247,6 +1247,9 @@ MonoBehaviour:
     m_Bits: 8
   dmgInfo:
     dmgAmount: 1
+    type: Hitscan
+    force: 16
+    origin: {x: 0, y: 0, z: 0}
   trailContainer: {fileID: 6001413876977868566}
   trailList:
   - {fileID: 3753443851199305713}

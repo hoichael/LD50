@@ -12075,9 +12075,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1395804370}
   - component: {fileID: 1395804371}
-  - component: {fileID: 1395804372}
   - component: {fileID: 1395804374}
   - component: {fileID: 1395804373}
+  - component: {fileID: 1395804372}
   m_Layer: 0
   m_Name: en_D_0
   m_TagString: Enemy
@@ -12127,11 +12127,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1395804369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d96880fdd9b806c48a0771e04038204e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f4730e071004884f8a643347da2c1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hpMax: 5
   hpCurrent: 0
+  brain: {fileID: 1395804373}
+  info: {fileID: 1395804374}
 --- !u!114 &1395804373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12146,6 +12148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - {fileID: 1845059797}
+  - {fileID: 1845059799}
   initialState: {fileID: 1845059797}
 --- !u!114 &1395804374
 MonoBehaviour:
@@ -12161,6 +12164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trans: {fileID: 1395804370}
   rb: {fileID: 1395804371}
+  knockbackMult: 24
 --- !u!1001 &1401110443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16607,6 +16611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1845059798}
   - component: {fileID: 1845059797}
+  - component: {fileID: 1845059799}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -16621,7 +16626,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845059796}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 856e2e86071aac54a97cff8979c41312, type: 3}
   m_Name: 
@@ -16643,6 +16648,21 @@ Transform:
   m_Father: {fileID: 1395804370}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1845059799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845059796}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b57e144d0942b4d906c585750e04ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateID: dead
+  brain: {fileID: 1395804373}
+  info: {fileID: 1395804374}
 --- !u!1001 &1852214144
 PrefabInstance:
   m_ObjectHideFlags: 0
