@@ -11,7 +11,7 @@ public class ut_singleton<T> : MonoBehaviour where T : MonoBehaviour
         if (Instance == null)
         {
             Instance = (T)FindObjectOfType(typeof(T));
-            DontDestroyOnLoad(Instance);
+         //   DontDestroyOnLoad(Instance);
         }
         else
         {

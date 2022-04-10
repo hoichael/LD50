@@ -26,10 +26,10 @@ public class wep_throw : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        print("throw enter trigger");
+        if (itemInfo.enabled) return;
+
         if (col.transform.CompareTag("Enemy"))
         {
-            print("throw col == enemy");
             dmgInfo.dmgAmount = Mathf.RoundToInt((dmgInfo.dmgAmount * itemInfo.rb.velocity.magnitude) * 0.4f);
             print(dmgInfo.dmgAmount);
             col.transform.GetComponent<en_health_base>().HandleDamage(dmgInfo);

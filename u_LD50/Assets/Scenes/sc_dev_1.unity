@@ -1591,6 +1591,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &233093283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233093285}
+  - component: {fileID: 233093284}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &233093284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233093283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7888af5cd20a3f49a7d117dfae508f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &233093285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233093283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &238151518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2567,6 +2610,7 @@ MonoBehaviour:
   maxCharge: 780
   chargeStep: 8
   healthUI: {fileID: 618463227}
+  itemAnchor: {fileID: 929122368}
 --- !u!1001 &350200338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3606,7 +3650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 476198463}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4266,7 +4310,7 @@ Transform:
   - {fileID: 405926460}
   - {fileID: 362527060}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547298550
 GameObject:
@@ -4617,7 +4661,7 @@ Transform:
   m_Children:
   - {fileID: 1095621211}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 23.81, y: 34.74, z: 0}
 --- !u!1 &587494642
 GameObject:
@@ -11694,7 +11738,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1343184678}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12194,7 +12238,7 @@ GameObject:
   - component: {fileID: 1395804374}
   - component: {fileID: 1395804373}
   - component: {fileID: 1395804372}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: en_D_0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -12217,7 +12261,7 @@ Transform:
   - {fileID: 1845059798}
   - {fileID: 476198463}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1395804371
 Rigidbody:
@@ -16712,6 +16756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd086f84119e1b348a89995a07d88629, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd086f84119e1b348a89995a07d88629, type: 3}
 --- !u!4 &1842044131 stripped
@@ -16731,7 +16779,7 @@ GameObject:
   - component: {fileID: 1845059797}
   - component: {fileID: 1845059799}
   - component: {fileID: 1845059800}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17205,7 +17253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3839436924687721841, guid: e708344a05a23bd4d8c096d3e815a877, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3839436924687721841, guid: e708344a05a23bd4d8c096d3e815a877, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18102,7 +18150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1968367660}
   - component: {fileID: 1968367661}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collision
   m_TagString: Enemy
   m_Icon: {fileID: 0}

@@ -5,20 +5,129 @@ using UnityEngine;
 public class item_wep_base : item_base
 {
     [SerializeField]
+    private dmg_base dmgInfo;
+
+    [SerializeField]
     private Collider damageCol;
 
- //   [SerializeField]
- //   private GameObject throwLogic;
+    public Transform itemAnchor;
+
+    [SerializeField]
+    private float animSpeedSwing;
+
+    [SerializeField]
+    private float animSpeedReset;
+
+    [SerializeField]
+    private Vector3 offsetPos;
+
+    [SerializeField]
+    private Vector3 offsetRot;
+
+    private float currentLerpProgress;
+
+    private bool currentlyAttacking;
+
+    [SerializeField]
+    private AnimationCurve animCurveSwing;
+
+    [SerializeField]
+    private AnimationCurve animCurveReset;
+
+    private bool currentlySwinging;
+
+    [SerializeField]
+    private Vector3 hitboxHalfExtents;
+
+    [SerializeField]
+    private LayerMask enemiesLayerMask;
 
     public override void Use()
     {
+        if (currentlyAttacking) return;
+
         base.Use();
-        print("USE WEAPON");
+
+        currentlyAttacking = true;
+        currentlySwinging = true;
+        currentLerpProgress = 0;
     }
 
-
-    private void OnDisable()
+    private void Update()
     {
-     //   throwLogic.SetActive(true);
+        if (!currentlyAttacking) return;
+
+        if(currentlySwinging)
+        {
+            HandleSwing();
+        }
+        else
+        {
+            HandleReset();
+        }
+    }
+
+    private void HandleSwing()
+    {
+        currentLerpProgress = Mathf.MoveTowards(currentLerpProgress, 1, animSpeedSwing * Time.deltaTime);
+
+        itemAnchor.transform.localPosition = Vector3.Lerp(
+            Vector3.zero,
+            offsetPos,
+            animCurveSwing.Evaluate(Mathf.PingPong(currentLerpProgress, 0.5f))
+            );
+
+        itemAnchor.transform.localRotation = Quaternion.Lerp(
+            Quaternion.Euler(Vector3.zero),
+            Quaternion.Euler(offsetRot),
+            animCurveSwing.Evaluate(currentLerpProgress)
+            );
+
+        if (currentLerpProgress == 1)
+        {
+            currentLerpProgress = 0;
+            HandleHitbox();
+            currentlySwinging = false;
+        }
+    }
+
+    private void HandleReset()
+    {
+        currentLerpProgress = Mathf.MoveTowards(currentLerpProgress, 1, animSpeedReset * Time.deltaTime);
+
+        itemAnchor.transform.localRotation = Quaternion.Lerp(
+            Quaternion.Euler(offsetRot),
+            Quaternion.Euler(Vector3.zero),
+            animCurveReset.Evaluate(currentLerpProgress)
+            );
+
+
+        if (currentLerpProgress == 1)
+        {
+            currentlyAttacking = false;
+        }
+    }
+
+    private void HandleHitbox()
+    {
+        // -------------------------------- HITBOX VISUALIZER --------------------------------
+
+        //var db = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //db.transform.position = pl_state.Instance.GLOBAL_CAM_REF.transform.position + pl_state.Instance.GLOBAL_CAM_REF.transform.forward;
+        //db.transform.localScale = hitboxHalfExtents * 2;
+        //db.transform.rotation = Quaternion.identity;
+        //db.GetComponent<Collider>().enabled = false;
+
+        Collider[] hitColliders = Physics.OverlapBox(
+            pl_state.Instance.GLOBAL_CAM_REF.transform.position + pl_state.Instance.GLOBAL_CAM_REF.transform.forward, 
+            hitboxHalfExtents, 
+            Quaternion.identity, 
+            enemiesLayerMask
+            );
+
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            hitColliders[i].GetComponentInParent<en_health_base>().HandleDamage(dmgInfo);
+        }
     }
 }

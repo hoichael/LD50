@@ -86,5 +86,4 @@ public class en_D_0_st_attack : en_state_base
         base.OnDisable();
         info.rb.useGravity = true;
     }
-
 }
