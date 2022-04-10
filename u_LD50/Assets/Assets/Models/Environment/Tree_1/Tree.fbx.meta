@@ -24,6 +24,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Tree.2
     second: {fileID: 2800000, guid: e95e44b3b834a844db75f61dcd4e91f9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tree3
+    second: {fileID: 2800000, guid: 1c3ac3aecce58f24996d47b117372430, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Treebark2
+    second: {fileID: 2800000, guid: 6e0ad1e8e2f73724e8c13ce64688084b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
