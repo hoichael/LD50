@@ -2522,6 +2522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 341260467}
   - component: {fileID: 341260468}
+  - component: {fileID: 341260469}
   m_Layer: 3
   m_Name: Items
   m_TagString: Untagged
@@ -2567,6 +2568,27 @@ MonoBehaviour:
   chargeStep: 8
   healthUI: {fileID: 618463227}
   itemAnchor: {fileID: 929122368}
+--- !u!114 &341260469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341260466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dfaa1dbffa2df488fafbf1f5e07d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemContainer: {fileID: 341260467}
+  rb: {fileID: 618463219}
+  input: {fileID: 618463221}
+  swayStep: 6
+  swayMult: 3
+  currentOffsetWalkPos: {x: 0, y: 0, z: 0}
+  impactOffsetPosY: 0
+  impactLerpSpeed: 0
+  impactOffsetRotX: 0
 --- !u!1001 &350200338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11385,7 +11407,6 @@ MonoBehaviour:
   camHolder: {fileID: 1276920996}
   input: {fileID: 618463221}
   orientation: {fileID: 763632178}
-  toolsContainer: {fileID: 341260467}
   rotX: 0
   rotY: 0
   boxScript: {fileID: 8994257420770604059}
@@ -11412,6 +11433,7 @@ MonoBehaviour:
   stabilizeTargetDist: 14
   camTrans: {fileID: 703818510}
   camHolderTrans: {fileID: 1276920996}
+  itemSway: {fileID: 341260469}
 --- !u!1001 &1291281041
 PrefabInstance:
   m_ObjectHideFlags: 0

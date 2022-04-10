@@ -33,6 +33,8 @@ public class pl_cam_bob : MonoBehaviour
 
     private pl_input input;
 
+    [SerializeField]
+    private pl_item_sway itemSway;
 
     private void Start()
     {
@@ -69,6 +71,8 @@ public class pl_cam_bob : MonoBehaviour
     private void ApplyMotion(Vector3 newPos)
     {
         camTrans.localPosition += newPos;
+
+        itemSway.currentOffsetWalkPos = new Vector3(newPos.x * -0.44f, newPos.y * -0.58f, 0);
     }
 
     private void ResetBob()

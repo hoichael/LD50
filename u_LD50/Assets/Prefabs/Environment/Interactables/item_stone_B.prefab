@@ -130,7 +130,7 @@ MonoBehaviour:
     force: 4
   damageCol: {fileID: 6156690341196481387}
   itemAnchor: {fileID: 0}
-  animSpeedSwing: 11
+  animSpeedSwing: 9.4
   animSpeedReset: 2
   offsetPos: {x: 0, y: 0, z: 0.9}
   offsetRot: {x: 0, y: -50, z: 0}
