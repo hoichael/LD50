@@ -157,10 +157,12 @@ public class pl_box : MonoBehaviour
         for(int i = 0; i < currentObjects.Count; i++)
         {
             // enable rb and collision
-            Rigidbody objRB = currentObjects[i].GetComponent<Rigidbody>();
-            objRB.isKinematic = false;
-            objRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
+         //   Rigidbody objRB = currentObjects[i].GetComponent<Rigidbody>();
+         //   objRB.isKinematic = false;
+         //   objRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
             currentObjects[i].GetComponentInChildren<Collider>().enabled = true;
+            Rigidbody rb = currentObjects[i].AddComponent<Rigidbody>();
+            currentObjects[i].GetComponent<item_base>().rb = rb;
 
          //   objRB.freezeRotation = false;
         }
@@ -179,17 +181,19 @@ public class pl_box : MonoBehaviour
             {
                 // disable collider
                 hitColliders[i].enabled = false;
-                // "disable" rb
-                Rigidbody hitRB = hitColliders[i].GetComponentInParent<Rigidbody>();
-                hitRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-                hitRB.isKinematic = true;
 
+                
+
+                Rigidbody hitRB = hitColliders[i].GetComponentInParent<Rigidbody>();
+               
              //   hitRB.freezeRotation = true;
 
 
                 // add object to itemContainer and currentObjects list
                 currentObjects.Add(hitRB.gameObject);
                 hitRB.transform.SetParent(itemContainer);
+
+                Destroy(hitRB);
 
                 /*
                 if(!currentObjects.Contains(hitRB.gameObject))
