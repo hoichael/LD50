@@ -35,6 +35,9 @@ public class en_D_spider_0_legs : MonoBehaviour
     [Header("Leg Settings")]
 
     [SerializeField]
+    float initialLegOffset;
+
+    [SerializeField]
     private float legMoveTriggerDistance;
 
     [SerializeField]
@@ -70,6 +73,10 @@ public class en_D_spider_0_legs : MonoBehaviour
         infoList.Add(infoLB);
         infoList.Add(infoRF);
         infoList.Add(infoRB);
+
+        // offset 1 leg on each side
+        infoLF.targetTrans.position -= new Vector3(0, 0, initialLegOffset);
+        infoRB.targetTrans.position -= new Vector3(0, 0, initialLegOffset);
 
         for (int i = 0; i < infoList.Count; i++)
         {
