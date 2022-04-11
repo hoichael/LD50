@@ -108,16 +108,9 @@ public class en_D_spider_0_legs : MonoBehaviour
                     
                     if(infoList[i].grounded)
                     {
-                        print("old target pos " + infoList[i].currentTargetPos);
-
-
                         infoList[i].lastTargetPos = infoList[i].currentTargetPos;
                         infoList[i].currentTargetPos = hit.point;
                         infoList[i].grounded = false;
-
-                        Debug.Log(hit.point);
-                        Debug.Log("new target pos " + infoList[i].currentTargetPos);
-                        print("______________________________________");
                     }
                 }
             }
@@ -140,6 +133,14 @@ public class en_D_spider_0_legs : MonoBehaviour
                     infoList[i].currentTargetPos,
                     legAnimCurve.Evaluate(infoList[i].currentAnimProgress)
                     );
+
+                float currentLiftOffset = Mathf.Lerp(
+                    0,
+                    legLiftOffset,
+                    legAnimCurve.Evaluate(Mathf.PingPong(infoList[i].currentAnimProgress, 0.5f))
+                    );
+
+                infoList[i].targetTrans.position += new Vector3(0, currentLiftOffset, 0);
 
                 if (infoList[i].currentAnimProgress == 1)
                 {

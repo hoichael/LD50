@@ -3969,8 +3969,8 @@ MonoBehaviour:
     grounded: 1
     currentAnimProgress: 0
   legMoveTriggerDistance: 1.1
-  legMoveSpeed: 3
-  legLiftOffset: 0
+  legMoveSpeed: 5
+  legLiftOffset: 1.4
   legAnimCurve:
     serializedVersion: 2
     m_Curve:
