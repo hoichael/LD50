@@ -30,7 +30,7 @@ public class en_D_spider_0_legs : MonoBehaviour
     [SerializeField]
     private en_spider_leg_info infoRB;
 
-    private List<en_spider_leg_info> infoList; // storing info in list for easy iteration
+    private List<en_spider_leg_info> infoList = new List<en_spider_leg_info>(); // storing info in list for easy iteration
 
     [Header("Leg Settings")]
 
@@ -48,6 +48,10 @@ public class en_D_spider_0_legs : MonoBehaviour
 
     [SerializeField]
     private AnimationCurve legAnimCurve;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float legNormalMinY; // used to not set target pos to very steep slopes
 
     [Header("Raycast Settings")]
 
@@ -87,10 +91,11 @@ public class en_D_spider_0_legs : MonoBehaviour
 
     private void FixedUpdate()
     {
+        GroundCheck();
+
         UpdateTargetPositions();
         MoveLegs();
-     //   HandleBodyTransform();
-     //   GroundCheck();
+        HandleBodyTransform();
     }
 
     private void UpdateTargetPositions()
@@ -104,20 +109,25 @@ public class en_D_spider_0_legs : MonoBehaviour
             }
 
             RaycastHit hit;
-            if(Physics.Raycast(infoList[i].raycastOrigin.position, infoList[i].raycastOrigin.up * -1, out hit, raycastLegLength, groundMask))
+            if(Physics.Raycast(infoList[i].raycastOrigin.position, /* infoList[i].raycastOrigin.up */ Vector3.up * -1, out hit, raycastLegLength, groundMask))
             {
 
                 infoList[i].currentRayPos = hit.point;
 
-                if (Vector3.Distance(hit.point, infoList[i].currentTargetPos) > legMoveTriggerDistance)
+                if(hit.normal.y > legNormalMinY) // Check if hit on very steep slope
                 {
-                    if (!infoList[i].oppositeLeg.grounded) return;
-                    
-                    if(infoList[i].grounded)
+                    infoList[i].currentRayNormal = hit.normal;
+
+                    if (Vector3.Distance(hit.point, infoList[i].currentTargetPos) > legMoveTriggerDistance)
                     {
-                        infoList[i].lastTargetPos = infoList[i].currentTargetPos;
-                        infoList[i].currentTargetPos = hit.point;
-                        infoList[i].grounded = false;
+                        if (!infoList[i].oppositeLeg.grounded) return;
+
+                        if (infoList[i].grounded)
+                        {
+                            infoList[i].lastTargetPos = infoList[i].currentTargetPos;
+                            infoList[i].currentTargetPos = hit.point;
+                            infoList[i].grounded = false;
+                        }
                     }
                 }
             }
@@ -164,17 +174,15 @@ public class en_D_spider_0_legs : MonoBehaviour
     {
         for (int i = 0; i < infoList.Count; i++)
         {
-
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(infoList[i].currentRayPos, 0.5f);
         }
     }
 
-    /*
     private void GroundCheck()
     {
         RaycastHit hit;
-        if (Physics.Raycast(info.trans.position, info.trans.up * -1, out hit, raycastBodyLength, groundMask))
+        if (Physics.Raycast(info.trans.position + info.trans.up * 1.2f, /*info.trans.up*/ Vector3.up * -1, out hit, raycastBodyLength, groundMask))
         {
             info.rb.useGravity = false;
         //    transform.position = new Vector3(transform.position.x, hit.point.y + groundDistance, transform.position.z);
@@ -185,20 +193,42 @@ public class en_D_spider_0_legs : MonoBehaviour
         }
     }
 
+ 
     private void HandleBodyTransform()
     {
         Vector3 avgLegPos = Vector3.zero;
 
         for(int i = 0; i < infoList.Count; i++)
         {
-            avgLegPos += infoList[i].targetTrans.position;
+            //   avgLegPos += infoList[i].targetTrans.position; -> actual leg tip pos
+            avgLegPos += infoList[i].currentTargetPos;
         }
 
         avgLegPos /= 4;
 
 
+        Vector3 avgLegNormal = Vector3.zero;
+
+        for (int i = 0; i < infoList.Count; i++)
+        {
+            avgLegNormal += infoList[i].currentRayNormal;
+
+            // DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB
+            print("current ray normal: " + infoList[i].currentRayNormal);
+        }
+
+        avgLegNormal /= 4;
+
+        // set position
+        bodyTrans.position = new Vector3(
+            bodyTrans.position.x,
+            avgLegPos.y /* + groundDistance, */, // not adding offset bc body origin of current model is on same height as leg tips 
+            bodyTrans.position.z
+            );
+
+        // set rotation
+        bodyTrans.up = avgLegNormal;
     }
-    */
 }
 
 
@@ -212,6 +242,7 @@ public class en_spider_leg_info
     public Vector3 lastTargetPos;
     public Vector3 currentTargetPos;
     public Vector3 currentRayPos;
+    public Vector3 currentRayNormal;
     public bool grounded;
     public en_spider_leg_info oppositeLeg;
     public float currentAnimProgress;
