@@ -104,7 +104,7 @@ public class en_D_spider_0_legs : MonoBehaviour
 
                 if (Vector3.Distance(hit.point, infoList[i].currentTargetPos) > legMoveTriggerDistance)
                 {
-                //    if (!infoList[i].oppositeLeg.grounded) return;
+                    if (!infoList[i].oppositeLeg.grounded) return;
                     
                     if(infoList[i].grounded)
                     {
