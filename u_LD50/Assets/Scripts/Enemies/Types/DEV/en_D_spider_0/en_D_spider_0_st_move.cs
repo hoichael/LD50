@@ -26,17 +26,19 @@ public class en_D_spider_0_st_move : en_state_base
         base.OnEnable();
 
         StartCoroutine(HandleDuration());
-        InitRotation();
+        //    InitRotation();
+        currentAnimProgress = 1;
     }
 
     private void Update()
     {
         HandleRotation();
+        info.rb.velocity = info.trans.forward * moveSpeed;
     }
 
     private void FixedUpdate()
     {
-        info.rb.AddForce(info.trans.forward * moveSpeed, ForceMode.Acceleration);
+     ///   info.rb.AddForce(info.trans.forward * moveSpeed, ForceMode.Acceleration);
     }
 
     private void InitRotation()

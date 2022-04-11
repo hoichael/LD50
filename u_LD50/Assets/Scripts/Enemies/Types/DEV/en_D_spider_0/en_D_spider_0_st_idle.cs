@@ -11,7 +11,7 @@ public class en_D_spider_0_st_idle : en_state_base
     {
         base.OnEnable();
 
-        StartCoroutine(HandleDuration());
+    //    StartCoroutine(HandleDuration());
     }
 
     private IEnumerator HandleDuration()
