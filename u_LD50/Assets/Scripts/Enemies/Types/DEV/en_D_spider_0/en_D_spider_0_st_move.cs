@@ -15,15 +15,25 @@ public class en_D_spider_0_st_move : en_state_base
 
     private float currentAnimProgress;
 
+    public float currentSpeed;
+
     [SerializeField]
-    private float moveSpeed;
+    private float walkSpeed;
+
+    [SerializeField]
+    private float runSpeed;
 
     [SerializeField]
     private float turnSpeed;
 
+    [SerializeField]
+    private Transform bodyTrans;
+
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        currentSpeed = runSpeed;
 
         StartCoroutine(HandleDuration());
         //    InitRotation();
@@ -33,7 +43,8 @@ public class en_D_spider_0_st_move : en_state_base
     private void Update()
     {
         HandleRotation();
-        info.rb.velocity = info.trans.forward * moveSpeed;
+        //   info.rb.velocity = info.trans.forward * moveSpeed;
+        info.rb.velocity = bodyTrans.forward * currentSpeed;
     }
 
     private void FixedUpdate()

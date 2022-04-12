@@ -5,6 +5,7 @@ using UnityEngine;
 public class en_D_spider_0_legs : MonoBehaviour
 {
     [Header("Refs")]
+
     [SerializeField]
     private en_info_base info;
 
@@ -12,9 +13,18 @@ public class en_D_spider_0_legs : MonoBehaviour
     private Transform bodyTrans;
 
     [Header("Body Settings")]
+
     [SerializeField]
     private float groundDistance;
 
+    [SerializeField]
+    private float bodyRotMult; // mult for mapping leg target Y positions to body rotation
+
+    [SerializeField]
+    private float bodyRotUpdateFactor;
+
+    [SerializeField]
+    private float bodyPosUpdateFactor;
 
     [Header("Leg Info Sets")]
 
@@ -182,7 +192,7 @@ public class en_D_spider_0_legs : MonoBehaviour
     private void GroundCheck()
     {
         RaycastHit hit;
-        if (Physics.Raycast(info.trans.position + info.trans.up * 1.2f, /*info.trans.up*/ Vector3.up * -1, out hit, raycastBodyLength, groundMask))
+        if (Physics.Raycast(bodyTrans.position, Vector3.up * -1, out hit, raycastBodyLength, groundMask))
         {
             info.rb.useGravity = false;
         //    transform.position = new Vector3(transform.position.x, hit.point.y + groundDistance, transform.position.z);
@@ -200,8 +210,8 @@ public class en_D_spider_0_legs : MonoBehaviour
 
         for(int i = 0; i < infoList.Count; i++)
         {
-            //   avgLegPos += infoList[i].targetTrans.position; -> actual leg tip pos
-            avgLegPos += infoList[i].currentTargetPos;
+               avgLegPos += infoList[i].targetTrans.position;
+        //    avgLegPos += infoList[i].currentTargetPos;
         }
 
         avgLegPos /= 4;
@@ -219,15 +229,74 @@ public class en_D_spider_0_legs : MonoBehaviour
 
         avgLegNormal /= 4;
 
-        // set position
+        /*
+        // SET position
         bodyTrans.position = new Vector3(
             bodyTrans.position.x,
-            avgLegPos.y /* + groundDistance, */, // not adding offset bc body origin of current model is on same height as leg tips 
+            avgLegPos.y, // not adding offset bc body origin of current model is on same height as leg tips 
             bodyTrans.position.z
             );
 
-        // set rotation
+        // SET rotation
+        //   bodyTrans.rotation = Quaternion.FromToRotation(bodyTrans.up, avgLegNormal) * bodyTrans.rotation;
         bodyTrans.up = avgLegNormal;
+        */
+
+        
+        // INTERPOLATE position
+        bodyTrans.position = Vector3.MoveTowards(
+            bodyTrans.position,
+            new Vector3(
+                bodyTrans.position.x,
+                avgLegPos.y, // not adding offset bc body origin of current model is on same height as leg tips 
+                bodyTrans.position.z
+                ),
+            bodyPosUpdateFactor * Time.fixedDeltaTime
+            );
+        
+
+
+        // INTERPOLATE rotation
+        /*
+        bodyTrans.up = Vector3.MoveTowards(
+            bodyTrans.up,
+            avgLegNormal,
+            bodyRotUpdateFactor * Time.fixedDeltaTime
+            );
+        */
+        bodyTrans.rotation = Quaternion.Slerp(
+            bodyTrans.rotation,
+            GetBodyRotation(avgLegPos),
+            bodyRotUpdateFactor * Time.fixedDeltaTime
+            );
+    }
+
+    private Quaternion GetBodyRotation(Vector3 avgLegPos)
+    {
+        float offset;
+        Vector3 offsetLF, offsetLB, offsetRF, offsetRB;
+
+        // handle LF
+        offset = infoLF.targetTrans.position.y - avgLegPos.y;
+        offsetLF = new Vector3(offset * -bodyRotMult, 0, offset * -bodyRotMult);
+
+        // handle LB
+        offset = infoLB.targetTrans.position.y - avgLegPos.y;
+        offsetLB = new Vector3(offset * bodyRotMult, 0, offset * -bodyRotMult);
+
+        // handle RF
+        offset = infoRF.targetTrans.position.y - avgLegPos.y;
+        offsetRF = new Vector3(offset * -bodyRotMult, 0, offset * bodyRotMult);
+
+        // handle RB
+        offset = infoRB.targetTrans.position.y - avgLegPos.y;
+        offsetRB = new Vector3(offset * bodyRotMult, 0, offset * bodyRotMult);
+
+        // calc final offset
+        Vector3 finalOffset = (offsetLF + offsetLB + offsetRF + offsetRB) / 4;
+
+        // convert to quaternion
+        return Quaternion.Euler(finalOffset);
     }
 }
 
