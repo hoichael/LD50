@@ -133,14 +133,8 @@ public class pl_cam_rot : MonoBehaviour
 
     private void ApplyRotation()
     {
-        // Rotate cam (mouse input based rotation + action based offset)
-        camHolder.localRotation = Quaternion.Euler(rotX, rotY, pl_state.Instance.camTilt);
-
-        // Apply action based offset to tool in hand
-        //toolsContainer.localRotation = Quaternion.Euler(
-        //    0,
-        //    0,
-        //    pl_state.Instance.camTilt * -3);
+        // Rotate cam (mouse input based rotation + offsets)
+        camHolder.localRotation = Quaternion.Euler(rotX, rotY, /*pl_state.Instance.camTiltMove -> no effect atm*/ + pl_state.Instance.camTiltDmg);
 
         // if box not active rotate orientation ref obj horizontally based on mouse input
         if (boxActive) return;

@@ -87,7 +87,7 @@ public class pl_item_sway : MonoBehaviour
 
         Quaternion targetRotX = Quaternion.AngleAxis(-rotY, Vector3.right);
         Quaternion targetRotY = Quaternion.AngleAxis(rotX, Vector3.up);
-        Quaternion targetRotZ = Quaternion.AngleAxis(pl_state.Instance.camTilt * -2.65f, Vector3.forward);
+        Quaternion targetRotZ = Quaternion.AngleAxis(pl_state.Instance.camTiltMove * -2.65f, Vector3.forward);
 
         currentSwayLook = targetRotX * targetRotY *  targetRotZ;
     }

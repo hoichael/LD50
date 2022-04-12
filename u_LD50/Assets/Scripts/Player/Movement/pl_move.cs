@@ -84,8 +84,8 @@ public class pl_move : MonoBehaviour
 
     private void CalcCamTilt()
     {
-        pl_state.Instance.camTilt = Mathf.Lerp(
-            pl_state.Instance.camTilt, 
+        pl_state.Instance.camTiltMove = Mathf.Lerp(
+            pl_state.Instance.camTiltMove, 
             input.moveX * pl_settings.Instance.camTiltMoveAmount,
             pl_settings.Instance.camTiltMoveFactor * Time.deltaTime);
     }

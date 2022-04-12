@@ -1276,6 +1276,7 @@ MonoBehaviour:
   trans: {fileID: 272813615}
   rb: {fileID: 272813617}
   knockbackMult: 0
+  grounded: 0
 --- !u!54 &272813617
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5226,6 +5227,7 @@ MonoBehaviour:
   trans: {fileID: 1391986448}
   rb: {fileID: 1391986445}
   knockbackMult: 0
+  grounded: 0
 --- !u!114 &1391986447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6018,9 +6020,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1699301982}
   - component: {fileID: 1699301984}
-  - component: {fileID: 1699301983}
   - component: {fileID: 1699301985}
   - component: {fileID: 1699301986}
+  - component: {fileID: 1699301983}
   m_Layer: 0
   m_Name: en_D_spider_0
   m_TagString: Untagged
@@ -6060,6 +6062,7 @@ MonoBehaviour:
   trans: {fileID: 1699301982}
   rb: {fileID: 1699301985}
   knockbackMult: 0
+  grounded: 0
 --- !u!114 &1699301984
 MonoBehaviour:
   m_ObjectHideFlags: 0

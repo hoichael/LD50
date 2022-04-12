@@ -83,6 +83,9 @@ public class pl_cam_bob : MonoBehaviour
 
     private void StabilizeView()
     {
+        // ugly but whatever
+        if (pl_state.Instance.camTiltDmg != 0) return;
+
         // calc stabilization
         Vector3 stabilizedView = new Vector3(
             rbPlayer.transform.position.x,

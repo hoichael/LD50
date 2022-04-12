@@ -44,7 +44,14 @@ public class en_D_spider_0_st_move : en_state_base
     {
         HandleRotation();
         //   info.rb.velocity = info.trans.forward * moveSpeed;
-        info.rb.velocity = bodyTrans.forward * currentSpeed;
+        if(info.grounded)
+        {
+            info.rb.velocity = bodyTrans.forward * currentSpeed;
+        }
+        else
+        {
+            info.rb.velocity = Vector3.zero;
+        }
     }
 
     private void FixedUpdate()

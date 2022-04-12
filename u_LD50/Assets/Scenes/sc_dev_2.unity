@@ -6663,6 +6663,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthUI: {fileID: 618463227}
+  camTiltDmgOffset: -12
+  camTiltDmgSpeed: 5
+  camTiltDmgCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  currentDmgAnimProgress: 1
 --- !u!1 &811884310
 GameObject:
   m_ObjectHideFlags: 0
@@ -12351,6 +12378,7 @@ MonoBehaviour:
   trans: {fileID: 1395804370}
   rb: {fileID: 1395804371}
   knockbackMult: 24
+  grounded: 0
 --- !u!1001 &1401110443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18014,7 +18042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
-  camTilt: 0
+  camTiltMove: 0
+  camTiltDmg: 0
   currentFovOffsetSprint: 0
   currentFovOffsetRecoil: 0
   health: 1000

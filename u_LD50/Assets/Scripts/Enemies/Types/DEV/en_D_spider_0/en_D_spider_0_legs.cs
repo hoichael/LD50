@@ -191,15 +191,19 @@ public class en_D_spider_0_legs : MonoBehaviour
 
     private void GroundCheck()
     {
+        print("a");
         RaycastHit hit;
-        if (Physics.Raycast(bodyTrans.position, Vector3.up * -1, out hit, raycastBodyLength, groundMask))
+        if (Physics.Raycast(bodyTrans.position + Vector3.up * 1.2f, Vector3.up * -1, out hit, raycastBodyLength, groundMask))
         {
+            print("b");
             info.rb.useGravity = false;
+            info.grounded = true;
         //    transform.position = new Vector3(transform.position.x, hit.point.y + groundDistance, transform.position.z);
         }
         else
         {
             info.rb.useGravity = true;
+            info.grounded = false;
         }
     }
 
@@ -224,7 +228,7 @@ public class en_D_spider_0_legs : MonoBehaviour
             avgLegNormal += infoList[i].currentRayNormal;
 
             // DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB DB
-            print("current ray normal: " + infoList[i].currentRayNormal);
+        //    print("current ray normal: " + infoList[i].currentRayNormal);
         }
 
         avgLegNormal /= 4;

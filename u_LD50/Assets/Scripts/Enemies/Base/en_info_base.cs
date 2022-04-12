@@ -12,4 +12,8 @@ public class en_info_base : MonoBehaviour
     [Header("Settings")]
 
     public float knockbackMult; // basically "weight" property, but higher value = lower weight
+
+    [Header("State")]
+
+    public bool grounded;
 }
