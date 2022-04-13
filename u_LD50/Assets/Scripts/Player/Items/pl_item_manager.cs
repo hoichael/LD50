@@ -140,6 +140,11 @@ public class pl_item_manager : MonoBehaviour
 
     private void HandlePickupAnim()
     {
+        if(currentItemTrans == null)
+        {
+            currentlyInPickupAnim = false;
+            return;
+        }
         
         // lerp position
         currentItemTrans.localPosition = Vector3.Lerp(
@@ -178,6 +183,7 @@ public class pl_item_manager : MonoBehaviour
     private void HandleDrop()
     {
         currentItemTrans.SetParent(null);
+        currentItemTrans = null;
 
         // this is retarded
         Rigidbody rb = currentItemObj.AddComponent<Rigidbody>();
@@ -200,6 +206,7 @@ public class pl_item_manager : MonoBehaviour
     public void GiveItem() // called from pl_interact if interaction target is item_taker. HandleDrop w/o re-enabling physics
     {
         currentItemTrans.SetParent(null);
+        currentItemTrans = null;
 
         currentCharge = 0;
 

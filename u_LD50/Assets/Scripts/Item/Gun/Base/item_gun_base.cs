@@ -112,6 +112,7 @@ public class item_gun_base : item_base
 
         shellInfo.type = "Prop";
         shellInfo.tag = "Interactable";
+        shellInfo.value = 1;
 
         // this is ugly
         StartCoroutine(EnableEjectedShellCol(shellInfo.col));

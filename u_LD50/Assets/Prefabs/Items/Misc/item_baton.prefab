@@ -156,7 +156,7 @@ MonoBehaviour:
   animSpeedSwing: 13.5
   animSpeedReset: 2
   offsetPos: {x: 0, y: 0, z: 1.6}
-  offsetRot: {x: 30, y: -50, z: 0}
+  offsetRot: {x: 40, y: -30, z: 0}
   animCurveSwing:
     serializedVersion: 2
     m_Curve:

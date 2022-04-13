@@ -203,6 +203,7 @@ public class pl_D_flashlight : MonoBehaviour
         if(batteryInfoList.Count < 1)
         {
             lightPrimary.enabled = lightSecondary.enabled = gotJuice = false;
+            StopAllCoroutines();
         }
 
         batteryInfo.currentAssociatedFlashlight = null;
@@ -219,6 +220,8 @@ public class pl_D_flashlight : MonoBehaviour
 
         batteryInfo.type = "Prop";
         batteryInfo.tag = "Interactable";
+
+        batteryInfo.value = 1;
 
         // this is still ugly
         StartCoroutine(EnableEjectedBatteryCol(batteryInfo.col));
