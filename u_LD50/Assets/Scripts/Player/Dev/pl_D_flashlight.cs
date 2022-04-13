@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class pl_D_flashlight : MonoBehaviour
 {
+    [Header("Flashlight Fields")]
+
     [SerializeField]
     private Light lightPrimary;
 
@@ -20,19 +22,96 @@ public class pl_D_flashlight : MonoBehaviour
 
     private float currentLerpTarget;
 
-    private bool currentlyEnabled;
+    public bool currentlyEnabled;
 
     private IEnumerator currentFlickerExec;
 
+    [Header("Battery Handling")]
+
+    [SerializeField]
+    private float batteryUseInterval;
+
+    [SerializeField]
+    private List<Transform> batteryPosList;
+
+    [SerializeField]
+    private List<item_battery_base> batteryInfoList = new List<item_battery_base>();
+
+    private Transform currentPickupTrans;
+    private Vector3 pickupInitPos;
+    private Quaternion pickupInitRot;
+    private float currentPickupProgress = 1;
+
+    [SerializeField]
+    private float pickupAnimSpeed;
+
+    [SerializeField]
+    private float pickupAnimOffsetY;
+
+    [SerializeField]
+    private AnimationCurve pickupAnimCurve;
+
+    private int batteryCapacity;
+
+    private bool gotJuice;
+
     private void Start()
     {
+        gotJuice = true;
+
+        batteryCapacity = batteryPosList.Count;
+
         currentlyEnabled = lightPrimary.enabled;
 
-        if(!currentlyEnabled)
+        if (!currentlyEnabled)
         {
             xRotCurrent = currentLerpTarget = xRotHide;
             transform.localRotation = Quaternion.Euler(xRotCurrent, 0, 0);
         }
+        else
+        {
+            StartCoroutine(BatteryRoutine());
+        }
+    }
+
+    public void InitBatteryPickup(item_battery_base batteryInfo)
+    {
+        if (batteryInfo.currentUse >= batteryInfo.totalUses) return;
+
+        if (batteryInfoList.Count + 1 > batteryCapacity || currentPickupTrans != null)
+        {
+            // play sfx
+            return;
+        }
+
+        HandleBatteryPickup(batteryInfo);
+    }
+
+    private void HandleBatteryPickup(item_battery_base batteryInfo)
+    {
+        // should happen when pickup anim done
+        lightPrimary.enabled = lightSecondary.enabled = gotJuice = true;
+
+        if (batteryInfoList.Count < 1)
+        {
+            StartCoroutine(BatteryRoutine());
+        }
+
+        // init pickup anim
+        currentPickupTrans = batteryInfo.transform;
+        currentPickupProgress = 0;
+        pickupInitPos = batteryInfo.transform.position;
+        pickupInitRot = batteryInfo.transform.rotation;
+        
+
+        batteryInfoList.Add(batteryInfo);
+
+        Destroy(batteryInfo.rb);
+        batteryInfo.col.enabled = false;
+
+        batteryInfo.transform.SetParent(batteryPosList[batteryInfoList.Count - 1]);
+
+        batteryInfo.currentAssociatedFlashlight = this;
     }
 
     private void Update()
@@ -42,8 +121,9 @@ public class pl_D_flashlight : MonoBehaviour
             ToggleFlashlight();
         }
 
-        if (transform.localRotation.x == currentLerpTarget) return;
+        HandlePickupAnim();
 
+        if (transform.localRotation.x == currentLerpTarget) return;
         HandleToggleAnim();
     }
 
@@ -51,15 +131,18 @@ public class pl_D_flashlight : MonoBehaviour
     {
         currentLerpTarget = currentlyEnabled ? xRotHide : 0;
         currentlyEnabled = !currentlyEnabled;
-        lightPrimary.enabled = lightSecondary.enabled = currentlyEnabled;
+
+        lightPrimary.enabled = lightSecondary.enabled = gotJuice;
 
         if(!currentlyEnabled)
         {
+            lightPrimary.enabled = lightSecondary.enabled = currentlyEnabled;
             StopAllCoroutines();
         }
         else
         {
             StartCoroutine(FlickerCheck(10));
+            StartCoroutine(BatteryRoutine());
         }
     }
 
@@ -74,6 +157,88 @@ public class pl_D_flashlight : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotCurrent, 0, 0);
     }
 
+    private void HandlePickupAnim()
+    {
+        if (currentPickupProgress == 1) return;
+
+        currentPickupProgress = Mathf.MoveTowards(currentPickupProgress, 1, pickupAnimSpeed + Time.deltaTime);
+
+        // lerp position
+        currentPickupTrans.localPosition = Vector3.Lerp(
+            pickupInitPos,
+            Vector3.zero,
+            pickupAnimCurve.Evaluate(currentPickupProgress)
+            );
+
+        // lerp and apply y pos offset
+        float offsetY = Mathf.Lerp(
+            0,
+            pickupAnimOffsetY,
+            pickupAnimCurve.Evaluate(Mathf.PingPong(currentPickupProgress, 0.5f))
+            );
+
+        currentPickupTrans.position += new Vector3(0, offsetY, 0);
+
+        // lerp rotation
+        currentPickupTrans.localRotation = Quaternion.Lerp(
+            pickupInitRot,
+            Quaternion.identity,
+            pickupAnimCurve.Evaluate(currentPickupProgress)
+            );
+
+        if(currentPickupProgress == 1)
+        {
+            currentPickupTrans = null;
+        }
+    }
+
+    public void EjectBattery()
+    {
+        item_battery_base batteryInfo = batteryInfoList[batteryInfoList.Count - 1];
+
+        batteryInfoList.Remove(batteryInfo);
+
+        if(batteryInfoList.Count < 1)
+        {
+            lightPrimary.enabled = lightSecondary.enabled = gotJuice = false;
+        }
+
+        batteryInfo.currentAssociatedFlashlight = null;
+
+        batteryInfo.transform.SetParent(null);
+
+        Rigidbody rb = batteryInfo.gameObject.AddComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        batteryInfo.rb = rb;
+
+        rb.AddForce(Vector3.up * 200, ForceMode.Force);
+        rb.AddTorque(new Vector3(Random.Range(-0.9f, 0.9f), 0, Random.Range(-0.9f, 0.9f)) * 150);
+
+        batteryInfo.type = "Prop";
+        batteryInfo.tag = "Interactable";
+
+        // this is still ugly
+        StartCoroutine(EnableEjectedBatteryCol(batteryInfo.col));
+    }
+
+    private IEnumerator EnableEjectedBatteryCol(Collider col)
+    {
+        yield return new WaitForSeconds(0.2f);
+        col.enabled = true;
+    }
+
+    private IEnumerator BatteryRoutine()
+    {
+        yield return new WaitForSeconds(batteryUseInterval);
+        if (batteryInfoList.Count > 0)
+        {
+            batteryInfoList[batteryInfoList.Count - 1].Use();
+            StartCoroutine(BatteryRoutine());
+        }
+    }
+
+    // ----------------------------- FLICKER -----------------------------
     private IEnumerator FlickerCheck(float delay)
     {
 
@@ -89,6 +254,8 @@ public class pl_D_flashlight : MonoBehaviour
 
     private IEnumerator FlickerExec()
     {
+        if (!gotJuice) yield break;
+
         // mb play sfx for each flicker?
 
         lightPrimary.enabled = lightSecondary.enabled = false;

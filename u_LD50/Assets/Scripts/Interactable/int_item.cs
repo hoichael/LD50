@@ -13,7 +13,7 @@ public class int_item : int_base
         base.Init();
 
         // remove "Interactable" tag that pl_interact raycast looks for
-        tag.Remove(0);
+    //    tag.Remove(0); // I dont think this does what I thought it does
 
      //   Destroy(gameObject);
     }

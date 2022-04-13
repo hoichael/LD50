@@ -39,10 +39,16 @@ public class pl_item_manager : MonoBehaviour
     [SerializeField]
     private Transform itemAnchor;
 
+    [SerializeField]
+    private pl_D_flashlight flashlight;
+
     public void InitPickup(int_item pickupInfo)  // called from pl_interact
     {
-        // if currently holding item, drop item
-        if(pickupInfo.itemType == "Ammo" && currentItemInfo != null && currentItemInfo.type == "Shotgun")
+        if(pickupInfo.itemType == "Battery" && flashlight.currentlyEnabled)
+        {
+            flashlight.InitBatteryPickup(pickupInfo.GetComponent<item_battery_base>());
+        }
+        else if(pickupInfo.itemType == "Ammo" && currentItemInfo != null && currentItemInfo.type == "Shotgun")
         {
             currentItemInfo.GetComponent<item_gun_base>().InitAmmoPickup(pickupInfo.GetComponent<item_ammo_base>());
         }

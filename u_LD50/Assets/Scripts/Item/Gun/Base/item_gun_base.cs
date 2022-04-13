@@ -35,6 +35,8 @@ public class item_gun_base : item_base
 
     public void InitAmmoPickup(item_ammo_base ammoInfo)
     {
+        if (ammoInfo.currentUse >= ammoInfo.totalUses) return;
+
         if(shellInfoList.Count + 1 > shellCapacity)
         {
             // play sfx
@@ -95,6 +97,8 @@ public class item_gun_base : item_base
         item_ammo_base shellInfo = shellInfoList[shellInfoList.Count - 1];
 
         shellInfoList.Remove(shellInfo);
+
+        shellInfo.currentAssociatedWeapon = null;
 
         shellInfo.transform.SetParent(null);
 

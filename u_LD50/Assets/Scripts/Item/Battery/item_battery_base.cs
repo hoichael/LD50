@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class item_ammo_base : item_base
+public class item_battery_base : item_base
 {
     [SerializeField]
-    private string ammoType;
-
     public int totalUses;
 
     public int currentUse;
@@ -14,7 +12,7 @@ public class item_ammo_base : item_base
     [SerializeField]
     private float usePosOffset;
 
-    public item_gun_base currentAssociatedWeapon;
+    public pl_D_flashlight currentAssociatedFlashlight;
 
     [SerializeField]
     private GameObject modelDefault;
@@ -30,10 +28,10 @@ public class item_ammo_base : item_base
 
     public override void Use()
     {
-        if (currentAssociatedWeapon == null) return;
+        if (currentAssociatedFlashlight == null) return;
         //   base.Use();
         currentUse++;
-        if(currentUse >= totalUses)
+        if (currentUse >= totalUses)
         {
             HandleDepletion();
         }
@@ -48,6 +46,6 @@ public class item_ammo_base : item_base
         modelDefault.SetActive(false);
         modelDepleted.SetActive(true);
 
-        currentAssociatedWeapon.EjectShell();
+        currentAssociatedFlashlight.EjectBattery();
     }
 }
