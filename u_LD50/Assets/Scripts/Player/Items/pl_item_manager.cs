@@ -196,4 +196,19 @@ public class pl_item_manager : MonoBehaviour
 
         currentItemInfo = null;
     }
+
+    public void GiveItem() // called from pl_interact if interaction target is item_taker. HandleDrop w/o re-enabling physics
+    {
+        currentItemTrans.SetParent(null);
+
+        currentCharge = 0;
+
+        currentItemInfo.col.enabled = true;
+        currentItemObj.tag = "Interactable";
+        currentItemInfo.col.tag = "Interactable";
+
+        currentItemInfo.enabled = false;
+
+        currentItemInfo = null;
+    }
 }

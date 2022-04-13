@@ -61,16 +61,24 @@ public class pl_interact : MonoBehaviour
 
     private void InitInteraction()
     {
-        int_base itemInteractInfo = GetInteractable();
+        int_base interactInfo = GetInteractable();
 
-        if (itemInteractInfo == null) return;
+        if (interactInfo == null) return;
 
-        if(itemInteractInfo.isItem)
+        if(interactInfo.isItem)
         {
-            itemManager.InitPickup(itemInteractInfo.gameObject.GetComponent<int_item>());
+            itemManager.InitPickup(interactInfo.gameObject.GetComponent<int_item>());
+        }
+        else if(interactInfo.takesItem)
+        {
+            if (itemManager.currentItemInfo == null) return;
+
+            item_base itemInfo = itemManager.currentItemInfo;
+            itemManager.GiveItem();
+            interactInfo.GetComponent<I_TakeItem>().Init(itemInfo);
         }
 
-        itemInteractInfo.Init();
+    //    itemInteractInfo.Init(); doesnt do anything atm
     }
 
     private int_base GetInteractable()
