@@ -3329,8 +3329,9 @@ MonoBehaviour:
   - {fileID: 454632913}
   batteryInfoList:
   - {fileID: 7529498081886349698}
-  pickupAnimSpeed: 4
-  pickupAnimOffsetY: 0
+  currentPickupProgress: 1
+  pickupAnimSpeed: 2
+  pickupAnimOffsetY: 0.8
   pickupAnimCurve:
     serializedVersion: 2
     m_Curve:

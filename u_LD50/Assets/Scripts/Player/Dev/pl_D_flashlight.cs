@@ -40,6 +40,8 @@ public class pl_D_flashlight : MonoBehaviour
     private Transform currentPickupTrans;
     private Vector3 pickupInitPos;
     private Quaternion pickupInitRot;
+
+    [SerializeField]
     private float currentPickupProgress = 1;
 
     [SerializeField]
@@ -89,20 +91,6 @@ public class pl_D_flashlight : MonoBehaviour
 
     private void HandleBatteryPickup(item_battery_base batteryInfo)
     {
-        // should happen when pickup anim done
-        lightPrimary.enabled = lightSecondary.enabled = gotJuice = true;
-
-        if (batteryInfoList.Count < 1)
-        {
-            StartCoroutine(BatteryRoutine());
-        }
-
-        // init pickup anim
-        currentPickupTrans = batteryInfo.transform;
-        currentPickupProgress = 0;
-        pickupInitPos = batteryInfo.transform.position;
-        pickupInitRot = batteryInfo.transform.rotation;
-        
 
         batteryInfoList.Add(batteryInfo);
 
@@ -110,6 +98,12 @@ public class pl_D_flashlight : MonoBehaviour
         batteryInfo.col.enabled = false;
 
         batteryInfo.transform.SetParent(batteryPosList[batteryInfoList.Count - 1]);
+
+        // init pickup anim
+        currentPickupTrans = batteryInfo.transform;
+        currentPickupProgress = 0;
+        pickupInitPos = batteryInfo.transform.localPosition;
+        pickupInitRot = batteryInfo.transform.localRotation;
 
         batteryInfo.currentAssociatedFlashlight = this;
     }
@@ -161,7 +155,7 @@ public class pl_D_flashlight : MonoBehaviour
     {
         if (currentPickupProgress == 1) return;
 
-        currentPickupProgress = Mathf.MoveTowards(currentPickupProgress, 1, pickupAnimSpeed + Time.deltaTime);
+        currentPickupProgress = Mathf.MoveTowards(currentPickupProgress, 1, pickupAnimSpeed * Time.deltaTime);
 
         // lerp position
         currentPickupTrans.localPosition = Vector3.Lerp(
@@ -188,7 +182,15 @@ public class pl_D_flashlight : MonoBehaviour
 
         if(currentPickupProgress == 1)
         {
+            currentPickupTrans.localPosition = Vector3.zero;
             currentPickupTrans = null;
+
+            lightPrimary.enabled = lightSecondary.enabled = gotJuice = true;
+
+            if (batteryInfoList.Count == 1)
+            {
+                StartCoroutine(BatteryRoutine());
+            }
         }
     }
 
@@ -278,6 +280,7 @@ public class pl_D_flashlight : MonoBehaviour
             CallFlickerExec();
         }
     }
+
     private void CallFlickerCheck()
     {
         StartCoroutine(FlickerCheck(Random.Range(4, 20)));
