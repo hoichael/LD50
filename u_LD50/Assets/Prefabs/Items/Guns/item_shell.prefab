@@ -283,11 +283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bce55bb9621bf14984cd58bd23b0266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: shell_shotgun
   rb: {fileID: 7612861837423399486}
   col: {fileID: 243073899964890980}
   type: Ammo
+  value: 2
   ammoType: Shotgun
   totalUses: 3
+  currentUse: 0
   usePosOffset: 0.04
   currentAssociatedWeapon: {fileID: 0}
   modelDefault: {fileID: 569810022045487633}
@@ -304,7 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a45c45572634041a34276d3ac26954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
   isItem: 1
   itemType: Ammo
 --- !u!1 &7612861837438207662

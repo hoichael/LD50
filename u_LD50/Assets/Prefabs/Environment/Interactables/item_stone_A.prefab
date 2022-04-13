@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a45c45572634041a34276d3ac26954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
   isItem: 1
   itemType: Prop
 --- !u!114 &5556145754676514408
@@ -152,9 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd566508dca126c43ad003468b8bf26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: stone_A
   rb: {fileID: 5556145754676514411}
   col: {fileID: 5556145753454684337}
   type: Stone
+  value: 1
   dmgInfo:
     dmgAmount: 3
     type: Melee

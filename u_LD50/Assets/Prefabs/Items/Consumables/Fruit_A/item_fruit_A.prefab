@@ -161,7 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a45c45572634041a34276d3ac26954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
   isItem: 1
   itemType: Consumable
 --- !u!114 &376151630100071748
@@ -176,9 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c1867dce71fd843a621d48c36174f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: fruit_A
   rb: {fileID: 3413640954382013114}
   col: {fileID: 4609577388881128783}
   type: 
+  value: 2
   hpAmount: 40
   useCooldown: 0.3
   currentConsumptionStep: 0

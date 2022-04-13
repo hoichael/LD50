@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class int_base : MonoBehaviour
 {
-    [SerializeField]
-    protected string ID;
-
     public bool isItem;
 
     public virtual void Init()

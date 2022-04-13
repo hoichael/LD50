@@ -364,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a45c45572634041a34276d3ac26954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
   isItem: 1
   itemType: Battery
 --- !u!114 &7529498081672360934
@@ -379,10 +378,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c653b8f13b825074886dae78486ce290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: battery
   rb: {fileID: 7529498081672360933}
   col: {fileID: 182366585795403455}
   type: Battery
+  value: 3
   totalUses: 100
+  currentUse: 0
   usePosOffset: 0.0012
   currentAssociatedFlashlight: {fileID: 0}
   modelDefault: {fileID: 445900546140124106}
