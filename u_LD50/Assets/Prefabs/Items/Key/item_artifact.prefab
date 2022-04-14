@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isItem: 1
   takesItem: 0
+  isMonolith: 0
   itemType: Prop
 --- !u!114 &2310468448776520892
 MonoBehaviour:
@@ -67,7 +68,7 @@ MonoBehaviour:
   ID: artifact
   rb: {fileID: 2310468448776520895}
   col: {fileID: 3229370111884287798}
-  type: Stone
+  type: Artifact
   value: 5
   dmgInfo:
     dmgAmount: 8
@@ -217,7 +218,7 @@ GameObject:
   - component: {fileID: 4022272407276355298}
   - component: {fileID: 3229370111884287798}
   m_Layer: 10
-  m_Name: Stone
+  m_Name: Artifact
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,8 +344,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0.017126083, a: 1}
-  m_Intensity: 6
-  m_Range: 10
+  m_Intensity: 3
+  m_Range: 9
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

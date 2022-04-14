@@ -61,6 +61,7 @@ public class pl_interact : MonoBehaviour
 
     private void InitInteraction()
     {
+//        print("asdf");
         int_base interactInfo = GetInteractable();
 
         if (interactInfo == null) return;
@@ -72,6 +73,8 @@ public class pl_interact : MonoBehaviour
         else if(interactInfo.takesItem)
         {
             if (itemManager.currentItemInfo == null) return;
+
+            if (interactInfo.isMonolith && itemManager.currentItemInfo.ID != "artifact") return;
 
             item_base itemInfo = itemManager.currentItemInfo;
             itemManager.GiveItem();
