@@ -8,6 +8,6 @@ public class dmg_base
     [Header("Base Values")]
 
     public int dmgAmount;
-    public string type; // melee / throw / hitscan
+    public string type; // melee / throw / hitscan / fall
     public float force; // used for knockback
 }

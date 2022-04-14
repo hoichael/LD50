@@ -19,6 +19,8 @@ public class pl_move : MonoBehaviour
 
     private bool currentlySprinting;
 
+    private RaycastHit hit;
+
     //caching for performance
     private float sprintMult; 
     private int hungerMult;
@@ -79,6 +81,15 @@ public class pl_move : MonoBehaviour
 
     private void ApplyMovement()
     {
+
+        if(pl_state.Instance.grounded && Physics.Raycast(transform.position, Vector3.down, out hit, 3))
+        {
+            if(hit.normal != Vector3.up)
+            {
+                currentDir = Vector3.ProjectOnPlane(currentDir, hit.normal).normalized;
+            }
+        }
+
         rb.AddForce(currentDir * pl_settings.Instance.moveSpeed * currentMult, ForceMode.Acceleration);
     }
 

@@ -7464,7 +7464,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7cf6cb7f7081a409b44927bd76a8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 618463219}
+  dmgInfo:
+    dmgAmount: 0
+    type: 
+    force: 0
+  healthDamage: {fileID: 811508780}
+  fallDmgMultLow: 5
+  fallDmgAmountMid: 10
+  fallDmgMultHigh: 22
   groundCheckTrans: {fileID: 1120069912}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &618463224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13701,7 +13713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120069911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.701, z: 0}
+  m_LocalPosition: {x: 0, y: -0.825, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618463220}
@@ -20665,7 +20677,7 @@ MonoBehaviour:
   growthFactor: 0.017
   maxHealth: 1000
   hungerMultSprint: 0
-  groundCheckRadius: 0.5
+  groundCheckRadius: 0.7
 --- !u!4 &1610849963
 Transform:
   m_ObjectHideFlags: 0

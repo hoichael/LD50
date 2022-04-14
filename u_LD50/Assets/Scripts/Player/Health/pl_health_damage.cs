@@ -24,7 +24,7 @@ public class pl_health_damage : MonoBehaviour
 
         healthUI.HealthChange();
 
-        if(currentDmgAnimProgress == 1 || currentDmgAnimProgress == 0) currentDmgAnimProgress = 0;
+        if(currentDmgAnimProgress != 0) currentDmgAnimProgress = 0;
     }
 
     private void Update()
