@@ -36,10 +36,12 @@ public class item_con_base : item_base
 
     protected virtual void HandleConsumption()
     {
-        print("init consume. current step: " + currentConsumptionStep);
 
         consumptionModelSteps[currentConsumptionStep].SetActive(false);
         currentConsumptionStep++;
+
+        value--;
+        if (value < 1) value = 1;
 
         pl_state.Instance.health += hpAmount;
         if (pl_state.Instance.health > pl_settings.Instance.maxHealth)

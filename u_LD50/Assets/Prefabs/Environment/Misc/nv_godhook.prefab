@@ -265,9 +265,11 @@ MonoBehaviour:
   valueTwoItems:
   - {fileID: 3054511352894920065, guid: 7bf0fcb586a598e4c8e7d3bbff0d7140, type: 3}
   - {fileID: 7612861837423399484, guid: e948505225ef39542bf9e52051dc7942, type: 3}
+  - {fileID: 580015959051690317, guid: 36a17983798bd6c499a6b27708353a02, type: 3}
   valueThreeItems:
   - {fileID: 7529498081672360935, guid: 62c6f0dc649c4704796d83f43a5e8f68, type: 3}
   - {fileID: 7447639547097675323, guid: 2f50934c993c4864b9aeec54e799146b, type: 3}
+  - {fileID: 3103980901769789924, guid: 9222c04b4ce9b464c94cb57ead5834e2, type: 3}
   valueFourItems:
   - {fileID: 3587928087102873231, guid: 56a6fae8ed2d12740a65a036c5684c22, type: 3}
   - {fileID: 2909991552196994263, guid: 651774eabd0f9db41bf724f95cf5e19d, type: 3}
@@ -403,6 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isItem: 0
   takesItem: 1
+  isMonolith: 0
 --- !u!1 &7180610504853511588
 GameObject:
   m_ObjectHideFlags: 0
