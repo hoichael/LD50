@@ -7926,7 +7926,6 @@ MonoBehaviour:
   - {fileID: 923482231}
   - {fileID: 1778327304}
   - {fileID: 175326594}
-  currentArtifactsCount: 0
 --- !u!1001 &905688132
 PrefabInstance:
   m_ObjectHideFlags: 0
