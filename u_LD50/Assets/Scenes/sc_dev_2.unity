@@ -13207,6 +13207,7 @@ GameObject:
   - component: {fileID: 1395804374}
   - component: {fileID: 1395804373}
   - component: {fileID: 1395804372}
+  - component: {fileID: 1395804375}
   m_Layer: 11
   m_Name: en_D_0
   m_TagString: Enemy
@@ -13222,7 +13223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395804369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.954, y: 2.929, z: 0}
+  m_LocalPosition: {x: -12.539, y: 2.929, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1343184678}
@@ -13245,7 +13246,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &1395804372
@@ -13280,6 +13281,7 @@ MonoBehaviour:
   - {fileID: 1845059797}
   - {fileID: 1845059799}
   - {fileID: 1845059800}
+  - {fileID: 1845059801}
   initialState: {fileID: 1845059797}
 --- !u!114 &1395804374
 MonoBehaviour:
@@ -13297,6 +13299,19 @@ MonoBehaviour:
   rb: {fileID: 1395804371}
   knockbackMult: 24
   grounded: 0
+--- !u!114 &1395804375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395804369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4502f20ef1253242b31d88b2620ecaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trans: {fileID: 1395804370}
 --- !u!1001 &1401110443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18345,6 +18360,7 @@ GameObject:
   - component: {fileID: 1845059797}
   - component: {fileID: 1845059799}
   - component: {fileID: 1845059800}
+  - component: {fileID: 1845059801}
   m_Layer: 11
   m_Name: States
   m_TagString: Untagged
@@ -18368,6 +18384,7 @@ MonoBehaviour:
   brain: {fileID: 1395804373}
   info: {fileID: 1395804374}
   attackTriggerRange: 4
+  moveRangeCheck: 24
   rangeCheckInterval: 1
 --- !u!4 &1845059798
 Transform:
@@ -18448,6 +18465,22 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &1845059801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845059796}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea97cffa9a87a9e4fa710eff64edc3b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateID: move
+  brain: {fileID: 1395804373}
+  info: {fileID: 1395804374}
+  moveSpeed: 400
 --- !u!1001 &1852214144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19847,7 +19880,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.12
   m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: -0.4, z: 0}

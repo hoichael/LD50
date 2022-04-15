@@ -8,6 +8,9 @@ public class en_D_0_st_idle : en_state_base
     private float attackTriggerRange;
 
     [SerializeField]
+    private float moveRangeCheck;
+
+    [SerializeField]
     private float rangeCheckInterval;
 
     protected override void OnEnable()
@@ -17,18 +20,19 @@ public class en_D_0_st_idle : en_state_base
         StartCoroutine(PlayerRangeCheck());
     }
 
-    private void Update()
-    {
-        info.trans.LookAt(new Vector3(pl_state.Instance.GLOBAL_PL_TRANS_REF.position.x, 0, pl_state.Instance.GLOBAL_PL_TRANS_REF.position.z));
-    }
-
     private IEnumerator PlayerRangeCheck()
     {
         yield return new WaitForSeconds(rangeCheckInterval);
 
-        if(Vector3.Distance(pl_state.Instance.GLOBAL_PL_TRANS_REF.position, info.trans.position) < attackTriggerRange)
+        float distToPlayer = Vector3.Distance(pl_state.Instance.GLOBAL_PL_TRANS_REF.position, info.trans.position);
+
+        if (distToPlayer < attackTriggerRange)
         {
             ChangeState("attack");
+        }
+        else if(distToPlayer < moveRangeCheck)
+        {
+            ChangeState("move");
         }
         else
         {
