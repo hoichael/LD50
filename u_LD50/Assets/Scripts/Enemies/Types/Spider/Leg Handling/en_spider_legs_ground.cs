@@ -48,18 +48,27 @@ public class en_spider_legs_ground : MonoBehaviour
     [SerializeField]
     private float bodyPosUpdateFactor;
 
+    [SerializeField]
+    private GameObject breakDB;
 
-    private void Start()
+    private void OnEnable()
     {
-        // offset 1 leg on each side
-        info.legLF.targetTrans.position -= new Vector3(0, 0, initialLegOffset);
-        info.legRB.targetTrans.position -= new Vector3(0, 0, initialLegOffset);
-
+        
         for (int i = 0; i < info.legList.Count; i++)
         {
+            info.legList[i].targetTrans.position = info.legList[i].targetDefaultTrans.position;
+
+            info.legLF.targetTrans.forward -= new Vector3(0, 0, initialLegOffset);
+            info.legRB.targetTrans.forward -= new Vector3(0, 0, initialLegOffset);
+
             info.legList[i].currentTargetPos = info.legList[i].targetTrans.position;
             info.legList[i].lastTargetPos = info.legList[i].targetTrans.position;
+
+            info.legList[i].currentAnimProgress = 0;
+
+            info.legList[i].grounded = true;
         }
+
     }
 
     private void FixedUpdate()
@@ -67,6 +76,8 @@ public class en_spider_legs_ground : MonoBehaviour
         UpdateTargetPositions();
         MoveLegs();
         HandleBodyTransform();
+
+     //   Instantiate(breakDB);
     }
 
     private void UpdateTargetPositions()
@@ -165,7 +176,7 @@ public class en_spider_legs_ground : MonoBehaviour
             bodyTrans.position,
             new Vector3(
                 bodyTrans.position.x,
-                avgLegPos.y, // not adding offset bc body origin of current model is on same height as leg tips 
+                avgLegPos.y - 0.6f, // not adding offset bc body origin of current model is on same height as leg tips 
                 bodyTrans.position.z
                 ),
             bodyPosUpdateFactor * Time.fixedDeltaTime

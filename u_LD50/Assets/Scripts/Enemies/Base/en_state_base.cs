@@ -14,12 +14,12 @@ public abstract class en_state_base : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        print("ENEMY ENTER STATE: " + stateID);
+    //    print("ENEMY ENTER STATE: " + stateID);
     }
 
     protected virtual void OnDisable()
     {
-        print("ENEMY EXIT STATE: " + stateID);
+     //   print("ENEMY EXIT STATE: " + stateID);
     }
 
     protected virtual void ChangeState(string newState)

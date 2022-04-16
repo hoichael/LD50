@@ -31,6 +31,11 @@ public class en_spider_info : en_info_base
         legList.Add(legLB);
         legList.Add(legRF);
         legList.Add(legRB);
+
+        for(int i = 0; i < legList.Count; i++)
+        {
+            legList[i].targetDefaultTrans = legList[i].targetTrans;
+        }
     }
 }
 
@@ -38,11 +43,14 @@ public class en_spider_info : en_info_base
 public class en_spider_leg_info
 {
     public Transform targetTrans;
+    public Transform targetDefaultTrans;
+
     public Transform raycastOrigin;
     public Vector3 lastTargetPos;
     public Vector3 currentTargetPos;
     public Vector3 currentRayPos;
     public Vector3 currentRayNormal;
+
     public bool grounded;
     public en_spider_leg_info oppositeLeg;
     public float currentAnimProgress;

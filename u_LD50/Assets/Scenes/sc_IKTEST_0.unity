@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4925329}
   m_LocalRotation: {x: -0.9400317, y: 0.29812336, z: 0.05712054, w: 0.15556374}
-  m_LocalPosition: {x: -1.91, y: 0.025423825, z: -0.48}
+  m_LocalPosition: {x: -1.493, y: 0.025423825, z: -0.48}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 177601778}
@@ -649,7 +649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114270754}
   m_LocalRotation: {x: -0.93600285, y: -0.27888072, z: 0.070481226, w: -0.20287085}
-  m_LocalPosition: {x: 1.7142087, y: 0.01238662, z: 1.7335339}
+  m_LocalPosition: {x: 1.2172087, y: 0.01238662, z: 1.7335339}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 2096875314}
@@ -986,7 +986,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186907074}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7142087, y: 2.2, z: 1.7335339}
+  m_LocalPosition: {x: 1.2172087, y: 2.2, z: 1.7335339}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 67371002}
@@ -1067,7 +1067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193905938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.91, y: 2.2, z: -0.48}
+  m_LocalPosition: {x: -1.493, y: 2.2, z: -0.48}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 67371002}
@@ -1176,7 +1176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213543837}
   m_LocalRotation: {x: -0.93646795, y: 0.27011284, z: -0.08094725, w: -0.20860118}
-  m_LocalPosition: {x: -1.7566475, y: 0.012514651, z: 1.723}
+  m_LocalPosition: {x: -1.3396475, y: 0.012514651, z: 1.723}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 949618647}
@@ -1268,7 +1268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225438008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.88, y: 2.2, z: -0.48}
+  m_LocalPosition: {x: 1.383, y: 2.2, z: -0.48}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 67371002}
@@ -1881,6 +1881,7 @@ MonoBehaviour:
   bodyPosUpdateFactor: 0
   infoLF:
     targetTrans: {fileID: 1613036641}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1011898982}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -1891,6 +1892,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 1715440671}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1875778276}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -1901,6 +1903,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 2014880027}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 389101080}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -1911,6 +1914,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 529632978}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 79074302}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -2347,7 +2351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380044835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.085, y: 2.06, z: 0.61}
+  m_LocalPosition: {x: -0.74, y: 1.935, z: 0.61}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 949618647}
@@ -2377,7 +2381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383316573}
   m_LocalRotation: {x: -0.9385584, y: -0.30718365, z: -0.051808957, w: 0.14853357}
-  m_LocalPosition: {x: 1.88, y: 0.026149213, z: -0.48}
+  m_LocalPosition: {x: 1.383, y: 0.026149213, z: -0.48}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1632689990}
@@ -3064,7 +3068,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512732876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.113, y: 2.288, z: -0.48}
+  m_LocalPosition: {x: -0.768, y: 2.163, z: -0.48}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 177601778}
@@ -3526,6 +3530,7 @@ MonoBehaviour:
   bodyTrans: {fileID: 1334327532}
   legLF:
     targetTrans: {fileID: 213543838}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1548802884}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3536,6 +3541,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 2081712581}
   legLB:
     targetTrans: {fileID: 4925330}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 193905939}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3546,6 +3552,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 2052436871}
   legRF:
     targetTrans: {fileID: 114270755}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 186907075}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3556,6 +3563,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 1990306171}
   legRB:
     targetTrans: {fileID: 383316574}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 225438009}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3585,6 +3593,7 @@ MonoBehaviour:
   bodyPosUpdateFactor: 0.3
   infoLF:
     targetTrans: {fileID: 213543838}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1548802884}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3595,6 +3604,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 4925330}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 193905939}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3605,6 +3615,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 114270755}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 186907075}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3615,6 +3626,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 383316574}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 225438009}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -3729,7 +3741,7 @@ MonoBehaviour:
   initialLegOffset: 0.4
   legMoveTriggerDistance: 1.1
   legMoveSpeed: 5.2
-  legLiftOffset: 1.8
+  legLiftOffset: 2.1
   legAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -3758,6 +3770,7 @@ MonoBehaviour:
   bodyRotMult: 60
   bodyRotUpdateFactor: 3
   bodyPosUpdateFactor: 0.3
+  breakDB: {fileID: 0}
 --- !u!114 &639774652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3774,7 +3787,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  raycastBodyLength: 4
+  raycastBodyLength: 2
   legsGround: {fileID: 639774651}
   legsAir: {fileID: 639774653}
 --- !u!114 &639774653
@@ -6777,6 +6790,7 @@ MonoBehaviour:
   bodyPosUpdateFactor: 0
   infoLF:
     targetTrans: {fileID: 215840150}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1550587447}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -6787,6 +6801,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 1580186070}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 558632827}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -6797,6 +6812,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 1487307190}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1738430260}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -6807,6 +6823,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 1194074663}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 249283527}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -7337,7 +7354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548802883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7566475, y: 2.2, z: 1.723}
+  m_LocalPosition: {x: -1.3396475, y: 2.2, z: 1.723}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 67371002}
@@ -7986,6 +8003,7 @@ MonoBehaviour:
   bodyPosUpdateFactor: 0.3
   infoLF:
     targetTrans: {fileID: 750287733}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1801951159}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -7996,6 +8014,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 287648744}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 426208908}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -8006,6 +8025,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 959922319}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 1493457240}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -8016,6 +8036,7 @@ MonoBehaviour:
     airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 193926543}
+    targetDefaultTrans: {fileID: 0}
     raycastOrigin: {fileID: 2000172859}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
@@ -8542,7 +8563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762871800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.02, y: 2.191, z: -0.51}
+  m_LocalPosition: {x: 0.77099997, y: 2.191, z: -0.51}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1632689990}
@@ -9176,7 +9197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829293826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.99, y: 1.88, z: 0.68}
+  m_LocalPosition: {x: 0.741, y: 1.88, z: 0.68}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 2096875314}
