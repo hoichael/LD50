@@ -40,6 +40,12 @@ public class en_spider_st_move : en_state_base
         currentAnimProgress = 1;
     }
 
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        StopAllCoroutines();
+    }
+
     private void Update()
     {
         HandleRotation();
@@ -89,7 +95,7 @@ public class en_spider_st_move : en_state_base
     {
         yield return new WaitForSeconds(duration);
 
-        //   ChangeState("idle");
-        ChangeState("jump");
+           ChangeState("idle");
+     //   ChangeState("jump");
     }
 }

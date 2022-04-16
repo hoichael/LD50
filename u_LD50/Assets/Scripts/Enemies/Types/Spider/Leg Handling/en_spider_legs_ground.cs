@@ -15,6 +15,9 @@ public class en_spider_legs_ground : MonoBehaviour
     [SerializeField]
     private LayerMask groundMask;
 
+    [SerializeField]
+    private en_brain_base brain;
+
     [Header("Settings")]
 
     [SerializeField]
@@ -107,6 +110,16 @@ public class en_spider_legs_ground : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+
+                    brain.ChangeState("jump"); // jump if leg cant be properly grounded
+                }
+            }
+            else
+            {
+
+                brain.ChangeState("jump"); // jump if leg cant be properly grounded
             }
         }
     }

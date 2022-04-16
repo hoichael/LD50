@@ -32,21 +32,22 @@ public class en_spider_bodytrans : MonoBehaviour
 
         avgLegPos /= 4;
 
-        info.bodyTrans.position = Vector3.MoveTowards(
-            info.bodyTrans.position,
-            new Vector3(
-                info.bodyTrans.position.x,
-                avgLegPos.y, // not adding offset bc body origin of current model is on same height as leg tips 
-                info.bodyTrans.position.z
-                ),
-            bodyPosUpdateFactor * Time.deltaTime
-            );
-
         info.bodyTrans.rotation = Quaternion.Slerp(
             info.bodyTrans.rotation,
             GetBodyRotation(avgLegPos),
             bodyRotUpdateFactor * Time.deltaTime
             );
+
+        return;
+        info.bodyTrans.position = Vector3.MoveTowards(
+        info.bodyTrans.position,
+        new Vector3(
+            info.bodyTrans.position.x,
+            avgLegPos.y + 0.3f, // not adding offset bc body origin of current model is on same height as leg tips 
+            info.bodyTrans.position.z
+            ),
+        bodyPosUpdateFactor * Time.deltaTime
+        );
     }
 
     private Quaternion GetBodyRotation(Vector3 avgLegPos)
