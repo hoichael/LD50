@@ -526,6 +526,36 @@ Transform:
   m_Father: {fileID: 1835628203}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &79404931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79404932}
+  m_Layer: 0
+  m_Name: AirTarget_RB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &79404932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79404931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.737, y: -0.227, z: -0.286}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 809960196}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &82164302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,6 +1888,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 1715440671}
     raycastOrigin: {fileID: 1875778276}
@@ -1867,6 +1898,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 2014880027}
     raycastOrigin: {fileID: 389101080}
@@ -1876,6 +1908,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 529632978}
     raycastOrigin: {fileID: 79074302}
@@ -1885,6 +1918,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   initialLegOffset: 0.4
   legMoveTriggerDistance: 1.1
   legMoveSpeed: 5.2
@@ -3464,6 +3498,8 @@ GameObject:
   - component: {fileID: 639774647}
   - component: {fileID: 639774646}
   - component: {fileID: 639774651}
+  - component: {fileID: 639774652}
+  - component: {fileID: 639774653}
   m_Layer: 0
   m_Name: en_spider
   m_TagString: Untagged
@@ -3487,6 +3523,7 @@ MonoBehaviour:
   rb: {fileID: 639774648}
   knockbackMult: 0
   grounded: 0
+  bodyTrans: {fileID: 1334327532}
   legLF:
     targetTrans: {fileID: 213543838}
     raycastOrigin: {fileID: 1548802884}
@@ -3496,6 +3533,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 2081712581}
   legLB:
     targetTrans: {fileID: 4925330}
     raycastOrigin: {fileID: 193905939}
@@ -3505,6 +3543,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 2052436871}
   legRF:
     targetTrans: {fileID: 114270755}
     raycastOrigin: {fileID: 186907075}
@@ -3514,6 +3553,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 1990306171}
   legRB:
     targetTrans: {fileID: 383316574}
     raycastOrigin: {fileID: 225438009}
@@ -3523,6 +3563,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 79404932}
   legList: []
 --- !u!114 &639774647
 MonoBehaviour:
@@ -3531,7 +3572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639774645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 333274751f88a36468eb489811ade2b7, type: 3}
   m_Name: 
@@ -3551,6 +3592,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 4925330}
     raycastOrigin: {fileID: 193905939}
@@ -3560,6 +3602,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 114270755}
     raycastOrigin: {fileID: 186907075}
@@ -3569,6 +3612,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 383316574}
     raycastOrigin: {fileID: 225438009}
@@ -3578,6 +3622,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   initialLegOffset: 0.4
   legMoveTriggerDistance: 1.1
   legMoveSpeed: 5.2
@@ -3643,7 +3688,8 @@ MonoBehaviour:
   states:
   - {fileID: 1901694891}
   - {fileID: 1901694890}
-  initialState: {fileID: 1901694891}
+  - {fileID: 1901694893}
+  initialState: {fileID: 1901694893}
 --- !u!4 &639774650
 Transform:
   m_ObjectHideFlags: 0
@@ -3652,12 +3698,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639774645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.559, z: 0}
+  m_LocalPosition: {x: 0, y: 13.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 67371002}
   - {fileID: 1901694892}
   - {fileID: 1334327532}
+  - {fileID: 809960196}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3668,7 +3715,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639774645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5c03840328724f419e02dc03c2ab584, type: 3}
   m_Name: 
@@ -3678,7 +3725,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  raycastLegLength: 0
+  raycastLegLength: 8
   initialLegOffset: 0.4
   legMoveTriggerDistance: 1.1
   legMoveSpeed: 5.2
@@ -3711,6 +3758,63 @@ MonoBehaviour:
   bodyRotMult: 60
   bodyRotUpdateFactor: 3
   bodyPosUpdateFactor: 0.3
+--- !u!114 &639774652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639774645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d183b5748b0c7948a314f7c49c69733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 639774646}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  raycastBodyLength: 4
+  legsGround: {fileID: 639774651}
+  legsAir: {fileID: 639774653}
+--- !u!114 &639774653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639774645}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbb6b6d41327d042a6d1760533a0303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 639774646}
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  legMoveSpeed: 1.2
 --- !u!1 &663172754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3977,6 +4081,40 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.12, z: -0.92}
+--- !u!1 &809960195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809960196}
+  m_Layer: 0
+  m_Name: AirTargetPositions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809960196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809960195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2081712581}
+  - {fileID: 2052436871}
+  - {fileID: 1990306171}
+  - {fileID: 79404932}
+  m_Father: {fileID: 639774650}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &815637198
 GameObject:
   m_ObjectHideFlags: 0
@@ -6646,6 +6784,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 1580186070}
     raycastOrigin: {fileID: 558632827}
@@ -6655,6 +6794,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 1487307190}
     raycastOrigin: {fileID: 1738430260}
@@ -6664,6 +6804,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 1194074663}
     raycastOrigin: {fileID: 249283527}
@@ -6673,6 +6814,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 0
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   initialLegOffset: 0
   legMoveTriggerDistance: 0
   legMoveSpeed: 0
@@ -7851,6 +7993,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoLB:
     targetTrans: {fileID: 287648744}
     raycastOrigin: {fileID: 426208908}
@@ -7860,6 +8003,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRF:
     targetTrans: {fileID: 959922319}
     raycastOrigin: {fileID: 1493457240}
@@ -7869,6 +8013,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   infoRB:
     targetTrans: {fileID: 193926543}
     raycastOrigin: {fileID: 2000172859}
@@ -7878,6 +8023,7 @@ MonoBehaviour:
     currentRayNormal: {x: 0, y: 0, z: 0}
     grounded: 1
     currentAnimProgress: 0
+    airTargetTrans: {fileID: 0}
   initialLegOffset: 0.4
   legMoveTriggerDistance: 1.1
   legMoveSpeed: 5.2
@@ -9197,6 +9343,7 @@ GameObject:
   - component: {fileID: 1901694892}
   - component: {fileID: 1901694891}
   - component: {fileID: 1901694890}
+  - component: {fileID: 1901694893}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -9211,14 +9358,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901694889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5403be9df48690d4bb5d72a3538bf516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateID: move
   brain: {fileID: 639774649}
-  info: {fileID: 0}
+  info: {fileID: 639774646}
   duration: 20
   currentSpeed: 0
   walkSpeed: 1.4
@@ -9239,7 +9386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateID: idle
   brain: {fileID: 639774649}
-  info: {fileID: 0}
+  info: {fileID: 639774646}
   duration: 0.4
 --- !u!4 &1901694892
 Transform:
@@ -9255,6 +9402,23 @@ Transform:
   m_Father: {fileID: 639774650}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901694893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901694889}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4431a2d400aaf394eb41a784d50fdf57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateID: init
+  brain: {fileID: 639774649}
+  info: {fileID: 639774646}
+  legsGround: {fileID: 639774651}
+  legsAir: {fileID: 639774653}
 --- !u!1 &1920814516
 GameObject:
   m_ObjectHideFlags: 0
@@ -9499,6 +9663,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!1 &1990306170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990306171}
+  m_Layer: 0
+  m_Name: AirTarget_RF
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990306171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990306170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.737, y: -0.227, z: 0.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 809960196}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000172858
 GameObject:
   m_ObjectHideFlags: 0
@@ -9787,6 +9981,36 @@ Transform:
   m_Father: {fileID: 723104774}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2052436870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052436871}
+  m_Layer: 0
+  m_Name: AirTarget_LB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2052436871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052436870}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.753, y: -0.227, z: -0.286}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 809960196}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055543071
 GameObject:
   m_ObjectHideFlags: 0
@@ -9882,6 +10106,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055543071}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2081712580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081712581}
+  m_Layer: 0
+  m_Name: AirTarget_LF
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2081712581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081712580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.753, y: -0.227, z: 0.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 809960196}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096875313
 GameObject:
   m_ObjectHideFlags: 0

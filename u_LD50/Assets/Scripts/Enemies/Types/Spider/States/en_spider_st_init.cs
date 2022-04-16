@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class en_spider_st_idle : en_state_base
+public class en_spider_st_init : en_state_base
 {
     [SerializeField]
-    private float duration;
+    private en_spider_legs_ground legsGround;
+
+    [SerializeField]
+    private en_spider_legs_air legsAir;
 
     protected override void OnEnable()
     {
@@ -16,15 +19,17 @@ public class en_spider_st_idle : en_state_base
 
     private IEnumerator HandleDuration()
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(0.01f);
 
         if(info.grounded)
         {
-            ChangeState("move");
+            legsGround.enabled = true;
         }
         else
         {
-            StartCoroutine(HandleDuration());
+            legsAir.enabled = true;
         }
+
+        ChangeState("idle");
     }
 }

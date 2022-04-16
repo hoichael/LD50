@@ -14,6 +14,12 @@ public class en_spider_groundcheck : MonoBehaviour
     [SerializeField]
     private float raycastBodyLength;
 
+    [SerializeField]
+    private en_spider_legs_ground legsGround;
+
+    [SerializeField]
+    private en_spider_legs_air legsAir;
+
     private void Update()
     {
         GroundCheck();
@@ -21,19 +27,22 @@ public class en_spider_groundcheck : MonoBehaviour
 
     private void GroundCheck()
     {
-        print("a");
         RaycastHit hit;
         if (Physics.Raycast(info.bodyTrans.position + Vector3.up * 1.2f, Vector3.up * -1, out hit, raycastBodyLength, groundMask))
         {
-            print("b");
             info.rb.useGravity = false;
             info.grounded = true;
-            //    transform.position = new Vector3(transform.position.x, hit.point.y + groundDistance, transform.position.z);
+
+            legsAir.enabled = false;
+            legsGround.enabled = true;
         }
         else
         {
             info.rb.useGravity = true;
             info.grounded = false;
+
+            legsAir.enabled = true;
+            legsGround.enabled = false;
         }
     }
 }

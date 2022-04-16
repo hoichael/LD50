@@ -46,4 +46,5 @@ public class en_spider_leg_info
     public bool grounded;
     public en_spider_leg_info oppositeLeg;
     public float currentAnimProgress;
+    public Transform airTargetTrans;
 }

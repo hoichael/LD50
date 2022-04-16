@@ -4,5 +4,48 @@ using UnityEngine;
 
 public class en_spider_legs_air : MonoBehaviour
 {
-    
+    [SerializeField]
+    private en_spider_info info;
+
+    [SerializeField]
+    private AnimationCurve animCurve;
+
+    [SerializeField]
+    private float legMoveSpeed;
+
+    private float currentAnimProgress;
+
+    private void OnEnable()
+    {
+        for(int i = 0; i < info.legList.Count; i++)
+        {
+            info.legList[i].currentAnimProgress = 0;
+            info.legList[i].lastTargetPos = info.legList[i].currentTargetPos = info.legList[i].targetTrans.position;
+        }
+    }
+
+    private void Update()
+    {
+        if(currentAnimProgress != 1)
+        MoveLegs();
+    }
+
+    private void MoveLegs()
+    {
+
+        for (int i = 0; i < info.legList.Count; i++)
+        {
+            if (!info.legList[i].grounded)
+            {
+                info.legList[i].currentAnimProgress = Mathf.MoveTowards(info.legList[i].currentAnimProgress, 1, legMoveSpeed * Time.deltaTime);
+
+                info.legList[i].targetTrans.position = Vector3.Lerp(
+                    info.legList[i].lastTargetPos,
+                    info.legList[i].airTargetTrans.position,
+                    animCurve.Evaluate(info.legList[i].currentAnimProgress)
+                    );
+            }
+        }
+
+    }
 }

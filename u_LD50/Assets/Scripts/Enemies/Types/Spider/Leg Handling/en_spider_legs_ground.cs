@@ -49,7 +49,7 @@ public class en_spider_legs_ground : MonoBehaviour
     private float bodyPosUpdateFactor;
 
 
-    private void OnEnable()
+    private void Start()
     {
         // offset 1 leg on each side
         info.legLF.targetTrans.position -= new Vector3(0, 0, initialLegOffset);
