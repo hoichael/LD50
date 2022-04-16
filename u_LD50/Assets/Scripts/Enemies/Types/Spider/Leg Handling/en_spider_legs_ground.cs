@@ -48,9 +48,6 @@ public class en_spider_legs_ground : MonoBehaviour
     [SerializeField]
     private float bodyPosUpdateFactor;
 
-    [SerializeField]
-    private GameObject breakDB;
-
     private void OnEnable()
     {
         
@@ -75,9 +72,7 @@ public class en_spider_legs_ground : MonoBehaviour
     {
         UpdateTargetPositions();
         MoveLegs();
-        HandleBodyTransform();
-
-     //   Instantiate(breakDB);
+    //    HandleBodyTransform();
     }
 
     private void UpdateTargetPositions()
@@ -148,7 +143,7 @@ public class en_spider_legs_ground : MonoBehaviour
         }
 
     }
-
+    /*
     private void HandleBodyTransform()
     {
         Vector3 avgLegPos = Vector3.zero;
@@ -216,4 +211,5 @@ public class en_spider_legs_ground : MonoBehaviour
         // convert to quaternion
         return Quaternion.Euler(finalOffset);
     }
+    */
 }

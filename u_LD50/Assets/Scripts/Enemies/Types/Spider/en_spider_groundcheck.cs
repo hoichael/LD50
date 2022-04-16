@@ -25,6 +25,15 @@ public class en_spider_groundcheck : MonoBehaviour
         GroundCheck();
     }
 
+    private void OnEnable()
+    {
+        info.rb.useGravity = true;
+        info.grounded = false;
+
+        legsAir.enabled = true;
+        legsGround.enabled = false;
+    }
+
     private void GroundCheck()
     {
         RaycastHit hit;
@@ -35,14 +44,9 @@ public class en_spider_groundcheck : MonoBehaviour
 
             legsAir.enabled = false;
             legsGround.enabled = true;
-        }
-        else
-        {
-            info.rb.useGravity = true;
-            info.grounded = false;
 
-            legsAir.enabled = true;
-            legsGround.enabled = false;
+            this.enabled = false;
         }
+
     }
 }

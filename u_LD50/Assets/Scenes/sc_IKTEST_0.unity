@@ -3499,11 +3499,11 @@ GameObject:
   - component: {fileID: 639774650}
   - component: {fileID: 639774649}
   - component: {fileID: 639774648}
-  - component: {fileID: 639774647}
   - component: {fileID: 639774646}
   - component: {fileID: 639774651}
   - component: {fileID: 639774652}
   - component: {fileID: 639774653}
+  - component: {fileID: 639774647}
   m_Layer: 0
   m_Name: en_spider
   m_TagString: Untagged
@@ -3580,95 +3580,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639774645}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333274751f88a36468eb489811ade2b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 08568ff2b743fff448f69eb725658c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 0}
-  bodyTrans: {fileID: 1334327532}
-  groundDistance: 0.24
+  info: {fileID: 639774646}
   bodyRotMult: 60
   bodyRotUpdateFactor: 3
   bodyPosUpdateFactor: 0.3
-  infoLF:
-    targetTrans: {fileID: 213543838}
-    targetDefaultTrans: {fileID: 0}
-    raycastOrigin: {fileID: 1548802884}
-    lastTargetPos: {x: 0, y: 0, z: 0}
-    currentTargetPos: {x: 0, y: 0, z: 0}
-    currentRayPos: {x: 0, y: 0, z: 0}
-    currentRayNormal: {x: 0, y: 0, z: 0}
-    grounded: 1
-    currentAnimProgress: 0
-    airTargetTrans: {fileID: 0}
-  infoLB:
-    targetTrans: {fileID: 4925330}
-    targetDefaultTrans: {fileID: 0}
-    raycastOrigin: {fileID: 193905939}
-    lastTargetPos: {x: 0, y: 0, z: 0}
-    currentTargetPos: {x: 0, y: 0, z: 0}
-    currentRayPos: {x: 0, y: 0, z: 0}
-    currentRayNormal: {x: 0, y: 0, z: 0}
-    grounded: 1
-    currentAnimProgress: 0
-    airTargetTrans: {fileID: 0}
-  infoRF:
-    targetTrans: {fileID: 114270755}
-    targetDefaultTrans: {fileID: 0}
-    raycastOrigin: {fileID: 186907075}
-    lastTargetPos: {x: 0, y: 0, z: 0}
-    currentTargetPos: {x: 0, y: 0, z: 0}
-    currentRayPos: {x: 0, y: 0, z: 0}
-    currentRayNormal: {x: 0, y: 0, z: 0}
-    grounded: 1
-    currentAnimProgress: 0
-    airTargetTrans: {fileID: 0}
-  infoRB:
-    targetTrans: {fileID: 383316574}
-    targetDefaultTrans: {fileID: 0}
-    raycastOrigin: {fileID: 225438009}
-    lastTargetPos: {x: 0, y: 0, z: 0}
-    currentTargetPos: {x: 0, y: 0, z: 0}
-    currentRayPos: {x: 0, y: 0, z: 0}
-    currentRayNormal: {x: 0, y: 0, z: 0}
-    grounded: 1
-    currentAnimProgress: 0
-    airTargetTrans: {fileID: 0}
-  initialLegOffset: 0.4
-  legMoveTriggerDistance: 1.1
-  legMoveSpeed: 5.2
-  legLiftOffset: 1.8
-  legAnimCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  legNormalMinY: 0.3
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  raycastLegLength: 8
-  raycastBodyLength: 8
 --- !u!54 &639774648
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3684,7 +3604,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &639774649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3701,6 +3621,7 @@ MonoBehaviour:
   - {fileID: 1901694891}
   - {fileID: 1901694890}
   - {fileID: 1901694893}
+  - {fileID: 1901694894}
   initialState: {fileID: 1901694893}
 --- !u!4 &639774650
 Transform:
@@ -3770,7 +3691,6 @@ MonoBehaviour:
   bodyRotMult: 60
   bodyRotUpdateFactor: 3
   bodyPosUpdateFactor: 0.3
-  breakDB: {fileID: 0}
 --- !u!114 &639774652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3778,7 +3698,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639774645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d183b5748b0c7948a314f7c49c69733, type: 3}
   m_Name: 
@@ -3827,7 +3747,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  legMoveSpeed: 1.2
+  legMoveSpeed: 0.3
 --- !u!1 &663172754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,7 +4970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967535386}
   m_LocalRotation: {x: 0.030279411, y: -0.765194, z: 0.0360856, w: 0.64207405}
-  m_LocalPosition: {x: 19.28, y: 7.95, z: 15.28}
+  m_LocalPosition: {x: 24.98, y: 14.5, z: 15.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 534274622}
@@ -9365,6 +9285,7 @@ GameObject:
   - component: {fileID: 1901694891}
   - component: {fileID: 1901694890}
   - component: {fileID: 1901694893}
+  - component: {fileID: 1901694894}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -9387,7 +9308,7 @@ MonoBehaviour:
   stateID: move
   brain: {fileID: 639774649}
   info: {fileID: 639774646}
-  duration: 20
+  duration: 3
   currentSpeed: 0
   walkSpeed: 1.4
   runSpeed: 3.5
@@ -9409,6 +9330,8 @@ MonoBehaviour:
   brain: {fileID: 639774649}
   info: {fileID: 639774646}
   duration: 0.4
+  legsGround: {fileID: 639774651}
+  legsAir: {fileID: 639774653}
 --- !u!4 &1901694892
 Transform:
   m_ObjectHideFlags: 0
@@ -9438,8 +9361,29 @@ MonoBehaviour:
   stateID: init
   brain: {fileID: 639774649}
   info: {fileID: 639774646}
+  groundcheck: {fileID: 639774652}
   legsGround: {fileID: 639774651}
   legsAir: {fileID: 639774653}
+--- !u!114 &1901694894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901694889}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223f5f1cff6ab2e4bb4a77fc06397fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateID: jump
+  brain: {fileID: 639774649}
+  info: {fileID: 639774646}
+  legsGround: {fileID: 639774651}
+  legsAir: {fileID: 639774653}
+  groundcheck: {fileID: 639774652}
+  jumpForceX: 20
+  jumpForceY: 20
 --- !u!1 &1920814516
 GameObject:
   m_ObjectHideFlags: 0

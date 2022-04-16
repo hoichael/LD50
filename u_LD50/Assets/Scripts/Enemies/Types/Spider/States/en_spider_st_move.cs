@@ -89,6 +89,7 @@ public class en_spider_st_move : en_state_base
     {
         yield return new WaitForSeconds(duration);
 
-        ChangeState("idle");
+        //   ChangeState("idle");
+        ChangeState("jump");
     }
 }
