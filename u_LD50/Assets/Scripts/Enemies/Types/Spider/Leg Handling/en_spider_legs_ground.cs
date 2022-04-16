@@ -53,7 +53,7 @@ public class en_spider_legs_ground : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
         for (int i = 0; i < info.legList.Count; i++)
         {
             info.legList[i].targetTrans.position = info.legList[i].targetDefaultTrans.position;
@@ -75,7 +75,7 @@ public class en_spider_legs_ground : MonoBehaviour
     {
         UpdateTargetPositions();
         MoveLegs();
-    //    HandleBodyTransform();
+        //    HandleBodyTransform();
     }
 
     private void UpdateTargetPositions()
@@ -160,25 +160,17 @@ public class en_spider_legs_ground : MonoBehaviour
     private void HandleBodyTransform()
     {
         Vector3 avgLegPos = Vector3.zero;
-
         for (int i = 0; i < info.legList.Count; i++)
         {
             avgLegPos += info.legList[i].targetTrans.position;
         }
-
         avgLegPos /= 4;
-
-
         Vector3 avgLegNormal = Vector3.zero;
-
         for (int i = 0; i < info.legList.Count; i++)
         {
             avgLegNormal += info.legList[i].currentRayNormal;
         }
-
         avgLegNormal /= 4;
-
-
         // INTERPOLATE position
         bodyTrans.position = Vector3.MoveTowards(
             bodyTrans.position,
@@ -189,38 +181,30 @@ public class en_spider_legs_ground : MonoBehaviour
                 ),
             bodyPosUpdateFactor * Time.fixedDeltaTime
             );
-
         bodyTrans.rotation = Quaternion.Slerp(
             bodyTrans.rotation,
             GetBodyRotation(avgLegPos),
             bodyRotUpdateFactor * Time.fixedDeltaTime
             );
     }
-
     private Quaternion GetBodyRotation(Vector3 avgLegPos)
     {
         float offset;
         Vector3 offsetLF, offsetLB, offsetRF, offsetRB;
-
         // handle LF
         offset = info.legLF.targetTrans.position.y - avgLegPos.y;
         offsetLF = new Vector3(offset * -bodyRotMult, 0, offset * -bodyRotMult);
-
         // handle LB
         offset = info.legLB.targetTrans.position.y - avgLegPos.y;
         offsetLB = new Vector3(offset * bodyRotMult, 0, offset * -bodyRotMult);
-
         // handle RF
         offset = info.legRF.targetTrans.position.y - avgLegPos.y;
         offsetRF = new Vector3(offset * -bodyRotMult, 0, offset * bodyRotMult);
-
         // handle RB
         offset = info.legRB.targetTrans.position.y - avgLegPos.y;
         offsetRB = new Vector3(offset * bodyRotMult, 0, offset * bodyRotMult);
-
         // calc final offset
         Vector3 finalOffset = (offsetLF + offsetLB + offsetRF + offsetRB) / 4;
-
         // convert to quaternion
         return Quaternion.Euler(finalOffset);
     }
