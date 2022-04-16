@@ -305,8 +305,7 @@ public class en_D_spider_0_legs : MonoBehaviour
 }
 
 
-
-
+/*
 [System.Serializable]
 public class en_spider_leg_info
 {
@@ -320,3 +319,4 @@ public class en_spider_leg_info
     public en_spider_leg_info oppositeLeg;
     public float currentAnimProgress;
 }
+*/
