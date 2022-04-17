@@ -1188,6 +1188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Gun
 --- !u!114 &6130805468803641165
 MonoBehaviour:
@@ -1393,6 +1395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Ammo
 --- !u!1 &3886493012899163736
 GameObject:
@@ -1690,6 +1694,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Ammo
 --- !u!1 &5281953429555686843
 GameObject:
@@ -1843,6 +1849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Ammo
 --- !u!1 &5281953430589391881
 GameObject:
@@ -2054,8 +2062,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.89338535, b: 0, a: 1}
-  m_Intensity: 8
-  m_Range: 24
+  m_Intensity: 6
+  m_Range: 48
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2467,6 +2475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Ammo
 --- !u!1 &8148031961298545225
 GameObject:
@@ -2652,6 +2662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Ammo
 --- !u!1 &8242071479297653901
 GameObject:
@@ -2882,6 +2894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Ammo
 --- !u!1 &8698406730989504731
 GameObject:
