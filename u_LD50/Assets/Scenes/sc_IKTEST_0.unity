@@ -10311,5 +10311,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: en_spider
       objectReference: {fileID: 0}
+    - target: {fileID: 2976782551007460606, guid: 4c27b3ff983ccb74097e0613c0c1ef22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c27b3ff983ccb74097e0613c0c1ef22, type: 3}
