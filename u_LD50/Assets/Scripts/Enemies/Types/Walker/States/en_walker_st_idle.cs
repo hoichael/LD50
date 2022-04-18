@@ -16,6 +16,12 @@ public class en_walker_st_idle : en_state_base
     [SerializeField]
     private en_walker_legs legs; // toggle bc performance
 
+    [SerializeField]
+    private Transform losRayOrigin;
+
+    [SerializeField]
+    private LayerMask enemiesLayerMask;
+
     protected override void OnEnable()
     {
         StartCoroutine(CheckPlayerDis());
@@ -28,12 +34,20 @@ public class en_walker_st_idle : en_state_base
 
         if(Vector3.Distance(transform.position, targetObj.position) < engageDistance)
         {
-            ChangeState("engage");
+            losRayOrigin.LookAt(targetObj);
+
+            RaycastHit hit;
+            if (Physics.Raycast(losRayOrigin.position, losRayOrigin.forward, out hit, engageDistance + 2, ~enemiesLayerMask))
+            {
+                print(hit.transform.tag);
+                if (hit.transform.CompareTag("Player"))
+                {
+                    ChangeState("engage");
+                }
+            }
         }
-        else
-        {
-            StartCoroutine(CheckPlayerDis());
-        }
+        
+        StartCoroutine(CheckPlayerDis());
     }
 
 
@@ -41,7 +55,7 @@ public class en_walker_st_idle : en_state_base
     {
         base.OnDisable();
         StopAllCoroutines();
-        legs.enabled = false;
+        legs.enabled = true;
     }
 
 }

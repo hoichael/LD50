@@ -47,6 +47,8 @@ public class en_walker_st_engage : en_state_base
     private void ChasePlayer()
     {
         info.rb.AddForce((info.trans.forward * moveSpeed) * Time.deltaTime, ForceMode.Force);
+        print(info.rb.velocity.magnitude);
+        info.rb.velocity = Vector3.ClampMagnitude(info.rb.velocity, 3);
     }
 
     private void HandleRotation()
