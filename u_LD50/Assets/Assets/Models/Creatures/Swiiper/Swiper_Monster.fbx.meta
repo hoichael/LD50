@@ -3,7 +3,12 @@ guid: 460857277d9b6094bb87fd61489b7870
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Monster3
+    second: {fileID: 2800000, guid: 3dc985b92648ecc4ab429a8cb0ef9583, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
