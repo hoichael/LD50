@@ -3,7 +3,12 @@ guid: 0ffce3b2bc6705d4d914311356a39fdf
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WoodtableReference
+    second: {fileID: 2800000, guid: da161503d3e0c5d48a4410bbfdd580f0, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

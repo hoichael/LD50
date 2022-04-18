@@ -3,7 +3,12 @@ guid: 48cb0043cbb8f2c4e9692e316aa7232c
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Treebark2
+    second: {fileID: 2800000, guid: 32fa5abb293ab7d4d9def791347e110d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
