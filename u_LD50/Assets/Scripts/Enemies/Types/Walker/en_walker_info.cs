@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class en_walker_info : en_info_base
+public class en_walker_info : MonoBehaviour
 {
     [Header("IK Info Atlas")]
 
@@ -21,6 +21,8 @@ public class en_walker_info : en_info_base
     public List<en_IKinfo> legList = new List<en_IKinfo>();
 
     public List<en_IKinfo> targetList = new List<en_IKinfo>();
+
+    public bool currentlyWalking;
 
     private void Awake()
     {

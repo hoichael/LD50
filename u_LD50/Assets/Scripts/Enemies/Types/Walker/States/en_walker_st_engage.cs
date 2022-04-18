@@ -19,14 +19,23 @@ public class en_walker_st_engage : en_state_base
     [SerializeField]
     private Transform headTarget, chestTarget;
 
+    [SerializeField]
+    private en_walker_info walkerInfo;
+
+    [SerializeField]
+    private en_walker_headbob bob;
+
     protected override void OnEnable()
     {
         StartCoroutine(CheckPlayerDis());
-     //   headTarget.SetParent(targetObj);
-     //   chestTarget.SetParent(targetObj);
+        //   headTarget.SetParent(targetObj);
+        //   chestTarget.SetParent(targetObj);
 
-     //   headTarget.localPosition = chestTarget.localPosition = Vector3.zero;
+        //   headTarget.localPosition = chestTarget.localPosition = Vector3.zero;
+        walkerInfo.currentlyWalking = true;
+        bob.UpdateValues();
 
+        targetObj = pl_state.Instance.GLOBAL_CAM_REF.transform;
     }
 
     private void Update()
@@ -47,7 +56,7 @@ public class en_walker_st_engage : en_state_base
     private void ChasePlayer()
     {
         info.rb.AddForce((info.trans.forward * moveSpeed) * Time.deltaTime, ForceMode.Force);
-        info.rb.velocity = Vector3.ClampMagnitude(info.rb.velocity, 3);
+        info.rb.velocity = Vector3.ClampMagnitude(info.rb.velocity, 4f);
     }
 
     private void HandleRotation()
@@ -73,5 +82,7 @@ public class en_walker_st_engage : en_state_base
     {
         base.OnDisable();
         StopAllCoroutines();
+        walkerInfo.currentlyWalking = false;
+        bob.UpdateValues();
     }
 }
