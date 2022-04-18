@@ -20,6 +20,9 @@ public class en_walker_legs : MonoBehaviour
     [SerializeField]
     private float legMoveSpeed;
 
+    [SerializeField]
+    private float legLiftOffset;
+
     private void FixedUpdate()
     {
         UpdateTargetPositions();
@@ -69,7 +72,7 @@ public class en_walker_legs : MonoBehaviour
             {
                 info.legList[i].currentAnimProgress = Mathf.MoveTowards(info.legList[i].currentAnimProgress, 1, legMoveSpeed * Time.deltaTime);
 
-                info.legList[i].targetTrans.position = Vector3.Lerp(
+                Vector3 lerpPos = Vector3.Lerp(
                     info.legList[i].lastTargetPos,
                     info.legList[i].currentTargetPos,
              //       legAnimCurve.Evaluate(info.legList[i].currentAnimProgress)
@@ -86,6 +89,8 @@ public class en_walker_legs : MonoBehaviour
                 info.legList[i].targetTrans.position += new Vector3(0, currentLiftOffset, 0);
 
                                 */
+                lerpPos.y += Mathf.Sin(info.legList[i].currentAnimProgress * Mathf.PI) * legLiftOffset;
+                info.legList[i].targetTrans.position = lerpPos;
 
                 if (info.legList[i].currentAnimProgress == 1)
                 {
