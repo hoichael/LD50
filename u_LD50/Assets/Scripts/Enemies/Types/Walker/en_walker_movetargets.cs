@@ -9,10 +9,15 @@ public class en_walker_movetargets : MonoBehaviour
 
     private void Update()
     {
+        /*
         for (int i = 0; i < info.targetList.Count; i++)
         {
             MoveTarget(info.targetList[i]);
         }
+        */
+
+        MoveTarget(info.infoLegL);
+        MoveTarget(info.infoLegR);
     }
 
     private void MoveTarget(en_IKinfo IKinfo)

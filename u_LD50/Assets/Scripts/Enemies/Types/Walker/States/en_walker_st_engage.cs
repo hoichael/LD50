@@ -25,6 +25,9 @@ public class en_walker_st_engage : en_state_base
     [SerializeField]
     private en_walker_headbob bob;
 
+    [SerializeField]
+    private float attackDistance;
+
     protected override void OnEnable()
     {
         StartCoroutine(CheckPlayerDis());
@@ -68,9 +71,15 @@ public class en_walker_st_engage : en_state_base
     {
         yield return new WaitForSeconds(checkInterval);
 
-        if (Vector3.Distance(transform.position, targetObj.position) > engageDistance)
+        float dist = Vector3.Distance(transform.position, targetObj.position);
+
+        if (dist > engageDistance)
         {
             ChangeState("idle");
+        }
+        else if(dist < attackDistance)
+        {
+            ChangeState("attack");
         }
         else
         {
