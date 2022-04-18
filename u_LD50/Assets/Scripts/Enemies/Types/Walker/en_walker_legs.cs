@@ -17,17 +17,9 @@ public class en_walker_legs : MonoBehaviour
     [SerializeField]
     private float legMoveTriggerDistance;
 
-    [SerializeField]
-    private float legMoveSpeed;
-
-    [SerializeField]
-    private float legLiftOffset;
-
     private void FixedUpdate()
     {
         UpdateTargetPositions();
-        MoveLegs();
-        //    HandleBodyTransform();
     }
 
     private void UpdateTargetPositions()
@@ -57,45 +49,8 @@ public class en_walker_legs : MonoBehaviour
                         info.legList[i].lastTargetPos = info.legList[i].currentTargetPos;
                         info.legList[i].currentTargetPos = hit.point;
                         info.legList[i].grounded = false;
+                        info.legList[i].currentAnimProgress = 0;
                     }
-                }
-            }
-
-        }
-    }
-
-    private void MoveLegs()
-    {
-        for (int i = 0; i < info.legList.Count; i++)
-        {
-            if (!info.legList[i].grounded)
-            {
-                info.legList[i].currentAnimProgress = Mathf.MoveTowards(info.legList[i].currentAnimProgress, 1, legMoveSpeed * Time.deltaTime);
-
-                Vector3 lerpPos = Vector3.Lerp(
-                    info.legList[i].lastTargetPos,
-                    info.legList[i].currentTargetPos,
-             //       legAnimCurve.Evaluate(info.legList[i].currentAnimProgress)
-                    info.legList[i].currentAnimProgress
-                    );
-
-                /*
-                float currentLiftOffset = Mathf.Lerp(
-                    0,
-                    legLiftOffset,
-                    legAnimCurve.Evaluate(Mathf.PingPong(info.legList[i].currentAnimProgress, 0.5f))
-                    );
-
-                info.legList[i].targetTrans.position += new Vector3(0, currentLiftOffset, 0);
-
-                                */
-                lerpPos.y += Mathf.Sin(info.legList[i].currentAnimProgress * Mathf.PI) * legLiftOffset;
-                info.legList[i].targetTrans.position = lerpPos;
-
-                if (info.legList[i].currentAnimProgress == 1)
-                {
-                    info.legList[i].currentAnimProgress = 0;
-                    info.legList[i].grounded = true;
                 }
             }
         }

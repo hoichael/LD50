@@ -15,7 +15,10 @@ public class en_IKinfo
     public Vector3 currentRayNormal;
 
     public en_IKinfo oppositeLeg;
+    public float legLiftOffset;
 
     public bool grounded;
     public float currentAnimProgress;
+    public float animSpeed;
+    public AnimationCurve animationCurve;
 }

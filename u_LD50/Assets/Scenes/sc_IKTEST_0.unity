@@ -1693,6 +1693,7 @@ GameObject:
   - component: {fileID: 244983239}
   - component: {fileID: 244983238}
   - component: {fileID: 244983240}
+  - component: {fileID: 244983241}
   m_Layer: 11
   m_Name: en_walker
   m_TagString: Untagged
@@ -1742,8 +1743,34 @@ MonoBehaviour:
     currentTargetPos: {x: 0, y: 0, z: 0}
     currentRayPos: {x: 0, y: 0, z: 0}
     currentRayNormal: {x: 0, y: 0, z: 0}
+    legLiftOffset: 0.35
     grounded: 1
     currentAnimProgress: 0
+    animSpeed: 4.2
+    animationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   infoLegR:
     targetTrans: {fileID: 1885184927}
     raycastOrigin: {fileID: 2069646917}
@@ -1751,45 +1778,176 @@ MonoBehaviour:
     currentTargetPos: {x: 0, y: 0, z: 0}
     currentRayPos: {x: 0, y: 0, z: 0}
     currentRayNormal: {x: 0, y: 0, z: 0}
+    legLiftOffset: 0.35
     grounded: 1
     currentAnimProgress: 0
+    animSpeed: 4.2
+    animationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   infoArmL:
-    targetTrans: {fileID: 0}
+    targetTrans: {fileID: 339533726}
     raycastOrigin: {fileID: 0}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
     currentRayPos: {x: 0, y: 0, z: 0}
     currentRayNormal: {x: 0, y: 0, z: 0}
+    legLiftOffset: 0
     grounded: 0
     currentAnimProgress: 0
+    animSpeed: 3
+    animationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   infoArmR:
-    targetTrans: {fileID: 0}
+    targetTrans: {fileID: 2043273473}
     raycastOrigin: {fileID: 0}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
     currentRayPos: {x: 0, y: 0, z: 0}
     currentRayNormal: {x: 0, y: 0, z: 0}
+    legLiftOffset: 0
     grounded: 0
     currentAnimProgress: 0
+    animSpeed: 3
+    animationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   infoHead:
-    targetTrans: {fileID: 0}
+    targetTrans: {fileID: 519836426}
     raycastOrigin: {fileID: 0}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
     currentRayPos: {x: 0, y: 0, z: 0}
     currentRayNormal: {x: 0, y: 0, z: 0}
+    legLiftOffset: 0
     grounded: 0
     currentAnimProgress: 0
+    animSpeed: 2
+    animationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   infoChest:
-    targetTrans: {fileID: 0}
+    targetTrans: {fileID: 1222544640}
     raycastOrigin: {fileID: 0}
     lastTargetPos: {x: 0, y: 0, z: 0}
     currentTargetPos: {x: 0, y: 0, z: 0}
     currentRayPos: {x: 0, y: 0, z: 0}
     currentRayNormal: {x: 0, y: 0, z: 0}
+    legLiftOffset: 0
     grounded: 0
     currentAnimProgress: 0
+    animSpeed: 2
+    animationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   legList: []
+  targetList: []
 --- !u!54 &244983239
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1824,8 +1982,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   legMoveTriggerDistance: 0.6
-  legMoveSpeed: 4
-  legLiftOffset: 0.35
+--- !u!114 &244983241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244983236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86cc225e4bc91dd48885070f554b0a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 244983238}
 --- !u!1 &245850014
 GameObject:
   m_ObjectHideFlags: 0
@@ -6909,7 +7078,7 @@ MonoBehaviour:
   stateID: engage
   brain: {fileID: 1314330696}
   info: {fileID: 244983238}
-  moveSpeed: 900
+  moveSpeed: 2000
   checkInterval: 0.5
   targetObj: {fileID: 1816022593}
   engageDistance: 20

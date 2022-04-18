@@ -20,6 +20,7 @@ public class en_walker_info : en_info_base
 
     public List<en_IKinfo> legList = new List<en_IKinfo>();
 
+    public List<en_IKinfo> targetList = new List<en_IKinfo>();
 
     private void Awake()
     {
@@ -31,11 +32,17 @@ public class en_walker_info : en_info_base
 
         infoLegL.targetTrans.position -= new Vector3(0, 0, 0.4f);
 
-        for (int i = 0; i < legList.Count; i++)
+        targetList.Add(infoLegL);
+        targetList.Add(infoLegR);
+        targetList.Add(infoArmL);
+        targetList.Add(infoArmR);
+        targetList.Add(infoHead);
+        targetList.Add(infoChest);
+
+        for (int i = 0; i < targetList.Count; i++)
         {
-            legList[i].currentTargetPos = legList[i].lastTargetPos = legList[i].targetTrans.position;
+            targetList[i].currentTargetPos = targetList[i].lastTargetPos = targetList[i].targetTrans.position;
+            targetList[i].currentAnimProgress = 1;
         }
     }
-
-
 }
