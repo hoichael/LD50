@@ -38,6 +38,7 @@ public class en_spider_bodytrans : MonoBehaviour
             bodyRotUpdateFactor * Time.deltaTime
             );
 
+        /*
         return;
         info.bodyTrans.position = Vector3.MoveTowards(
         info.bodyTrans.position,
@@ -48,6 +49,7 @@ public class en_spider_bodytrans : MonoBehaviour
             ),
         bodyPosUpdateFactor * Time.deltaTime
         );
+        */
     }
 
     private Quaternion GetBodyRotation(Vector3 avgLegPos)

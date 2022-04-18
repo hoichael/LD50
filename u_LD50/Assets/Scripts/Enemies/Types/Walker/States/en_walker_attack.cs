@@ -46,8 +46,8 @@ public class en_walker_attack : en_state_base
         bob.enabled = false;
 
         handLDefault = handLTarget.position;
-        handLGoal = pl_state.Instance.GLOBAL_CAM_REF.transform.position + new Vector3(-0.2f, 1.2f, 0.2f);
-        handRGoal = pl_state.Instance.GLOBAL_CAM_REF.transform.position + new Vector3(0.2f, 0.8f, -0.2f);
+        handLGoal = pl_state.Instance.GLOBAL_CAM_REF.transform.position + new Vector3(-0.2f, 0.25f, 0.2f);
+        handRGoal = pl_state.Instance.GLOBAL_CAM_REF.transform.position + new Vector3(0.2f, 0.1f, -0.2f);
 
         handRDefault = handRTarget.position;
 
@@ -85,17 +85,18 @@ public class en_walker_attack : en_state_base
             }
             else
             {
-                ChangeState("engage");
+                ChangeState("turn");
             }
         }
     }
 
     private IEnumerator AttackDelay()
     {
+        HandleHitbox();
+
         yield return new WaitForSeconds(0.3f);
 
         currentLerpTarget = 0;
-        HandleHitbox();
     }
 
     private void HandleHitbox()

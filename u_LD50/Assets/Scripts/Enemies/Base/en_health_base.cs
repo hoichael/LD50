@@ -10,7 +10,7 @@ public class en_health_base : MonoBehaviour
     [SerializeField]
     protected int hpCurrent;
 
-    private void Start()
+    protected virtual void Start()
     {
         hpCurrent = hpMax;
     }

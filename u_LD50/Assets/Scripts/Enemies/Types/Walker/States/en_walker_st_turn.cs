@@ -21,7 +21,7 @@ public class en_walker_st_turn : en_state_base
 
     private void Update()
     {
-        dirToTarget = (new Vector3(pl_state.Instance.GLOBAL_PL_TRANS_REF.position.x, 0, pl_state.Instance.GLOBAL_PL_TRANS_REF.position.z) - info.trans.position).normalized;
+        dirToTarget = (new Vector3(pl_state.Instance.GLOBAL_CAM_REF.transform.position.x, info.trans.position.y, pl_state.Instance.GLOBAL_CAM_REF.transform.position.z) - info.trans.position).normalized;
         rotTarget = Quaternion.LookRotation(dirToTarget);
         info.trans.rotation = Quaternion.Slerp(info.trans.rotation, rotTarget, animSpeed * Time.deltaTime);
     }

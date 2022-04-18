@@ -5,6 +5,9 @@ using UnityEngine;
 public class pl_health_damage : MonoBehaviour
 {
     [SerializeField]
+    private Rigidbody rb;
+
+    [SerializeField]
     private pl_health_ui healthUI;
 
     [SerializeField]
@@ -14,9 +17,19 @@ public class pl_health_damage : MonoBehaviour
     private float camTiltDmgSpeed;
 
     [SerializeField]
-    private AnimationCurve camTiltDmgCurve;
+    private AnimationCurve animCurve;
 
     private float currentDmgAnimProgress = 1;
+
+    [SerializeField]
+    private float stunDragAmount;
+
+    private float defaultDrag;
+
+    private void Start()
+    {
+        defaultDrag = rb.drag;
+    }
 
     public void HandleDamage(dmg_base dmgInfo)
     {
@@ -33,10 +46,21 @@ public class pl_health_damage : MonoBehaviour
 
         currentDmgAnimProgress = Mathf.MoveTowards(currentDmgAnimProgress, 1, camTiltDmgSpeed * Time.deltaTime);
 
+        // apply cam tilt
         pl_state.Instance.camTiltDmg = Mathf.Lerp(
             0,
             camTiltDmgOffset,
-            camTiltDmgCurve.Evaluate(Mathf.PingPong(currentDmgAnimProgress, 0.5f))
+            animCurve.Evaluate(Mathf.PingPong(currentDmgAnimProgress, 0.5f))
+            );
+    }
+
+    private void LateUpdate()
+    {
+        // apply "stun" / adjust drag
+        rb.drag = Mathf.Lerp(
+            defaultDrag,
+            stunDragAmount,
+            animCurve.Evaluate(Mathf.PingPong(currentDmgAnimProgress, 0.5f))
             );
     }
 }

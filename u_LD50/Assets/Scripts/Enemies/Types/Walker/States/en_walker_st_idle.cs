@@ -27,18 +27,19 @@ public class en_walker_st_idle : en_state_base
 
     protected override void OnEnable()
     {
+        targetObj = pl_state.Instance.GLOBAL_CAM_REF.transform;
         StartCoroutine(CheckPlayerDis());
         legs.enabled = false;
-        print("enable idle");
     }
 
     private IEnumerator CheckPlayerDis()
     {
+     //   print(targetObj.position);
         yield return new WaitForSeconds(checkInterval);
 
-        if(Vector3.Distance(transform.position, targetObj.position) < engageDistance)
+        if(Vector3.Distance(transform.position, pl_state.Instance.GLOBAL_CAM_REF.transform.position) < engageDistance)
         {
-            losRayOrigin.LookAt(targetObj);
+            losRayOrigin.LookAt(pl_state.Instance.GLOBAL_CAM_REF.transform);
 
             RaycastHit hit;
             if (Physics.Raycast(losRayOrigin.position, losRayOrigin.forward, out hit, engageDistance + 2, ~enemiesLayerMask))

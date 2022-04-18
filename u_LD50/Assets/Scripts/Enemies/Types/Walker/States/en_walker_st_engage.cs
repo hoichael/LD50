@@ -64,14 +64,14 @@ public class en_walker_st_engage : en_state_base
 
     private void HandleRotation()
     {
-        info.trans.LookAt(new Vector3(targetObj.position.x, 0, targetObj.position.z));
+        info.trans.LookAt(new Vector3(pl_state.Instance.GLOBAL_CAM_REF.transform.position.x, info.trans.position.y, pl_state.Instance.GLOBAL_CAM_REF.transform.position.z));
     }
 
     private IEnumerator CheckPlayerDis()
     {
         yield return new WaitForSeconds(checkInterval);
 
-        float dist = Vector3.Distance(transform.position, targetObj.position);
+        float dist = Vector3.Distance(transform.position, pl_state.Instance.GLOBAL_CAM_REF.transform.position);
 
         if (dist > engageDistance)
         {
