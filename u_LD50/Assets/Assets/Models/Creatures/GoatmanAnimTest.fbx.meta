@@ -1,19 +1,15 @@
 fileFormatVersion: 2
-guid: b5706a97af58e2a4686842a36e5ca401
+guid: 73508fda0741319498b2e99b28f3cb37
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: ac84fd90d0ad7224e8f88d33d900a5c9, type: 2}
+      74: 4723146814002874508
+    second: Armature|Attack
   - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: GunTex
-    second: {fileID: 2800000, guid: bcc3842858f3e6246bd97cf5e1e98894, type: 3}
+      74: 8349542763059015795
+    second: Armature|Walk
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
