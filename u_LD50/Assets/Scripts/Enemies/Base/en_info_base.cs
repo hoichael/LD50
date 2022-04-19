@@ -8,6 +8,7 @@ public class en_info_base : MonoBehaviour
 
     public Transform trans;
     public Rigidbody rb;
+    public Animator anim;
 
     [Header("Settings")]
 
