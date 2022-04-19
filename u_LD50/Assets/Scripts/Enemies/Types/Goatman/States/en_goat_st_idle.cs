@@ -8,7 +8,10 @@ public class en_goat_st_idle : en_state_base
     private float checkInterval;
 
     [SerializeField]
-    private float triggerDistance;
+    private float triggerDistEngage;
+
+    [SerializeField]
+    private float triggerDistAttack;
 
     private Transform targetObj;
 
@@ -28,7 +31,13 @@ public class en_goat_st_idle : en_state_base
     {
         yield return new WaitForSeconds(checkInterval);
 
-        if (Vector3.Distance(info.trans.position, pl_state.Instance.GLOBAL_PL_TRANS_REF.position) < triggerDistance)
+        float dist = Vector3.Distance(info.trans.position, targetObj.position);
+
+        if (dist < triggerDistAttack)
+        {
+            ChangeState("attack");
+        }
+        else if(dist < triggerDistEngage)
         {
             ChangeState("jump");
         }

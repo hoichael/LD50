@@ -4376,6 +4376,7 @@ GameObject:
   - component: {fileID: 816305638}
   - component: {fileID: 816305641}
   - component: {fileID: 816305640}
+  - component: {fileID: 816305642}
   m_Layer: 11
   m_Name: States
   m_TagString: Untagged
@@ -4428,6 +4429,7 @@ MonoBehaviour:
   - {fileID: 816305638}
   - {fileID: 816305641}
   - {fileID: 816305640}
+  - {fileID: 816305642}
   initialState: {fileID: 816305638}
 --- !u!114 &816305640
 MonoBehaviour:
@@ -4469,7 +4471,25 @@ MonoBehaviour:
   brain: {fileID: 816305639}
   info: {fileID: 139036721}
   checkInterval: 0.3
-  triggerDistance: 15
+  triggerDistEngage: 18
+  triggerDistAttack: 4.2
+--- !u!114 &816305642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816305636}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b578a1946631f93438efdb8598feec64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateID: attack
+  brain: {fileID: 816305639}
+  info: {fileID: 139036721}
+  duration: 1.2
+  turnSpeed: 3
 --- !u!1 &819371107
 GameObject:
   m_ObjectHideFlags: 0
