@@ -672,6 +672,7 @@ GameObject:
   - component: {fileID: 139036720}
   - component: {fileID: 139036719}
   - component: {fileID: 139036721}
+  - component: {fileID: 139036722}
   m_Layer: 11
   m_Name: en_goatman
   m_TagString: Enemy
@@ -692,6 +693,7 @@ Transform:
   m_Children:
   - {fileID: 634105209}
   - {fileID: 816305637}
+  - {fileID: 1672340532}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -722,7 +724,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &139036721
 MonoBehaviour:
@@ -741,6 +743,19 @@ MonoBehaviour:
   anim: {fileID: 514711217}
   knockbackMult: 0
   grounded: 0
+--- !u!114 &139036722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139036717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b842b57a88a90f24c9932348ab02b57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 139036720}
 --- !u!1 &147839438
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,12 +4404,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816305636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8a2e3b6837b33847ad21257b7bbee90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateID: 
+  stateID: init
   brain: {fileID: 816305639}
   info: {fileID: 139036721}
 --- !u!114 &816305639
@@ -4421,17 +4436,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816305636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 491ad4ba41757d244841c26326ee8b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateID: 
+  stateID: jump
   brain: {fileID: 816305639}
   info: {fileID: 139036721}
-  jumpForceX: 0
-  jumpForceY: 0
-  turnSpeed: 0
+  jumpForceX: 5
+  jumpForceY: 12
+  turnSpeed: 6
+  turnToPlayer: 0
+  groundCheckTrans: {fileID: 1672340532}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckRadius: 0.2
 --- !u!114 &816305641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4439,16 +4460,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816305636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 759c0a86c8eebcc4c85313b2f2a12fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateID: 
+  stateID: idle
   brain: {fileID: 816305639}
   info: {fileID: 139036721}
-  checkInterval: 0
-  triggerDistance: 0
+  checkInterval: 0.3
+  triggerDistance: 15
 --- !u!1 &819371107
 GameObject:
   m_ObjectHideFlags: 0
@@ -8501,6 +8522,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 230429696}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1672340531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1672340532}
+  m_Layer: 11
+  m_Name: Groundcheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1672340532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672340531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 139036718}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682192800
 GameObject:

@@ -28,7 +28,7 @@ public class en_goat_st_idle : en_state_base
     {
         yield return new WaitForSeconds(checkInterval);
 
-        if(Vector3.Distance(info.trans.position, targetObj.position) < triggerDistance)
+        if (Vector3.Distance(info.trans.position, pl_state.Instance.GLOBAL_PL_TRANS_REF.position) < triggerDistance)
         {
             ChangeState("jump");
         }

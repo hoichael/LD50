@@ -9,12 +9,22 @@ public class en_goat_st_jump : en_state_base
 
     [SerializeField]
     private float turnSpeed;
+    [SerializeField]
     private bool turnToPlayer;
     private Transform targetTrans;
     private Vector3 dirToTarget;
     private Quaternion targetRot;
 
     private bool checkForGround;
+
+    [SerializeField]
+    private Transform groundCheckTrans;
+
+    [SerializeField]
+    private LayerMask groundLayerMask;
+
+    [SerializeField]
+    private float groundCheckRadius;
 
     private void Start()
     {
@@ -33,7 +43,7 @@ public class en_goat_st_jump : en_state_base
     private void Update()
     {
 
-        if (!turnToPlayer)
+        if (turnToPlayer)
         {
             TurnToPlayer();
         }
@@ -58,21 +68,32 @@ public class en_goat_st_jump : en_state_base
     {
         info.rb.AddForce(info.trans.forward * jumpForceX, ForceMode.Impulse);
         info.rb.AddForce(info.trans.up * jumpForceY, ForceMode.Impulse);
+
+        StartCoroutine(GroundCheckTimer());
     }
     private void InitLand()
     {
-
+        info.anim.SetBool("jump_up", false);
+        info.anim.SetBool("jump_land", true);
+        StartCoroutine(LandTimer());
     }
 
     private void GroundCheck()
     {
-
+        if (Physics.CheckSphere(
+            groundCheckTrans.position,
+            groundCheckRadius,
+            groundLayerMask))
+        {
+            checkForGround = false;
+            InitLand();
+        }
     }
 
 
     private IEnumerator JumpUpTimer()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.7f);
 
         info.anim.SetBool("jump_charge", false);
         info.anim.SetBool("jump_up", true);
@@ -81,7 +102,18 @@ public class en_goat_st_jump : en_state_base
         InitJump();
     }
 
+    private IEnumerator GroundCheckTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
+        checkForGround = true;
+    }
 
+    private IEnumerator LandTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        ChangeState("idle");
+    }
 
     protected override void OnDisable()
     {
