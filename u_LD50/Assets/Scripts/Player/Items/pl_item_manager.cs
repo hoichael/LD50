@@ -177,7 +177,7 @@ public class pl_item_manager : MonoBehaviour
     private void HandleCharge()
     {
         currentCharge += chargeStep;
-        currentItemTrans.position = itemHolder.position - ((currentItemTrans.forward * (currentCharge / 1600)) * 1);
+        currentItemTrans.position = itemHolder.position - ((currentItemTrans.forward * (currentCharge / 15)) * 1);
     }
 
     private void HandleDrop()
@@ -191,7 +191,8 @@ public class pl_item_manager : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         currentItemInfo.rb = rb;
 
-        rb.AddForce(camTrans.forward * (baseCharge + currentCharge), ForceMode.Force);
+        rb.AddForce(camTrans.forward * (baseCharge + currentCharge * 3.4f), ForceMode.Impulse);
+        rb.AddTorque(camTrans.right * ((currentCharge - 0.2f) * 1.4f), ForceMode.Impulse);
         currentCharge = 0;
 
         currentItemInfo.col.enabled = true;
