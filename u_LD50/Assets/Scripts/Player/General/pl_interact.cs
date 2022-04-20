@@ -47,7 +47,7 @@ public class pl_interact : MonoBehaviour
     private bool CheckForInteractable()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camHolderTrans.position, camHolderTrans.forward, out hit, 3.5f, ~playerLayerMask))
+        if (Physics.Raycast(camHolderTrans.position, camHolderTrans.forward, out hit, 4.8f, ~playerLayerMask))
         {
             if(hit.transform.gameObject.CompareTag("Interactable"))
             {
@@ -87,7 +87,7 @@ public class pl_interact : MonoBehaviour
     private int_base GetInteractable()
     {
         RaycastHit hit;
-        Physics.Raycast(camHolderTrans.position, camHolderTrans.forward, out hit, 3.5f, ~playerLayerMask);
+        Physics.Raycast(camHolderTrans.position, camHolderTrans.forward, out hit, 4.8f, ~playerLayerMask);
         if (hit.transform == null) return null;
 
         if(hit.transform.gameObject.CompareTag("Interactable"))
