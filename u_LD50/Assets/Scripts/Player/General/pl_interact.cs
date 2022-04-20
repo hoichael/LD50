@@ -27,6 +27,9 @@ public class pl_interact : MonoBehaviour
     private float retDefaultSize;
     private float currentRetLerpTarget;
 
+    [SerializeField]
+    private FMODUnity.EventReference fEventPickup;
+
     private void Start()
     {
         retDefaultSize = retCurrentSize = currentRetLerpTarget = retTrans.sizeDelta.x;
@@ -69,6 +72,7 @@ public class pl_interact : MonoBehaviour
         if(interactInfo.isItem)
         {
             itemManager.InitPickup(interactInfo.gameObject.GetComponent<int_item>());
+            FMODUnity.RuntimeManager.PlayOneShot(fEventPickup);
         }
         else if(interactInfo.takesItem)
         {
