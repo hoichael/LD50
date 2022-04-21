@@ -81,6 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Prop
 --- !u!114 &3587928087102873226
 MonoBehaviour:
@@ -100,7 +102,7 @@ MonoBehaviour:
   type: Stone
   value: 4
   dmgInfo:
-    dmgAmount: 3
+    dmgAmount: 30
     type: Melee
     force: 4
   damageCol: {fileID: 492558558871524382}

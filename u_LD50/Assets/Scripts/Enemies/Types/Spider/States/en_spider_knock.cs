@@ -2,17 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class en_spider_knock : MonoBehaviour
+public class en_spider_knock : en_state_base
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool checkForGround;
+
+    [SerializeField]
+    private Transform groundCheckTrans;
+
+    [SerializeField]
+    private LayerMask groundLayerMask;
+
+    [SerializeField]
+    private float groundCheckRadius;
+
+    protected override void OnEnable()
     {
-        
+        base.OnEnable();
+        info.anim.SetBool("jump", true);
+        StartCoroutine(GroundCheckTimer());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (checkForGround) GroundCheck();
+    }
+
+    private void GroundCheck()
+    {
+        if (Physics.CheckSphere(
+            groundCheckTrans.position,
+            groundCheckRadius,
+            groundLayerMask))
+        {
+            checkForGround = false;
+            ChangeState("chase");
+        }
+    }
+
+    private IEnumerator GroundCheckTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
+        checkForGround = true;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        info.anim.SetBool("jump", false);
     }
 }

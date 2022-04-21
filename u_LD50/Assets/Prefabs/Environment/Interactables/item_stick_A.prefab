@@ -71,7 +71,7 @@ MonoBehaviour:
   type: Stick
   value: 2
   dmgInfo:
-    dmgAmount: 4
+    dmgAmount: 32
     type: Melee
     force: 6
   damageCol: {fileID: 4545165026878630876}

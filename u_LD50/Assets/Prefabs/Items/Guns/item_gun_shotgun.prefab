@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: gun_shotgun
   rb: {fileID: 3839436924687721846}
-  col: {fileID: 3839436923988283866}
+  col: {fileID: 3293446475994636556}
   type: Shotgun
   value: 5
   shellPosList:
@@ -1250,7 +1250,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   dmgInfo:
-    dmgAmount: 1
+    dmgAmount: 20
     type: Hitscan
     force: 16
     origin: {x: 0, y: 0, z: 0}

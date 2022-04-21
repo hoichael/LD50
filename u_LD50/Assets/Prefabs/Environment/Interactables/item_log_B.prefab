@@ -235,7 +235,7 @@ MonoBehaviour:
   type: Log
   value: 2
   dmgInfo:
-    dmgAmount: 11
+    dmgAmount: 42
     type: Melee
     force: 16
   damageCol: {fileID: 8171005140750893421}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class en_spider_attack : en_state_base
 {
     [SerializeField]
-    private Collider col;
+    private CapsuleCollider col;
 
     [SerializeField]
     private dmg_base dmgInfo;
@@ -20,16 +20,25 @@ public class en_spider_attack : en_state_base
     [SerializeField]
     private Transform modelTrans;
 
+    [SerializeField]
+    private Vector3 colOffset;
+
+    [SerializeField]
+    private Vector3 colDefaultPos;
+
     private void Start()
     {
         plDamage = pl_state.Instance.GLOBAL_PL_TRANS_REF.GetComponentInChildren<pl_health_damage>();
+        colDefaultPos = col.center;
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
         info.rb.isKinematic = true;
-        col.isTrigger = true;
+        //   col.isTrigger = true;
+
+        col.center = colOffset;
 
         info.trans.SetParent(pl_state.Instance.GLOBAL_CAM_REF.transform);
         /*
@@ -63,8 +72,10 @@ public class en_spider_attack : en_state_base
     protected override void OnDisable()
     {
         base.OnDisable();
+        info.trans.SetParent(null);
         info.rb.isKinematic = false;
-        col.isTrigger = false;
+        col.center = colDefaultPos;
+        //   col.isTrigger = false;
         modelTrans.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
         info.anim.SetBool("attack", true);
