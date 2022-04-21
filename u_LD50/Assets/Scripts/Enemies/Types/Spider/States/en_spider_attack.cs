@@ -66,13 +66,14 @@ public class en_spider_attack : en_state_base
 
     private void DealDamage()
     {
-    //    plDamage.HandleDamage(dmgInfo);
+        plDamage.HandleDamage(dmgInfo);
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        info.trans.SetParent(null);
+            info.trans.SetParent(null);
+     //   info.trans.parent = null;
         info.rb.isKinematic = false;
         col.center = colDefaultPos;
         //   col.isTrigger = false;

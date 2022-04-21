@@ -100,6 +100,7 @@ MonoBehaviour:
   hpCurrent: 0
   brain: {fileID: 281362386745137869}
   info: {fileID: 281362386376746453}
+  states: {fileID: 281362386745137871}
 --- !u!114 &1415355737312790801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 281362386376746459}
+  rbRagRoot: {fileID: 281362386376746459}
 --- !u!1 &281362386745137871
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +169,7 @@ MonoBehaviour:
   - {fileID: 281362386745137906}
   - {fileID: 281362386745137905}
   - {fileID: 4403335884513178316}
+  currentState: {fileID: 0}
   initialState: {fileID: 281362386745137907}
 --- !u!114 &281362386745137906
 MonoBehaviour:
@@ -185,7 +188,7 @@ MonoBehaviour:
   info: {fileID: 281362386376746453}
   col: {fileID: 281362386376746458}
   dmgInfo:
-    dmgAmount: 0
+    dmgAmount: 40
     type: 
     force: 0
   dmgInterval: 0.3
@@ -226,7 +229,7 @@ MonoBehaviour:
   info: {fileID: 281362386376746453}
   turnSpeed: 5
   moveSpeed: 3.5
-  jumpTriggerDist: 8
+  jumpTriggerDist: 11
 --- !u!114 &281362386745137905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,16 +245,16 @@ MonoBehaviour:
   stateID: jump
   brain: {fileID: 281362386745137869}
   info: {fileID: 281362386376746453}
-  jumpForceX: 9
-  jumpForceY: 12
+  jumpForceX: 10
+  jumpForceY: 16
   turnSpeed: 0
   groundCheckTrans: {fileID: 281362386376746452}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
   groundCheckRadius: 0.6
-  attackTriggerDist: 1.6
-  maxAttackAngle: 74
+  attackTriggerDist: 1.8
+  maxAttackAngle: 82
 --- !u!114 &4403335884513178316
 MonoBehaviour:
   m_ObjectHideFlags: 0
