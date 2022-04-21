@@ -82,6 +82,7 @@ MonoBehaviour:
   trans: {fileID: 281362386376746452}
   rb: {fileID: 281362386376746459}
   anim: {fileID: 281362386924162526}
+  col: {fileID: 281362386376746458}
   knockbackMult: 0
   grounded: 0
 --- !u!114 &281362386376746456
@@ -227,9 +228,9 @@ MonoBehaviour:
   stateID: chase
   brain: {fileID: 281362386745137869}
   info: {fileID: 281362386376746453}
-  turnSpeed: 5
-  moveSpeed: 3.5
-  jumpTriggerDist: 11
+  turnSpeed: 6.8
+  moveSpeed: 5
+  jumpTriggerDist: 12
 --- !u!114 &281362386745137905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,8 +246,8 @@ MonoBehaviour:
   stateID: jump
   brain: {fileID: 281362386745137869}
   info: {fileID: 281362386376746453}
-  jumpForceX: 10
-  jumpForceY: 16
+  jumpForceX: 9.5
+  jumpForceY: 17.2
   turnSpeed: 0
   groundCheckTrans: {fileID: 281362386376746452}
   groundLayerMask:

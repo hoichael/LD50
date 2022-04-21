@@ -27,12 +27,12 @@ public class en_spider_chase : en_state_base
         base.OnEnable();
 
         info.anim.SetBool("walk", true);
+        StartCoroutine(PlayerDistRoutine());
     }
 
     private void Update()
     {
         HandleRotation();
-        CheckPlayerDist();
 
         info.rb.velocity = new Vector3(info.trans.forward.x * moveSpeed, info.rb.velocity.y, info.trans.forward.z * moveSpeed);
     }
@@ -47,18 +47,28 @@ public class en_spider_chase : en_state_base
         info.trans.rotation = Quaternion.Slerp(info.trans.rotation, targetRot, turnSpeed * Time.deltaTime);
     }
 
+    private IEnumerator PlayerDistRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CheckPlayerDist();
+    }
+
     private void CheckPlayerDist()
     {
         if (Vector3.Distance(info.trans.position, targetTrans.position) < jumpTriggerDist)
         {
             ChangeState("jump");
         }
+        else
+        {
+            StartCoroutine(PlayerDistRoutine());
+        }
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-
+        StopAllCoroutines();
         info.anim.SetBool("walk", false);
     }
 }

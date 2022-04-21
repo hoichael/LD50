@@ -38,6 +38,10 @@ public class en_spider_health : en_health_base
         */
         states.SetActive(false);
 
+        info.trans.SetParent(null);
+        info.trans.GetComponent<CapsuleCollider>().center = new Vector3(0, 0.5f, 0);
+
+
         info.rb.freezeRotation = false;
         info.rb.AddTorque(new Vector3(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1)) * Random.Range(30, 40), ForceMode.Impulse);
 
