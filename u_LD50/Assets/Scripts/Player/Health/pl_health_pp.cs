@@ -15,6 +15,7 @@ public class pl_health_pp : MonoBehaviour
     private Vignette ppVignette;
     private Grain ppGrain;
     private ChromaticAberration ppChroma;
+    private AutoExposure ppAutoEx;
 
     [SerializeField]
     private float grainMax;
@@ -31,11 +32,27 @@ public class pl_health_pp : MonoBehaviour
 
     private float currentHealthPercentage;
 
+    [SerializeField]
+    private Rigidbody rb;
+
+    [SerializeField]
+    private pl_input input;
+
+    [SerializeField]
+    private float deathAnimSpeed;
+
+    private bool dead;
+
+    private float currentDeathAnimProgress;
+
     private void Start()
     {
         ppProfile.TryGetSettings(out ppVignette);
         ppProfile.TryGetSettings(out ppGrain);
         ppProfile.TryGetSettings(out ppChroma);
+        ppProfile.TryGetSettings(out ppAutoEx);
+
+        ResetPostProcessing();
     }
 
     private void Update()
@@ -46,14 +63,30 @@ public class pl_health_pp : MonoBehaviour
         //    ppVignette.intensity.value += 0.2f;
         //    ppVignette.color.value = new Color(0, 255, 0);
         }
+
+        if(dead)
+        {
+            UpdatePostProcessing();
+        }
     }
 
     public void HealthChange()
     {
+        if (dead) return;
+
         if (pl_state.Instance.health < pl_settings.Instance.maxHealth / ppTriggerHpDivider)
         {
             currentHealthPercentage = pl_state.Instance.health / (pl_settings.Instance.maxHealth / ppTriggerHpDivider);
             UpdatePostProcessing();
+
+            if (pl_state.Instance.health <= 0)
+            {
+                // this should definitely not be happening here, but thats ok.
+                rb.isKinematic = true;
+                input.enabled = false;
+                ppAutoEx.active = true;
+                dead = true;
+            }
         }
         else
         {
@@ -80,11 +113,29 @@ public class pl_health_pp : MonoBehaviour
         ppChroma.intensity.value = chromaMax * (1 - currentHealthPercentage);
         if (ppChroma.intensity.value > grainMax) ppChroma.intensity.value = chromaMax;
 
+
+        if (dead)
+        {
+            currentDeathAnimProgress = Mathf.MoveTowards(currentDeathAnimProgress, 1, deathAnimSpeed * Time.deltaTime);
+
+            currentHealthPercentage = currentDeathAnimProgress;
+
+            float luminenceLerp = Mathf.Lerp(
+                0,
+                -9,
+                currentDeathAnimProgress
+                );
+
+            ppAutoEx.minLuminance.value = ppAutoEx.maxLuminance.value = luminenceLerp;
+        }
+
     }
 
     private void ResetPostProcessing()
     {
         ppVignette.intensity.value = ppGrain.intensity.value = ppChroma.intensity.value = 0;
+        ppAutoEx.minLuminance.value = ppAutoEx.maxLuminance.value = 0;
+        ppAutoEx.active = false;
     }
 
     private void OnDisable()
