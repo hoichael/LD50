@@ -2,17 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class en_spider_attack : MonoBehaviour
+public class en_spider_attack : en_state_base
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Collider col;
+
+    [SerializeField]
+    private dmg_base dmgInfo;
+
+    [SerializeField]
+    private float dmgInterval;
+
+    private float dmgTimer;
+
+    private pl_health_damage plDamage;
+
+    private void Start()
     {
-        
+        plDamage = pl_state.Instance.GLOBAL_PL_TRANS_REF.GetComponentInChildren<pl_health_damage>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnEnable()
     {
-        
+        base.OnEnable();
+        info.rb.isKinematic = true;
+        col.isTrigger = true;
+
+        info.trans.SetParent(pl_state.Instance.GLOBAL_CAM_REF.transform);
+        info.trans.localPosition = new Vector3(0, -0.3f, 0) + pl_state.Instance.GLOBAL_CAM_REF.transform.forward * 0.9f;
+        info.trans.localRotation = Quaternion.Euler(new Vector3(60, 0, 0));
+
+        info.anim.SetBool("attacking", true);
+    }
+
+    private void Update()
+    {
+        dmgTimer += Time.deltaTime;
+        if(dmgTimer > dmgInterval)
+        {
+            dmgTimer = 0;
+            DealDamage();
+        }
+    }
+
+    private void DealDamage()
+    {
+        plDamage.HandleDamage(dmgInfo);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        info.rb.isKinematic = false;
+        col.isTrigger = false;
+
+        info.anim.SetBool("attacking", true);
     }
 }

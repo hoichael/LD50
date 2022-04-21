@@ -18,4 +18,6 @@ public class pl_state : ut_singleton<pl_state>
     public Camera GLOBAL_CAM_REF;
 
     public Transform GLOBAL_PL_TRANS_REF;
+
+    public bool spiderCanLock;
 }
