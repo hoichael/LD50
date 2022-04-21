@@ -3566,7 +3566,8 @@ MonoBehaviour:
     dmgAmount: 0
     type: 
     force: 0
-  dmgInterval: 0
+  dmgInterval: 0.3
+  modelTrans: {fileID: 1626433313}
 --- !u!114 &573585441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3620,12 +3621,13 @@ MonoBehaviour:
   jumpForceX: 5
   jumpForceY: 7
   turnSpeed: 0
-  turnToPlayer: 0
   groundCheckTrans: {fileID: 1007535878}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
   groundCheckRadius: 0.4
+  attackTriggerDist: 1
+  maxAttackAngle: 68
 --- !u!1 &576241193
 GameObject:
   m_ObjectHideFlags: 0

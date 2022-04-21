@@ -9,11 +9,8 @@ public class en_spider_jump : en_state_base
 
     [SerializeField]
     private float turnSpeed;
-    [SerializeField]
-    private bool turnToPlayer;
+
     private Transform targetTrans;
-    private Vector3 dirToTarget;
-    private Quaternion targetRot;
 
     private bool checkForGround;
 
@@ -26,16 +23,24 @@ public class en_spider_jump : en_state_base
     [SerializeField]
     private float groundCheckRadius;
 
+    [SerializeField]
+    private float attackTriggerDist;
+
+    private bool checkForAttack;
+
+    [SerializeField]
+    private float maxAttackAngle;
+
     private void Start()
     {
-        targetTrans = pl_state.Instance.GLOBAL_PL_TRANS_REF;
+        targetTrans = pl_state.Instance.GLOBAL_CAM_REF.transform;
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        turnToPlayer = true;
+        checkForAttack = true;
         info.anim.SetBool("jump", true);
         InitJump();
      //   StartCoroutine(JumpUpTimer());
@@ -43,20 +48,27 @@ public class en_spider_jump : en_state_base
 
     private void Update()
     {
-        if (checkForGround) GroundCheck();
+        if (checkForGround)
+        {
+            GroundCheck();
+
+            if(checkForAttack) CheckForPlayer();
+        }
     }
 
-    /*
-    private void TurnToPlayer()
+    private void CheckForPlayer()
     {
-        dirToTarget = (
-            new Vector3(targetTrans.position.x, info.trans.position.y, targetTrans.position.z)
-            - info.trans.position).normalized;
+        if (Vector3.Distance(info.trans.position, targetTrans.position) < attackTriggerDist)
+        {
+            checkForAttack = false;
 
-        targetRot = Quaternion.LookRotation(dirToTarget);
-        info.trans.rotation = Quaternion.Slerp(info.trans.rotation, targetRot, turnSpeed * Time.deltaTime);
+            if (Vector3.Angle(targetTrans.forward, info.trans.position - targetTrans.position) < maxAttackAngle)
+            {
+                  ChangeState("attack");
+            }
+
+        }
     }
-    */
 
     private void InitJump()
     {
@@ -64,11 +76,6 @@ public class en_spider_jump : en_state_base
         info.rb.AddForce(info.trans.up * jumpForceY, ForceMode.Impulse);
 
         StartCoroutine(GroundCheckTimer());
-    }
-    private void InitLand()
-    {
-
-    //    StartCoroutine(LandTimer());
     }
 
     private void GroundCheck()
@@ -85,33 +92,11 @@ public class en_spider_jump : en_state_base
         }
     }
 
- /*
-    private IEnumerator JumpUpTimer()
-    {
-        yield return new WaitForSeconds(0.7f);
-
-        info.anim.SetBool("jump_charge", false);
-        info.anim.SetBool("jump_up", true);
-        turnToPlayer = false;
-
-        InitJump();
-    }
-    */
-
     private IEnumerator GroundCheckTimer()
     {
         yield return new WaitForSeconds(0.2f);
         checkForGround = true;
     }
-
-    /*
-    private IEnumerator LandTimer()
-  {
-      yield return new WaitForSeconds(0.2f);
-
-      ChangeState("idle");
-  }
-        */
 
     protected override void OnDisable()
     {

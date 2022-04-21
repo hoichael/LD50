@@ -17,6 +17,9 @@ public class en_spider_attack : en_state_base
 
     private pl_health_damage plDamage;
 
+    [SerializeField]
+    private Transform modelTrans;
+
     private void Start()
     {
         plDamage = pl_state.Instance.GLOBAL_PL_TRANS_REF.GetComponentInChildren<pl_health_damage>();
@@ -29,10 +32,17 @@ public class en_spider_attack : en_state_base
         col.isTrigger = true;
 
         info.trans.SetParent(pl_state.Instance.GLOBAL_CAM_REF.transform);
-        info.trans.localPosition = new Vector3(0, -0.3f, 0) + pl_state.Instance.GLOBAL_CAM_REF.transform.forward * 0.9f;
-        info.trans.localRotation = Quaternion.Euler(new Vector3(60, 0, 0));
+        /*
+        info.trans.localPosition = new Vector3(0, -0.4f, 0) + pl_state.Instance.GLOBAL_CAM_REF.transform.forward * -0.15f;
+        info.trans.localRotation = Quaternion.Euler(new Vector3(82, 0, 0))
+        */
 
-        info.anim.SetBool("attacking", true);
+        info.trans.localPosition = new Vector3(0, -0.1f, 0) + pl_state.Instance.GLOBAL_CAM_REF.transform.forward * -0.25f;
+        info.trans.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+
+        modelTrans.localRotation = Quaternion.Euler(Vector3.zero);
+
+        info.anim.SetBool("attack", true);
     }
 
     private void Update()
@@ -47,7 +57,7 @@ public class en_spider_attack : en_state_base
 
     private void DealDamage()
     {
-        plDamage.HandleDamage(dmgInfo);
+    //    plDamage.HandleDamage(dmgInfo);
     }
 
     protected override void OnDisable()
@@ -55,7 +65,8 @@ public class en_spider_attack : en_state_base
         base.OnDisable();
         info.rb.isKinematic = false;
         col.isTrigger = false;
+        modelTrans.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
-        info.anim.SetBool("attacking", true);
+        info.anim.SetBool("attack", true);
     }
 }
