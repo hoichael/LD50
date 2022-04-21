@@ -24,6 +24,9 @@ public class pl_groundcheck : MonoBehaviour
 
     private bool groundedLastFrame;
 
+    [SerializeField]
+    private FMODUnity.EventReference fEventFootstep;
+
     private void Update()
     {
         pl_state.Instance.grounded = GetGroundedBool();
@@ -31,6 +34,7 @@ public class pl_groundcheck : MonoBehaviour
         if(pl_state.Instance.grounded != groundedLastFrame)
         {
             CheckForFallDamage();
+
         }
 
         groundedLastFrame = pl_state.Instance.grounded;
@@ -38,24 +42,31 @@ public class pl_groundcheck : MonoBehaviour
 
     private void CheckForFallDamage()
     {
+        float vel = rb.velocity.y;
     //    print(rb.velocity.y);
-        if(rb.velocity.y < -14.4f)
+        if(vel < -14.4f)
             {
-                if(rb.velocity.y < -17f)
+                if(vel < -17f)
                 {
-                    dmgInfo.dmgAmount =  Mathf.RoundToInt(rb.velocity.y * -fallDmgMultHigh);
+                    dmgInfo.dmgAmount =  Mathf.RoundToInt(vel * -fallDmgMultHigh);
                 }
-                else if(rb.velocity.y < -15.4f)
+                else if(vel < -15.4f)
                 {
-                    dmgInfo.dmgAmount = Mathf.RoundToInt(rb.velocity.y * -fallDmgAmountMid);
+                    dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgAmountMid);
                 }
                 else
                 {
-                    dmgInfo.dmgAmount = Mathf.RoundToInt(rb.velocity.y * -fallDmgMultLow);
+                    dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgMultLow);
                 }
 
                 healthDamage.HandleDamage(dmgInfo);
-            }
+        }
+
+        if (vel < -2.3f)
+        {
+            // play 1 footstep sound to illustrate impact
+            FMODUnity.RuntimeManager.PlayOneShot(fEventFootstep);
+        }
     }
     private bool GetGroundedBool()
     {

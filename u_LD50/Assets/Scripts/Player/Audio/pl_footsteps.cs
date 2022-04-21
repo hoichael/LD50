@@ -20,7 +20,7 @@ public class pl_footsteps : MonoBehaviour
     private FMOD.Studio.EventInstance sfxInstance;
     void Start()
     {
-        sfxInstance = FMODUnity.RuntimeManager.CreateInstance(fEventName);
+    //    sfxInstance = FMODUnity.RuntimeManager.CreateInstance(fEventName);
     //    StartCoroutine(Interval());
     }
 

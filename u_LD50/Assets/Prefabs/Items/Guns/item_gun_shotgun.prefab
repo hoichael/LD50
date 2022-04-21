@@ -1262,6 +1262,13 @@ MonoBehaviour:
   - {fileID: 2001138619213956046}
   - {fileID: 7365470670234945853}
   - {fileID: 6298105510627956058}
+  fEventName:
+    Guid:
+      Data1: 1342031874
+      Data2: 1294581968
+      Data3: -1693632596
+      Data4: -1247335343
+    Path: event:/Gunshot
 --- !u!1 &3839436924746657778
 GameObject:
   m_ObjectHideFlags: 0

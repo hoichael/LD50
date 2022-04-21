@@ -32,6 +32,9 @@ public class item_gun_shotgun : item_gun_base
 
     private float trailDuration;
 
+    [SerializeField]
+    private FMODUnity.EventReference fEventName;
+
     private void Start()
     {
         offsetRangeHalf = offsetRange * 0.5f;
@@ -41,6 +44,9 @@ public class item_gun_shotgun : item_gun_base
     protected override void Shoot()
     {
         base.Shoot();
+
+        // play shotgun sound
+        FMODUnity.RuntimeManager.PlayOneShot(fEventName);
 
         StartCoroutine(HandleTrailContainer());
        

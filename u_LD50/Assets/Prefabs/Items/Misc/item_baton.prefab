@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isItem: 1
   takesItem: 0
+  isMonolith: 0
   itemType: Prop
 --- !u!114 &7447639547097675326
 MonoBehaviour:
@@ -148,7 +149,7 @@ MonoBehaviour:
   type: Baton
   value: 3
   dmgInfo:
-    dmgAmount: 12
+    dmgAmount: 38
     type: Melee
     force: 14
   damageCol: {fileID: 5783851479817010346}
