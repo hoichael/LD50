@@ -10,6 +10,12 @@ public class nv_monolith : MonoBehaviour
     private int currentArtifactsCount;
     private int artifactsTargetCount;
 
+    [SerializeField]
+    private pl_health_damage plDmg;
+
+    [SerializeField]
+    private dmg_base dmgInfo;
+
     private void Awake()
     {
         artifactsTargetCount = socketInfoList.Count;
@@ -37,5 +43,6 @@ public class nv_monolith : MonoBehaviour
     private void InitTheEnd()
     {
         print("dun duuuuun");
+        plDmg.HandleDamage(dmgInfo);
     }
 }
