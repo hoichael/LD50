@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/sc_TERRAINTEST_0.unity
+    guid: 630bc1ee72bddcb42a785e1e0d8d84c6
   m_configObjects: {}

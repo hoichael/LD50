@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 3741859890443118841}
   - component: {fileID: 5646726972417421078}
   - component: {fileID: 5646726972417421075}
+  - component: {fileID: 2449411370005062790}
   m_Layer: 11
   m_Name: en_goatman_RAG
   m_TagString: Enemy
@@ -851,6 +852,7 @@ MonoBehaviour:
   trans: {fileID: 3741859890443118821}
   rb: {fileID: 3741859890443118843}
   anim: {fileID: 3741859890822430330}
+  col: {fileID: 0}
   knockbackMult: 0
   grounded: 0
 --- !u!114 &3741859890443118841
@@ -900,6 +902,36 @@ MonoBehaviour:
   hpCurrent: 0
   ragdoll: {fileID: 5646726972417421078}
   brain: {fileID: 3741859891393508652}
+--- !u!114 &2449411370005062790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741859890443118822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1415485455
+      Data2: 1315859610
+      Data3: -87210321
+      Data4: -653981752
+    Path: event:/Eating
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3741859891393508655
 GameObject:
   m_ObjectHideFlags: 0
