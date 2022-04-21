@@ -13,6 +13,26 @@ public class en_goat_st_attack : en_state_base
     private Vector3 dirToTarget;
     private Quaternion targetRot;
 
+    [SerializeField]
+    private dmg_base dmgInfo;
+
+    [SerializeField]
+    private Transform attackPosTrans;
+
+    [SerializeField]
+    private Vector3 attackColHalfExtents;
+
+    [SerializeField]
+    private LayerMask playerLayerMask;
+
+    [SerializeField]
+    private float dmgInterval;
+
+    [SerializeField]
+    private int attackAmount;
+
+    private int attackCounter;
+
     private void Start()
     {
         targetTrans = pl_state.Instance.GLOBAL_PL_TRANS_REF;
@@ -22,8 +42,12 @@ public class en_goat_st_attack : en_state_base
     {
         base.OnEnable();
 
+        attackCounter = 0;
+
         info.anim.SetBool("attack", true);
         StartCoroutine(HandleDuration());
+
+        StartCoroutine(DamageRoutine());
     }
 
     private void Update()
@@ -39,7 +63,37 @@ public class en_goat_st_attack : en_state_base
     protected override void OnDisable()
     {
         base.OnDisable();
+        StopAllCoroutines();
         info.anim.SetBool("attack", false);
+    }
+
+    private IEnumerator DamageRoutine()
+    {
+        yield return new WaitForSeconds(dmgInterval);
+
+        attackCounter++;
+
+        HandleHitbox();
+
+        if(attackCounter < attackAmount)
+        {
+            StartCoroutine(DamageRoutine());
+        }
+    }
+
+    private void HandleHitbox()
+    {
+        Collider[] hitColliders = Physics.OverlapBox(attackPosTrans.position, attackColHalfExtents, Quaternion.identity, playerLayerMask);
+        if (hitColliders.Length > 0)
+        {
+            for (int i = 0; i < hitColliders.Length; i++)
+            {
+                if (hitColliders[i].isTrigger == true)
+                {
+                    hitColliders[i].GetComponent<pl_health_damage>().HandleDamage(dmgInfo);
+                }
+            }
+        }
     }
 
     private IEnumerator HandleDuration()

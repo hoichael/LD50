@@ -23,17 +23,17 @@ public class en_goat_gravity : MonoBehaviour
     {
         if (rb.velocity.y != 0)
         {
-            rb.AddForce(new Vector3(0, baseGravity, 0), ForceMode.Acceleration);
+            rb.AddForce(new Vector3(0, baseGravity * 1.4f, 0), ForceMode.Acceleration);
 
-            rbRagRoot.AddForce(new Vector3(0, baseGravity, 0), ForceMode.Acceleration);
+            rbRagRoot.AddForce(new Vector3(0, baseGravity * 1.7f, 0), ForceMode.Acceleration);
 
             if (rb.velocity.y < 0)
             {
                 growingForce += pl_settings.Instance.growthFactor;
                 extraGravity = Mathf.Clamp(extraGravity * growingForce, 1f, 13f);
-                rb.AddForce(new Vector3(0, -extraGravity, 0), ForceMode.Acceleration);
+                rb.AddForce(new Vector3(0, -extraGravity * 1.4f, 0), ForceMode.Acceleration);
 
-                rbRagRoot.AddForce(new Vector3(0, -extraGravity, 0), ForceMode.Acceleration);
+                rbRagRoot.AddForce(new Vector3(0, -extraGravity * 1.7f, 0), ForceMode.Acceleration);
             }
         }
         else

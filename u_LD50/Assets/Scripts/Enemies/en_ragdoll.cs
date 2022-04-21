@@ -79,14 +79,14 @@ public class en_ragdoll : MonoBehaviour
             Destroy(ragDollJoints[i]);
         }
 
-        for (int i = 0; i < ragDollRBs.Length; i++)
+        for (int i = 1; i < ragDollRBs.Length; i++)
         {
         //    ragDollRBs[i].detectCollisions = false;
          //   ragDollRBs[i].isKinematic = true;
             Destroy(ragDollRBs[i]);
         }
 
-        for (int i = 0; i < ragDollCols.Length; i++)
+        for (int i = 1; i < ragDollCols.Length; i++)
         {
         //    ragDollCols[i].enabled = false;
             Destroy(ragDollCols[i]);

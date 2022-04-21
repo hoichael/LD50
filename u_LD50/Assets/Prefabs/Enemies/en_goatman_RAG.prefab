@@ -803,6 +803,7 @@ Transform:
   - {fileID: 3776119593938692696}
   - {fileID: 3741859891393508654}
   - {fileID: 3741859890067440895}
+  - {fileID: 2208475198680690686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -882,6 +883,7 @@ MonoBehaviour:
   col: {fileID: 3741859890443118820}
   brain: {fileID: 3741859891393508652}
   rbRagRoot: {fileID: 5646726972540366234}
+  grav: {fileID: 0}
 --- !u!114 &5646726972417421075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,6 +952,7 @@ MonoBehaviour:
   - {fileID: 3741859891393508642}
   - {fileID: 3741859891393508643}
   - {fileID: 3741859891393508641}
+  currentState: {fileID: 0}
   initialState: {fileID: 3741859891393508653}
 --- !u!114 &3741859891393508653
 MonoBehaviour:
@@ -983,7 +986,7 @@ MonoBehaviour:
   info: {fileID: 3741859890443118842}
   checkInterval: 0.3
   triggerDistEngage: 28
-  triggerDistAttack: 5.8
+  triggerDistAttack: 4.2
 --- !u!114 &3741859891393508643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,8 +1002,8 @@ MonoBehaviour:
   stateID: jump
   brain: {fileID: 3741859891393508652}
   info: {fileID: 3741859890443118842}
-  jumpForceX: 5
-  jumpForceY: 12
+  jumpForceX: 7.5
+  jumpForceY: 16.5
   turnSpeed: 6
   turnToPlayer: 0
   groundCheckTrans: {fileID: 3741859890067440895}
@@ -1025,6 +1028,17 @@ MonoBehaviour:
   info: {fileID: 3741859890443118842}
   duration: 1.2
   turnSpeed: 3
+  dmgInfo:
+    dmgAmount: 40
+    type: Melee
+    force: 0
+  attackPosTrans: {fileID: 2208475198680690686}
+  attackColHalfExtents: {x: 2, y: 2, z: 2}
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  dmgInterval: 0.25
+  attackAmount: 4
 --- !u!1 &3763553541184135060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1688,36 @@ CharacterJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &6256225016329791191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2208475198680690686}
+  m_Layer: 11
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2208475198680690686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256225016329791191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.47, z: 0.456}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3741859890443118821}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7638682503980594074
 GameObject:
   m_ObjectHideFlags: 0
