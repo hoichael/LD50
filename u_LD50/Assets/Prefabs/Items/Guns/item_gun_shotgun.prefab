@@ -1238,7 +1238,7 @@ MonoBehaviour:
   - {fileID: 6449366382157197772}
   - {fileID: 2124792641671453807}
   shellCapacity: 6
-  fireRate: 0.3
+  fireRate: 0.8
   currentPickupShells: []
   pickupLerpFactor: 8
   recoil: {fileID: 3839436924687721847}

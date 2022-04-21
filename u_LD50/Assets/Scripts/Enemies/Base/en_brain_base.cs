@@ -7,7 +7,7 @@ public class en_brain_base : MonoBehaviour
     [SerializeField]
     private List<en_state_base> states;
 
-    private en_state_base currentState;
+    public en_state_base currentState;
     private string currentStateID;
 
     [SerializeField]

@@ -12,14 +12,26 @@ public class en_ragdoll : MonoBehaviour
 
     private Collider[] ragDollCols;
     private Rigidbody[] ragDollRBs;
+    private CharacterJoint[] ragDollJoints;
 
     [SerializeField]
     private en_brain_base brain;
+
+    public Rigidbody rbRagRoot; // used to apply force in HandleDeath
+
+    [SerializeField]
+    private en_goat_gravity grav;
 
     private void Awake()
     {
         ragDollCols = GetComponentsInChildren<Collider>();
         ragDollRBs = GetComponentsInChildren<Rigidbody>();
+        ragDollJoints = GetComponentsInChildren<CharacterJoint>();
+    }
+
+    private void Update()
+    {
+     //   if (Input.GetKeyDown(KeyCode.Q)) ToggleRagdoll(true);
     }
 
     private void Start()
@@ -47,6 +59,41 @@ public class en_ragdoll : MonoBehaviour
         col.enabled = !state;
 
         brain.enabled = !state;
+
+        if (state == true)
+        {
+            StartCoroutine(RagdollLifetime());
+        }
+    }
+
+    private IEnumerator RagdollLifetime()
+    {
+        yield return new WaitForSeconds(7);
+
+        grav.enabled = false;
+
+        for (int i = 0; i < ragDollJoints.Length; i++)
+        {
+            //    ragDollRBs[i].detectCollisions = false;
+            //   ragDollRBs[i].isKinematic = true;
+            Destroy(ragDollJoints[i]);
+        }
+
+        for (int i = 0; i < ragDollRBs.Length; i++)
+        {
+        //    ragDollRBs[i].detectCollisions = false;
+         //   ragDollRBs[i].isKinematic = true;
+            Destroy(ragDollRBs[i]);
+        }
+
+        for (int i = 0; i < ragDollCols.Length; i++)
+        {
+        //    ragDollCols[i].enabled = false;
+            Destroy(ragDollCols[i]);
+        }
+
+
+        this.enabled = false;
     }
 
 }
