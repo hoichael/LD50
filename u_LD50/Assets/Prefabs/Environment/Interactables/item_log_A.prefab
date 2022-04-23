@@ -24,12 +24,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39898244874059762}
-  m_LocalRotation: {x: 0.06601266, y: 0, z: 0, w: 0.9978188}
+  m_LocalRotation: {x: 0.06601266, y: -0, z: -0, w: 0.9978188}
   m_LocalPosition: {x: 0.084, y: 0.118, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7482426814954070338}
-  m_RootOrder: 3
+  m_Father: {fileID: 5240279009802420277}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 7.57, y: 0, z: 0}
 --- !u!65 &39898244874059532
 BoxCollider:
@@ -44,7 +44,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.13853455, y: 0.45708007, z: 0.11010586}
   m_Center: {x: -0.0115737915, y: 0.19761935, z: 0.0070124967}
---- !u!1 &1020648873777342811
+--- !u!1 &1549226262865672876
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,42 +52,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3223119541987322950}
-  - component: {fileID: 5821431902099581908}
+  - component: {fileID: 5240279009802420277}
   m_Layer: 10
-  m_Name: DamageCol
+  m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3223119541987322950
+--- !u!4 &5240279009802420277
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020648873777342811}
+  m_GameObject: {fileID: 1549226262865672876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.084, y: 0.118, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8589884041538744784}
+  - {fileID: 39898244874059763}
   m_Father: {fileID: 7482426814954070338}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5821431902099581908
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020648873777342811}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.2, z: 0.6}
-  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &7482426813189924121
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,9 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7482426813189924118}
-  - {fileID: 3223119541987322950}
-  - {fileID: 8589884041538744784}
-  - {fileID: 39898244874059763}
+  - {fileID: 5240279009802420277}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,14 +173,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: log_A
   rb: {fileID: 7482426814954070339}
-  col: {fileID: 8589884041538744787}
+  col: {fileID: 1549226262865672876}
   type: Log
   value: 2
   dmgInfo:
     dmgAmount: 42
     type: Melee
     force: 15
-  damageCol: {fileID: 5821431902099581908}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 9
   animSpeedReset: 1.1
@@ -327,12 +312,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8589884041538744785}
-  m_LocalRotation: {x: -0.063225895, y: 0, z: 0, w: 0.99799925}
+  m_LocalRotation: {x: -0.063225895, y: -0, z: -0, w: 0.99799925}
   m_LocalPosition: {x: 0.084, y: 0.118, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7482426814954070338}
-  m_RootOrder: 2
+  m_Father: {fileID: 5240279009802420277}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -7.25, y: 0, z: 0}
 --- !u!65 &8589884041538744787
 BoxCollider:

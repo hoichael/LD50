@@ -145,14 +145,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: baton
   rb: {fileID: 7447639547097675325}
-  col: {fileID: 8626883922202928813}
+  col: {fileID: 8626883922202928815}
   type: Baton
   value: 3
   dmgInfo:
     dmgAmount: 38
     type: Melee
     force: 14
-  damageCol: {fileID: 5783851479817010346}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 13.5
   animSpeedReset: 2

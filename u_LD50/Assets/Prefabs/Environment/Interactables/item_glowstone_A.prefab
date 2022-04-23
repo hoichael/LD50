@@ -63,8 +63,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3587928085608209116}
-  - {fileID: 8837989066753315724}
   - {fileID: 5884377423882201083}
+  - {fileID: 8037097377936047853}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: glowstone_A
   rb: {fileID: 3587928087102873225}
-  col: {fileID: 3587928086145284179}
+  col: {fileID: 7192369400590387374}
   type: Stone
   value: 4
   dmgInfo:
@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 3909222233518333883}
   - component: {fileID: 139474688897470494}
   - component: {fileID: 2741412566968607956}
-  - component: {fileID: 3587928086145284179}
   m_Layer: 10
   m_Name: Stone
   m_TagString: Interactable
@@ -286,20 +285,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3587928086145284179
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4398759287944054017}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 0f5eb5d128bce7840a2ef29c5924439c, type: 3}
 --- !u!1 &5884377423882201082
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +314,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3587928087102873224}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &5884377423882201084
 Light:
@@ -393,7 +378,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &6356295002603034257
+--- !u!1 &7192369400590387374
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -401,39 +386,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8837989066753315724}
-  - component: {fileID: 492558558871524382}
+  - component: {fileID: 8037097377936047853}
+  - component: {fileID: 6189922135847847937}
   m_Layer: 10
-  m_Name: DamageCol
-  m_TagString: Untagged
+  m_Name: Collision
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8837989066753315724
+--- !u!4 &8037097377936047853
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6356295002603034257}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7192369400590387374}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8.137752, y: 8.137752, z: 7.6167135}
   m_Children: []
   m_Father: {fileID: 3587928087102873224}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &492558558871524382
-BoxCollider:
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!64 &6189922135847847937
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6356295002603034257}
+  m_GameObject: {fileID: 7192369400590387374}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75, z: 0.75}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 0f5eb5d128bce7840a2ef29c5924439c, type: 3}

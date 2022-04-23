@@ -82,7 +82,7 @@ public class pl_item_manager : MonoBehaviour
 
         Destroy(currentItemInfo.rb);
 
-        currentItemInfo.col.enabled = false;
+        currentItemInfo.col.SetActive(false);    //    currentItemInfo.col.enabled = false;
 
         currentItemObj.tag = "Item";
         currentItemInfo.col.tag = "Item";
@@ -195,7 +195,7 @@ public class pl_item_manager : MonoBehaviour
         rb.AddTorque(camTrans.right * ((currentCharge - 0.2f) * 1.4f), ForceMode.Impulse);
         currentCharge = 0;
 
-        currentItemInfo.col.enabled = true;
+        currentItemInfo.col.SetActive(true);    //   currentItemInfo.col.enabled = true;
         currentItemObj.tag = "Interactable";
         currentItemInfo.col.tag = "Interactable";
 
@@ -211,7 +211,7 @@ public class pl_item_manager : MonoBehaviour
 
         currentCharge = 0;
 
-        currentItemInfo.col.enabled = true;
+        currentItemInfo.col.SetActive(true);    //   currentItemInfo.col.enabled = true;
         currentItemObj.tag = "Interactable";
         currentItemInfo.col.tag = "Interactable";
 

@@ -365,6 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Battery
 --- !u!114 &7529498081672360934
 MonoBehaviour:
@@ -380,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: battery
   rb: {fileID: 7529498081672360933}
-  col: {fileID: 182366585795403455}
+  col: {fileID: 6004101375736575555}
   type: Battery
   value: 3
   totalUses: 100

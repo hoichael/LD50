@@ -92,7 +92,7 @@ public class nv_monosocket : MonoBehaviour, I_TakeItem
 
         if (checkForItemTaken)
         {
-            if(currentArtifactInfo.col.enabled == false)
+            if(currentArtifactInfo.col.activeInHierarchy == false) // currentItemInfo.col.enabled
             {
                 checkForItemTaken = false;
                 currentArtifactInfo = null;
@@ -117,7 +117,7 @@ public class nv_monosocket : MonoBehaviour, I_TakeItem
                
         if(currentAnimProgress == 1)
         {
-            currentArtifactInfo.col.enabled = true;
+            currentArtifactInfo.col.SetActive(true);  //   currentArtifactInfo.col.enabled = true;
             checkForItemTaken = true;
             Rigidbody rb = currentArtifactTrans.gameObject.AddComponent<Rigidbody>();
             rb.isKinematic = true;

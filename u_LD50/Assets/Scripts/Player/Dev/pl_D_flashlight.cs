@@ -95,7 +95,7 @@ public class pl_D_flashlight : MonoBehaviour
         batteryInfoList.Add(batteryInfo);
 
         Destroy(batteryInfo.rb);
-        batteryInfo.col.enabled = false;
+        batteryInfo.col.SetActive(false);    //    batteryInfo.col.enabled = false;
 
         batteryInfo.transform.SetParent(batteryPosList[batteryInfoList.Count - 1]);
 
@@ -227,10 +227,10 @@ public class pl_D_flashlight : MonoBehaviour
         StartCoroutine(EnableEjectedBatteryCol(batteryInfo.col));
     }
 
-    private IEnumerator EnableEjectedBatteryCol(Collider col)
+    private IEnumerator EnableEjectedBatteryCol(GameObject col)
     {
         yield return new WaitForSeconds(0.2f);
-        col.enabled = true;
+        col.SetActive(true);    // col.enabled = true;
     }
 
     private IEnumerator BatteryRoutine()

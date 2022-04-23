@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: shell_shotgun
   rb: {fileID: 7612861837423399486}
-  col: {fileID: 243073899964890980}
+  col: {fileID: 5947757018744444824}
   type: Ammo
   value: 2
   ammoType: Shotgun
@@ -308,6 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItem: 1
+  takesItem: 0
+  isMonolith: 0
   itemType: Ammo
 --- !u!1 &7612861837438207662
 GameObject:

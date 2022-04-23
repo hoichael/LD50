@@ -142,7 +142,7 @@ public class nv_godhook : MonoBehaviour, I_TakeItem
 
         // this is hacky as fuck but probably the best way to get this done without refactoring large parts of the item system. no time for that
         if (!checkForItemTaken) return;
-        if(currentItemInfo.col.enabled == false)
+        if(currentItemInfo.col.activeInHierarchy == false) // currentItemInfo.col.enabled
         {
             print("ITEM TAKEN");
             checkForItemTaken = false;

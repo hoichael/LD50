@@ -57,7 +57,7 @@ public class item_con_base : item_base
         else
         {
             consumptionModelSteps[currentConsumptionStep].SetActive(true);
-            col = consumptionModelSteps[currentConsumptionStep].GetComponent<Collider>();
+            col = consumptionModelSteps[currentConsumptionStep].GetComponentInChildren<Collider>().gameObject;
         }
     }
 

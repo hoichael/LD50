@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5077106463929545466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4516312691772792655}
+  m_Layer: 10
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4516312691772792655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077106463929545466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8171005141044612652}
+  - {fileID: 8171005140630609578}
+  m_Father: {fileID: 8171005141451162030}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8171005139830984192
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,10 +89,10 @@ Transform:
   m_GameObject: {fileID: 8171005140630609573}
   m_LocalRotation: {x: 0.03627095, y: 0.001317317, z: -0.03627095, w: 0.9986827}
   m_LocalPosition: {x: 0.161, y: 0.262, z: 0.056}
-  m_LocalScale: {x: 1, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 0.7999999, z: 1}
   m_Children: []
-  m_Father: {fileID: 8171005141451162030}
-  m_RootOrder: 3
+  m_Father: {fileID: 4516312691772792655}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 4.16, y: 0, z: -4.16}
 --- !u!65 &8171005140630609579
 BoxCollider:
@@ -75,50 +107,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1603241, y: 0.517389, z: 0.13709559}
   m_Center: {x: -0.0006790161, y: 0.34703782, z: -0.12860712}
---- !u!1 &8171005140750893420
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8171005140750893426}
-  - component: {fileID: 8171005140750893421}
-  m_Layer: 10
-  m_Name: DamageCol
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8171005140750893426
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171005140750893420}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.161, y: 0.094, z: 0.056}
-  m_LocalScale: {x: 1, y: 0.8, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8171005141451162030}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8171005140750893421
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171005140750893420}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.3123803, z: 0.6}
-  m_Center: {x: 0, y: 0.25619006, z: 0}
 --- !u!1 &8171005141044612654
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,12 +131,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8171005141044612654}
-  m_LocalRotation: {x: -0.006894058, y: 0, z: 0, w: 0.9999763}
+  m_LocalRotation: {x: -0.006894058, y: -0, z: -0, w: 0.9999763}
   m_LocalPosition: {x: 0.161, y: 0.262, z: 0.056}
-  m_LocalScale: {x: 1, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 0.80000013, z: 1}
   m_Children: []
-  m_Father: {fileID: 8171005141451162030}
-  m_RootOrder: 2
+  m_Father: {fileID: 4516312691772792655}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.79, y: 0, z: 0}
 --- !u!65 &8171005141044612655
 BoxCollider:
@@ -195,9 +183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8171005139830984193}
-  - {fileID: 8171005140750893426}
-  - {fileID: 8171005141044612652}
-  - {fileID: 8171005140630609578}
+  - {fileID: 4516312691772792655}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,14 +217,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: log_B
   rb: {fileID: 8171005141451162027}
-  col: {fileID: 8171005141044612655}
+  col: {fileID: 5077106463929545466}
   type: Log
   value: 2
   dmgInfo:
     dmgAmount: 42
     type: Melee
     force: 16
-  damageCol: {fileID: 8171005140750893421}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 11
   animSpeedReset: 1.4

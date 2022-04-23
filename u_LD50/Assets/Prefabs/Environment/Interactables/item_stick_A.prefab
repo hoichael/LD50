@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: stick_A
   rb: {fileID: 580015959051690315}
-  col: {fileID: 1796704238090465755}
+  col: {fileID: 1796704238090465753}
   type: Stick
   value: 2
   dmgInfo:

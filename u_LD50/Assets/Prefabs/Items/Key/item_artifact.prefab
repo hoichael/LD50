@@ -32,8 +32,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2310468450539553002}
-  - {fileID: 7745161661906241978}
   - {fileID: 4644070290608422349}
+  - {fileID: 8528502315206524111}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,19 +67,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: artifact
   rb: {fileID: 2310468448776520895}
-  col: {fileID: 3229370111884287798}
+  col: {fileID: 3206530513168199386}
   type: Artifact
   value: 5
   dmgInfo:
-    dmgAmount: 8
+    dmgAmount: 64
     type: Melee
     force: 13
-  damageCol: {fileID: 1661656892128546344}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 9.4
   animSpeedReset: 2
-  offsetPos: {x: 0, y: 0, z: 0.9}
-  offsetRot: {x: 0, y: -50, z: 0}
+  offsetPos: {x: 0, y: 0, z: 2}
+  offsetRot: {x: 8, y: -5, z: 0}
   animCurveSwing:
     serializedVersion: 2
     m_Curve:
@@ -205,6 +204,51 @@ Transform:
   m_Father: {fileID: 2310468448776520894}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3206530513168199386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8528502315206524111}
+  - component: {fileID: 6288416892337957239}
+  m_Layer: 10
+  m_Name: Collision
+  m_TagString: Interactable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8528502315206524111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206530513168199386}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 8.137752, y: 8.137752, z: 7.6167135}
+  m_Children: []
+  m_Father: {fileID: 2310468448776520894}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!64 &6288416892337957239
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206530513168199386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3213388140244033404, guid: faf964bda78ba914f86e7e0d244be2e7, type: 3}
 --- !u!1 &3229370111884287799
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +260,6 @@ GameObject:
   - component: {fileID: 2853830452552140173}
   - component: {fileID: 1167853114701580840}
   - component: {fileID: 4022272407276355298}
-  - component: {fileID: 3229370111884287798}
   m_Layer: 10
   m_Name: Artifact
   m_TagString: Interactable
@@ -287,20 +330,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3229370111884287798
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3229370111884287799}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3213388140244033404, guid: faf964bda78ba914f86e7e0d244be2e7, type: 3}
 --- !u!1 &4644070290608422348
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2310468448776520894}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &4644070290608422346
 Light:
@@ -394,47 +423,3 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &5326799470162463911
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7745161661906241978}
-  - component: {fileID: 1661656892128546344}
-  m_Layer: 10
-  m_Name: DamageCol
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7745161661906241978
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5326799470162463911}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2310468448776520894}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1661656892128546344
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5326799470162463911}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75, z: 0.75}
-  m_Center: {x: 0, y: 0, z: 0}

@@ -157,12 +157,17 @@ public class pl_box : MonoBehaviour
         for(int i = 0; i < currentObjects.Count; i++)
         {
             // enable rb and collision
-         //   Rigidbody objRB = currentObjects[i].GetComponent<Rigidbody>();
-         //   objRB.isKinematic = false;
-         //   objRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            currentObjects[i].GetComponentInChildren<Collider>().enabled = true;
-            Rigidbody rb = currentObjects[i].AddComponent<Rigidbody>();
-            currentObjects[i].GetComponent<item_base>().rb = rb;
+            //   Rigidbody objRB = currentObjects[i].GetComponent<Rigidbody>();
+            //   objRB.isKinematic = false;
+            //   objRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+            item_base itemInfo = currentObjects[i].GetComponent<item_base>();
+
+            //    currentObjects[i].GetComponentInChildren<Collider>().enabled = true;
+            itemInfo.col.SetActive(true);
+
+         //   Rigidbody rb = currentObjects[i].AddComponent<Rigidbody>();
+            itemInfo.rb = currentObjects[i].AddComponent<Rigidbody>();
 
          //   objRB.freezeRotation = false;
         }
@@ -180,20 +185,30 @@ public class pl_box : MonoBehaviour
             if(hitColliders[i].CompareTag("Interactable"))
             {
                 // disable collider
-                hitColliders[i].enabled = false;
+                //   hitColliders[i].enabled = false;
 
-                
+                item_base itemInfo = hitColliders[i].GetComponentInParent<item_base>();
 
-                Rigidbody hitRB = hitColliders[i].GetComponentInParent<Rigidbody>();
+                itemInfo.col.SetActive(false);
+
+
+
+
+            //    Rigidbody hitRB = hitColliders[i].GetComponentInParent<Rigidbody>();
                
              //   hitRB.freezeRotation = true;
 
 
                 // add object to itemContainer and currentObjects list
-                currentObjects.Add(hitRB.gameObject);
-                hitRB.transform.SetParent(itemContainer);
+                // check if already in list to prevent compound collider fuckery
+                if(!currentObjects.Contains(itemInfo.gameObject))
+                {
+                    currentObjects.Add(itemInfo.gameObject);
+                }
 
-                Destroy(hitRB);
+                itemInfo.transform.SetParent(itemContainer);
+
+                Destroy(itemInfo.rb);
 
                 /*
                 if(!currentObjects.Contains(hitRB.gameObject))

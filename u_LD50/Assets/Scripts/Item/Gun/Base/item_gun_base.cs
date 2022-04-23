@@ -54,7 +54,10 @@ public class item_gun_base : item_base
 
         // remove phyiscs from shell
         Destroy(ammoInfo.rb);
-        ammoInfo.col.enabled = false;
+        ammoInfo.col.SetActive(false);        //    ammoInfo.col.enabled = false;
+
+        ammoInfo.col.tag = "Untagged";
+        ammoInfo.transform.tag = "Untagged";
 
         ammoInfo.transform.SetParent(shellPosList[shellInfoList.Count - 1]);
 
@@ -112,6 +115,7 @@ public class item_gun_base : item_base
 
         shellInfo.type = "Prop";
         shellInfo.tag = "Interactable";
+        shellInfo.col.tag = "Interactable";
         shellInfo.value = 1;
 
         // this is ugly
@@ -151,10 +155,10 @@ public class item_gun_base : item_base
         }
     }
 
-    private IEnumerator EnableEjectedShellCol(Collider col)
+    private IEnumerator EnableEjectedShellCol(GameObject col)
     {
         yield return new WaitForSeconds(0.2f);
-        col.enabled = true;
+        col.SetActive(true);    //    col.enabled = true;
     }
 
     private void OnEnable()

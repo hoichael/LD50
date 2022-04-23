@@ -8,7 +8,7 @@ public abstract class item_base : MonoBehaviour
 
     public Rigidbody rb;
 
-    public Collider col;
+    public GameObject col; // change type from Collider to GameObject to support compound colliders (set obj inactive instead of toggling col component)
 
     public string type;
 
