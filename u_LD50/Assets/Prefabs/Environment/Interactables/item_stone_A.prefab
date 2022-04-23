@@ -225,7 +225,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  hitboxHalfExtents: {x: 0.4, y: 0.4, z: 0.4}
+  hitboxHalfExtents: {x: 0.8, y: 0.8, z: 0.8}
   enemiesLayerMask:
     serializedVersion: 2
     m_Bits: 2048

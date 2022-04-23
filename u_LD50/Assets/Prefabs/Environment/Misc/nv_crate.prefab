@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 7890940328029820621}
   - component: {fileID: 7890940328029820626}
   - component: {fileID: 7890940328029820627}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: def_ModelAndCol
   m_TagString: Enemy
   m_Icon: {fileID: 0}
