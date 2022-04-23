@@ -24,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8171005139830984192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.161, y: 0.262, z: 0.056}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children:
   - {fileID: 8570214436035047043}
   m_Father: {fileID: 8171005141451162030}
@@ -56,8 +56,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8171005140630609573}
   m_LocalRotation: {x: 0.03627095, y: 0.001317317, z: -0.03627095, w: 0.9986827}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.161, y: 0.262, z: 0.056}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 8171005141451162030}
   m_RootOrder: 3
@@ -100,8 +100,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8171005140750893420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.161, y: 0.094, z: 0.056}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 8171005141451162030}
   m_RootOrder: 1
@@ -144,8 +144,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8171005141044612654}
   m_LocalRotation: {x: -0.006894058, y: 0, z: 0, w: 0.9999763}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.161, y: 0.262, z: 0.056}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 8171005141451162030}
   m_RootOrder: 2
@@ -240,10 +240,10 @@ MonoBehaviour:
     force: 16
   damageCol: {fileID: 8171005140750893421}
   itemAnchor: {fileID: 0}
-  animSpeedSwing: 8
-  animSpeedReset: 1.05
-  offsetPos: {x: 0, y: 0, z: 1.2}
-  offsetRot: {x: 44, y: -20, z: 0}
+  animSpeedSwing: 11
+  animSpeedReset: 1.4
+  offsetPos: {x: 0.3, y: 0, z: 1.2}
+  offsetRot: {x: 48, y: -32, z: -20}
   animCurveSwing:
     serializedVersion: 2
     m_Curve:

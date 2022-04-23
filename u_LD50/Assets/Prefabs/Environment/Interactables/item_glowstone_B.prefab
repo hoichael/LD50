@@ -170,12 +170,11 @@ MonoBehaviour:
     dmgAmount: 30
     type: Melee
     force: 4
-  damageCol: {fileID: 2269065537317416518}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 9.4
   animSpeedReset: 2
   offsetPos: {x: 0, y: 0, z: 0.9}
-  offsetRot: {x: 0, y: -50, z: 0}
+  offsetRot: {x: 10, y: -38, z: 0}
   animCurveSwing:
     serializedVersion: 2
     m_Curve:
@@ -294,7 +293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2909991552886251659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3452260469146150371}
@@ -326,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4728397886855949513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2909991552196994256}
@@ -370,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5188496848644251042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2909991552196994256}

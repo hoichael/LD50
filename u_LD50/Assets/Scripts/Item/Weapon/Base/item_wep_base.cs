@@ -7,9 +7,6 @@ public class item_wep_base : item_base
     [SerializeField]
     private dmg_base dmgInfo;
 
-    [SerializeField]
-    private Collider damageCol;
-
     public Transform itemAnchor;
 
     [SerializeField]
