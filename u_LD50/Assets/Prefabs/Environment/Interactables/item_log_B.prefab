@@ -299,6 +299,16 @@ MonoBehaviour:
   enemiesLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  sfxImpact:
+    Guid:
+      Data1: 186822356
+      Data2: 1251325000
+      Data3: 739846814
+      Data4: 1427759191
+    Path: event:/Impact_Wood
 --- !u!54 &8171005141451162027
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -332,6 +342,13 @@ MonoBehaviour:
     type: Throw
     force: 5
   itemInfo: {fileID: 8171005141451162024}
+  sfxImpact:
+    Guid:
+      Data1: 186822356
+      Data2: 1251325000
+      Data3: 739846814
+      Data4: 1427759191
+    Path: event:/Impact_Wood
 --- !u!1001 &8171005140249495912
 PrefabInstance:
   m_ObjectHideFlags: 0

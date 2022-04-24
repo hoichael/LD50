@@ -783,6 +783,8 @@ GameObject:
   - component: {fileID: 5646726972417421078}
   - component: {fileID: 5646726972417421075}
   - component: {fileID: 2449411370005062790}
+  - component: {fileID: 8042308935329288067}
+  - component: {fileID: 2479379790409198485}
   m_Layer: 11
   m_Name: en_goatman_RAG
   m_TagString: Enemy
@@ -852,7 +854,7 @@ MonoBehaviour:
   trans: {fileID: 3741859890443118821}
   rb: {fileID: 3741859890443118843}
   anim: {fileID: 3741859890822430330}
-  col: {fileID: 0}
+  col: {fileID: 3741859890443118820}
   knockbackMult: 0
   grounded: 0
 --- !u!114 &3741859890443118841
@@ -885,7 +887,7 @@ MonoBehaviour:
   col: {fileID: 3741859890443118820}
   brain: {fileID: 3741859891393508652}
   rbRagRoot: {fileID: 5646726972540366234}
-  grav: {fileID: 0}
+  grav: {fileID: 3741859890443118841}
 --- !u!114 &5646726972417421075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,6 +904,8 @@ MonoBehaviour:
   hpCurrent: 0
   ragdoll: {fileID: 5646726972417421078}
   brain: {fileID: 3741859891393508652}
+  sfxScreamEmitter: {fileID: 8042308935329288067}
+  sfxDamageEmitter: {fileID: 2479379790409198485}
 --- !u!114 &2449411370005062790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,8 +927,68 @@ MonoBehaviour:
       Data4: -653981752
     Path: event:/Eating
   Event: 
-  PlayEvent: 1
-  StopEvent: 2
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &8042308935329288067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741859890443118822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2078260344
+      Data2: 1173045153
+      Data3: -1657176149
+      Data4: -136043646
+    Path: event:/Goatman_Scream
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &2479379790409198485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741859890443118822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1176286274
+      Data2: 1098128679
+      Data3: 2067768483
+      Data4: -1854049405
+    Path: event:/Goatman_Damage
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -1019,6 +1083,7 @@ MonoBehaviour:
   checkInterval: 0.3
   triggerDistEngage: 28
   triggerDistAttack: 4.2
+  sfxIdleEmitter: {fileID: 2449411370005062790}
 --- !u!114 &3741859891393508643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,6 +1108,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckRadius: 0.2
+  sfxScreamEmitter: {fileID: 8042308935329288067}
+  sfxGroundImpact:
+    Guid:
+      Data1: -1983749688
+      Data2: 1225951898
+      Data3: -1063204431
+      Data4: -1128964227
+    Path: event:/Player_Fall
 --- !u!114 &3741859891393508641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,6 +1144,7 @@ MonoBehaviour:
     m_Bits: 8
   dmgInterval: 0.25
   attackAmount: 4
+  sfxScreamEmitter: {fileID: 8042308935329288067}
 --- !u!1 &3763553541184135060
 GameObject:
   m_ObjectHideFlags: 0

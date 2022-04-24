@@ -19,11 +19,15 @@ public class en_swiper_attack : en_state_base
     [SerializeField]
     private dmg_base dmgInfo;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxEngage;
+
     protected override void OnEnable()
     {
         base.OnEnable();
 
         info.anim.SetBool("attacking", true);
+        sfxEngage.Play();
 
         StartCoroutine(HandleDuration());
     }
@@ -59,5 +63,6 @@ public class en_swiper_attack : en_state_base
         base.OnDisable();
 
         info.anim.SetBool("attacking", false);
+        sfxEngage.Stop();
     }
 }

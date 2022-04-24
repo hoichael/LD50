@@ -17,6 +17,9 @@ public class en_spider_chase : en_state_base
     private Vector3 dirToTarget;
     private Quaternion targetRot;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxWalk;
+
     private void Start()
     {
         targetTrans = pl_state.Instance.GLOBAL_CAM_REF.transform;
@@ -27,6 +30,7 @@ public class en_spider_chase : en_state_base
         base.OnEnable();
 
         info.anim.SetBool("walk", true);
+        sfxWalk.Play();
         StartCoroutine(PlayerDistRoutine());
     }
 
@@ -70,5 +74,6 @@ public class en_spider_chase : en_state_base
         base.OnDisable();
         StopAllCoroutines();
         info.anim.SetBool("walk", false);
+        sfxWalk.Stop();
     }
 }

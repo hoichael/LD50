@@ -19,8 +19,6 @@ public class nv_trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("PLAYER ENTER");
-
         for(int i = 0; i < objToTriggerList.Count; i++)
         {
             objToTriggerList[i].SetActive(setObjectsActive);

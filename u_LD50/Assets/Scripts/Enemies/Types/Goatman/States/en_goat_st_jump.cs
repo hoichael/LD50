@@ -26,6 +26,12 @@ public class en_goat_st_jump : en_state_base
     [SerializeField]
     private float groundCheckRadius;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxScreamEmitter;
+
+    [SerializeField]
+    private FMODUnity.EventReference sfxGroundImpact;
+
     private void Start()
     {
         targetTrans = pl_state.Instance.GLOBAL_PL_TRANS_REF;    
@@ -66,6 +72,8 @@ public class en_goat_st_jump : en_state_base
 
     private void InitJump()
     {
+        sfxScreamEmitter.Play();
+
         info.rb.AddForce(info.trans.forward * jumpForceX, ForceMode.Impulse);
         info.rb.AddForce(info.trans.up * jumpForceY, ForceMode.Impulse);
 
@@ -73,6 +81,8 @@ public class en_goat_st_jump : en_state_base
     }
     private void InitLand()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(sfxGroundImpact, info.trans.position);
+
         info.anim.SetBool("jump_up", false);
         info.anim.SetBool("jump_land", true);
         StartCoroutine(LandTimer());
@@ -119,6 +129,7 @@ public class en_goat_st_jump : en_state_base
     {
         base.OnDisable();
         info.anim.SetBool("jump_land", false);
+        sfxScreamEmitter.Stop();
         StopAllCoroutines();
     }
 

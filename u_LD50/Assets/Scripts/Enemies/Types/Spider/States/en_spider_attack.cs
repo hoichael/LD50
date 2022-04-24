@@ -26,6 +26,9 @@ public class en_spider_attack : en_state_base
     [SerializeField]
     private Vector3 colDefaultPos;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxAttack;
+
     private void Start()
     {
         plDamage = pl_state.Instance.GLOBAL_PL_TRANS_REF.GetComponentInChildren<pl_health_damage>();
@@ -52,6 +55,8 @@ public class en_spider_attack : en_state_base
         modelTrans.localRotation = Quaternion.Euler(Vector3.zero);
 
         info.anim.SetBool("attack", true);
+
+        sfxAttack.Play();
     }
 
     private void Update()
@@ -72,7 +77,10 @@ public class en_spider_attack : en_state_base
     protected override void OnDisable()
     {
         base.OnDisable();
+        if(info.trans.parent.gameObject.activeInHierarchy)
+        {
             info.trans.SetParent(null);
+        }
      //   info.trans.parent = null;
         info.rb.isKinematic = false;
         col.center = colDefaultPos;
@@ -80,5 +88,7 @@ public class en_spider_attack : en_state_base
         modelTrans.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
         info.anim.SetBool("attack", true);
+
+        sfxAttack.Stop();
     }
 }

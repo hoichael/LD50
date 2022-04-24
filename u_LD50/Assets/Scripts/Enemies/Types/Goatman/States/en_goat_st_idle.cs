@@ -15,6 +15,9 @@ public class en_goat_st_idle : en_state_base
 
     private Transform targetObj;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxIdleEmitter;
+
     private void Start()
     {
         targetObj = pl_state.Instance.GLOBAL_PL_TRANS_REF;
@@ -25,6 +28,7 @@ public class en_goat_st_idle : en_state_base
         base.OnEnable();
         StartCoroutine(CheckPlayerDist());
         info.anim.SetBool("idle", true);
+        sfxIdleEmitter.Play();
     }
 
     private IEnumerator CheckPlayerDist()
@@ -51,5 +55,6 @@ public class en_goat_st_idle : en_state_base
     {
         base.OnDisable();
         info.anim.SetBool("idle", false);
+        sfxIdleEmitter.Stop();
     }
 }

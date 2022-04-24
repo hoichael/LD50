@@ -10,6 +10,9 @@ public class wep_throw : MonoBehaviour
     [SerializeField]
     private item_base itemInfo;
 
+    [SerializeField]
+    private FMODUnity.EventReference sfxImpact;
+
     /*
     private void OnTriggerEnter(Collider col)
     {
@@ -27,6 +30,8 @@ public class wep_throw : MonoBehaviour
     private void OnCollisionEnter(Collision col)
     {
         if (itemInfo.enabled) return;
+
+        FMODUnity.RuntimeManager.PlayOneShot(sfxImpact, transform.position);
 
         if (col.transform.CompareTag("Enemy"))
         {

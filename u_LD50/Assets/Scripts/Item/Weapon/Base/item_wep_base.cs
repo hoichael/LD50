@@ -39,6 +39,12 @@ public class item_wep_base : item_base
     [SerializeField]
     private LayerMask enemiesLayerMask;
 
+    [SerializeField]
+    private LayerMask playerLayerMask;
+
+    [SerializeField]
+    private FMODUnity.EventReference sfxImpact;
+
     public override void Use()
     {
         if (currentlyAttacking) return;
@@ -119,12 +125,20 @@ public class item_wep_base : item_base
             pl_state.Instance.GLOBAL_CAM_REF.transform.position + pl_state.Instance.GLOBAL_CAM_REF.transform.forward, 
             hitboxHalfExtents, 
             Quaternion.identity, 
-            enemiesLayerMask
+            ~playerLayerMask
             );
 
-        for (int i = 0; i < hitColliders.Length; i++)
+        if(hitColliders.Length != 0)
         {
-            hitColliders[i].GetComponentInParent<en_health_base>().HandleDamage(dmgInfo);
+            FMODUnity.RuntimeManager.PlayOneShot(sfxImpact, transform.position);
+
+            for (int i = 0; i < hitColliders.Length; i++)
+            {
+                if (hitColliders[i].CompareTag("Enemy"))
+                {
+                    hitColliders[i].GetComponentInParent<en_health_base>().HandleDamage(dmgInfo);
+                }
+            }
         }
     }
 }

@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 281362387797853683}
   - {fileID: 281362386745137868}
+  - {fileID: 8138615340129638987}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102,6 +103,8 @@ MonoBehaviour:
   brain: {fileID: 281362386745137869}
   info: {fileID: 281362386376746453}
   states: {fileID: 281362386745137871}
+  sfxScream: {fileID: 4127205444945241438}
+  sfxDamage: {fileID: 8261874461513645703}
 --- !u!114 &1415355737312790801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +199,7 @@ MonoBehaviour:
   modelTrans: {fileID: 281362387797853683}
   colOffset: {x: 0, y: 3, z: 0}
   colDefaultPos: {x: 0, y: 0, z: 0}
+  sfxAttack: {fileID: 1087846411119542885}
 --- !u!114 &281362386745137907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +235,7 @@ MonoBehaviour:
   turnSpeed: 6.8
   moveSpeed: 5
   jumpTriggerDist: 12
+  sfxWalk: {fileID: 5499577490731887618}
 --- !u!114 &281362386745137905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +261,7 @@ MonoBehaviour:
   groundCheckRadius: 0.6
   attackTriggerDist: 1.8
   maxAttackAngle: 82
+  sfxScream: {fileID: 4127205444945241438}
 --- !u!114 &4403335884513178316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +332,160 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2119291682977822887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8138615340129638987}
+  - component: {fileID: 5499577490731887618}
+  - component: {fileID: 4127205444945241438}
+  - component: {fileID: 1087846411119542885}
+  - component: {fileID: 8261874461513645703}
+  m_Layer: 11
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8138615340129638987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119291682977822887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281362386376746452}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5499577490731887618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119291682977822887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1314490417
+      Data2: 1127956862
+      Data3: -247745364
+      Data4: 1015144710
+    Path: event:/Spider_Walk
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &4127205444945241438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119291682977822887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -178380747
+      Data2: 1301611292
+      Data3: -216123487
+      Data4: 949268928
+    Path: event:/Spider_Scream
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1087846411119542885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119291682977822887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1240832809
+      Data2: 1102411987
+      Data3: -1824077915
+      Data4: -2123638254
+    Path: event:/Spider_OnFace
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &8261874461513645703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119291682977822887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1268842301
+      Data2: 1301071245
+      Data3: 1697746094
+      Data4: 1482326211
+    Path: event:/Spider_Damage
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &281362388137906425
 PrefabInstance:
   m_ObjectHideFlags: 0

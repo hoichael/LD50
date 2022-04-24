@@ -17,6 +17,8 @@ public class en_health_base : MonoBehaviour
 
     public virtual void HandleDamage(dmg_base dmgInfo)
     {
+        if (dmgInfo.dmgAmount <= 0) return;
+
         hpCurrent -= dmgInfo.dmgAmount;
         print("received damage (" + dmgInfo.dmgAmount + ") remaining hp: " + hpCurrent);
 

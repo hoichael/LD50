@@ -31,6 +31,9 @@ public class en_spider_jump : en_state_base
     [SerializeField]
     private float maxAttackAngle;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxScream;
+
     private void Start()
     {
         targetTrans = pl_state.Instance.GLOBAL_CAM_REF.transform;
@@ -42,6 +45,8 @@ public class en_spider_jump : en_state_base
 
         checkForAttack = true;
         info.anim.SetBool("jump", true);
+        sfxScream.Play();
+
         InitJump();
      //   StartCoroutine(JumpUpTimer());
     }
@@ -102,6 +107,7 @@ public class en_spider_jump : en_state_base
     {
         base.OnDisable();
         info.anim.SetBool("jump", false);
+        sfxScream.Stop();
         StopAllCoroutines();
     }
 }

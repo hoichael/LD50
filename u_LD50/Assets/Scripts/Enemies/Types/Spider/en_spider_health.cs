@@ -13,12 +13,17 @@ public class en_spider_health : en_health_base
     [SerializeField]
     private GameObject states;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxScream, sfxDamage;
+
     public override void HandleDamage(dmg_base dmgInfo)
     {
         base.HandleDamage(dmgInfo);
 
         HandleKnockback();
         brain.ChangeState("knock");
+
+        sfxDamage.Play();
 
     }
 
@@ -48,6 +53,9 @@ public class en_spider_health : en_health_base
         info.trans.tag = "Corpse";
         info.anim.SetBool("dead", true);
 
+        sfxDamage.Play();
+        sfxScream.Play();
+
         DeathRoutine();
     }
 
@@ -56,6 +64,9 @@ public class en_spider_health : en_health_base
         yield return new WaitForSeconds(9f);
         info.rb.isKinematic = true;
         info.col.enabled = false;
+
+        sfxDamage.Stop();
+        sfxScream.Stop();
     }
 
 

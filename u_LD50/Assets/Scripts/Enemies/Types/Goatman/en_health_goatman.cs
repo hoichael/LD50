@@ -9,9 +9,25 @@ public class en_health_goatman : en_health_base
 
     [SerializeField]
     private en_brain_base brain;
+
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxScreamEmitter;
+
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxDamageEmitter;
+
+    public override void HandleDamage(dmg_base dmgInfo)
+    {
+        base.HandleDamage(dmgInfo);
+        sfxScreamEmitter.Play();
+    }
+
     protected override void HandleDeath(dmg_base dmgInfo)
     {
         base.HandleDeath(dmgInfo);
+
+        sfxDamageEmitter.Play();
+
         transform.tag = "Corpse";
 
         brain.currentState.enabled = false;
@@ -22,5 +38,15 @@ public class en_health_goatman : en_health_base
         ragdoll.rbRagRoot.AddForce(Vector3.up * 60f, ForceMode.Impulse);
 
         ragdoll.rbRagRoot.AddForce((transform.position - pl_state.Instance.GLOBAL_CAM_REF.transform.position).normalized * 95f, ForceMode.Impulse);
+
+        StartCoroutine(StopSFX());
+    }
+
+    // not sure if this is necessary but never stopping the sound instances might clog up memory
+    private IEnumerator StopSFX()
+    {
+        yield return new WaitForSeconds(3);
+        sfxDamageEmitter.Stop();
+        sfxScreamEmitter.Stop();
     }
 }

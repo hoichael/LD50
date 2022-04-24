@@ -33,6 +33,9 @@ public class en_goat_st_attack : en_state_base
 
     private int attackCounter;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxScreamEmitter;
+
     private void Start()
     {
         targetTrans = pl_state.Instance.GLOBAL_PL_TRANS_REF;
@@ -41,6 +44,8 @@ public class en_goat_st_attack : en_state_base
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        sfxScreamEmitter.Play();
 
         attackCounter = 0;
 
@@ -64,6 +69,7 @@ public class en_goat_st_attack : en_state_base
     {
         base.OnDisable();
         StopAllCoroutines();
+        sfxScreamEmitter.Stop();
         info.anim.SetBool("attack", false);
     }
 

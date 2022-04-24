@@ -17,6 +17,9 @@ public class en_swiper_chase : en_state_base
     private Vector3 dirToTarget;
     private Quaternion targetRot;
 
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxEngage;
+
     private void Start()
     {
         targetTrans = pl_state.Instance.GLOBAL_CAM_REF.transform;
@@ -27,6 +30,9 @@ public class en_swiper_chase : en_state_base
         base.OnEnable();
 
         info.anim.SetBool("walking", true);
+
+        sfxEngage.Play();
+     //   FMODUnity.RuntimeManager.PlayOneShot("event:/Swiper_Engage", transform.position);
     }
 
     private void Update()
@@ -70,5 +76,7 @@ public class en_swiper_chase : en_state_base
         base.OnDisable();
 
         info.anim.SetBool("walking", false);
+
+        sfxEngage.Stop();
     }
 }

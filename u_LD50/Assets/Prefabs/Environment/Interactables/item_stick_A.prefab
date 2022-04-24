@@ -130,6 +130,16 @@ MonoBehaviour:
   enemiesLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  sfxImpact:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!54 &580015959051690315
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -163,6 +173,13 @@ MonoBehaviour:
     type: Throw
     force: 2
   itemInfo: {fileID: 580015959051690312}
+  sfxImpact:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &580015960781464849
 GameObject:
   m_ObjectHideFlags: 0
