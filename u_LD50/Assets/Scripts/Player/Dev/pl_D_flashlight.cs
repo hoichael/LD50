@@ -57,6 +57,17 @@ public class pl_D_flashlight : MonoBehaviour
 
     private bool gotJuice;
 
+    [Header("Audio")]
+
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter sfxLoopEmitter;
+
+    [SerializeField]
+    private FMODUnity.EventReference sfxOn, sfxOff;
+
+    [SerializeField]
+    private Transform sfxOriginPos;
+
     private void Start()
     {
         gotJuice = true;
@@ -72,6 +83,8 @@ public class pl_D_flashlight : MonoBehaviour
         }
         else
         {
+            sfxLoopEmitter.Play();
+            StartCoroutine(FlickerCheck(10));
             StartCoroutine(BatteryRoutine());
         }
     }
@@ -131,10 +144,14 @@ public class pl_D_flashlight : MonoBehaviour
         if(!currentlyEnabled)
         {
             lightPrimary.enabled = lightSecondary.enabled = currentlyEnabled;
+            FMODUnity.RuntimeManager.PlayOneShot(sfxOff, sfxOriginPos.position);
+            sfxLoopEmitter.Stop();
             StopAllCoroutines();
         }
         else
         {
+            FMODUnity.RuntimeManager.PlayOneShot(sfxOn, sfxOriginPos.position);
+            sfxLoopEmitter.Play();
             StartCoroutine(FlickerCheck(10));
             StartCoroutine(BatteryRoutine());
         }
@@ -264,18 +281,22 @@ public class pl_D_flashlight : MonoBehaviour
         // mb play sfx for each flicker?
 
         lightPrimary.enabled = lightSecondary.enabled = false;
+        sfxLoopEmitter.Stop();
 
         yield return new WaitForSeconds(Random.Range(1f, 15) / 100);
 
         lightPrimary.enabled = lightSecondary.enabled = true;
+        sfxLoopEmitter.Play();
 
         yield return new WaitForSeconds(Random.Range(1f, 30) / 100);
 
         lightPrimary.enabled = lightSecondary.enabled = false;
+        sfxLoopEmitter.Stop();
 
         yield return new WaitForSeconds(Random.Range(1f, 15) / 100);
 
         lightPrimary.enabled = lightSecondary.enabled = true;
+        sfxLoopEmitter.Play();
 
         currentFlickerExec = null;
         if (Random.Range(0, 10) > 6)

@@ -3,7 +3,27 @@ guid: cf9593ddbd6ce01418f638305447e5ff
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 333fb0f5a3a7e9f4e9a5797aee7acaa7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 7f3aeb3a2246b0a48b81e93c2b300a98, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ALPHA
+    second: {fileID: 2800000, guid: 4e4769a6ed795d04590d7b4f23ba9f11, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: rusted-metal-70
+    second: {fileID: 2800000, guid: 7ae46cb289f93934b8da92b367bf0d7a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
