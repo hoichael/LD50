@@ -7,12 +7,6 @@ public class pl_health_ui : MonoBehaviour
     [SerializeField]
     private Transform healthBarTrans;
 
-    [SerializeField]
-    private pl_health_pp healthPP;
-
-    [SerializeField]
-    private FMODUnity.StudioEventEmitter fAmbienceEmitter;
-
     private float healthBarDefaultScaleX;
     private float healthBarDefaultScaleY;
     private float healthBarDefaultScaleZ;
@@ -26,10 +20,6 @@ public class pl_health_ui : MonoBehaviour
 
     public void HealthChange()
     {
-        healthPP.HealthChange();
-
-        UpdateAmbienceParam();
-
         healthBarTrans.localScale = new Vector3(pl_state.Instance.health * (healthBarDefaultScaleX / 1000), 
             healthBarDefaultScaleY, healthBarDefaultScaleZ);
 
@@ -37,11 +27,5 @@ public class pl_health_ui : MonoBehaviour
         {
             healthBarTrans.localScale = Vector3.zero;
         }
-    }
-
-    private void UpdateAmbienceParam()
-    {
-        float healthPercentage = (float)pl_state.Instance.health / (float)pl_settings.Instance.maxHealth;
-        fAmbienceEmitter.SetParameter("Ambience Intensity", 1 - healthPercentage);
     }
 }

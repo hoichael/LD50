@@ -37,7 +37,6 @@ public class pl_groundcheck : MonoBehaviour
         if(pl_state.Instance.grounded != groundedLastFrame)
         {
             CheckForFallDamage();
-
         }
 
         groundedLastFrame = pl_state.Instance.grounded;

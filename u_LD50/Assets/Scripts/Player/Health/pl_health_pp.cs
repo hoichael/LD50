@@ -81,9 +81,6 @@ public class pl_health_pp : MonoBehaviour
 
             if (pl_state.Instance.health <= 0)
             {
-                // this should definitely not be happening here, but thats ok.
-                rb.isKinematic = true;
-                input.enabled = false;
                 ppAutoEx.active = true;
                 dead = true;
             }

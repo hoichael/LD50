@@ -8,9 +8,6 @@ public class pl_health_damage : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField]
-    private pl_health_ui healthUI;
-
-    [SerializeField]
     private float camTiltDmgOffset;
 
     [SerializeField]
@@ -26,6 +23,9 @@ public class pl_health_damage : MonoBehaviour
 
     private float defaultDrag;
 
+    [SerializeField]
+    private pl_health_manager manager;
+
     private void Start()
     {
         defaultDrag = rb.drag;
@@ -35,7 +35,7 @@ public class pl_health_damage : MonoBehaviour
     {
         pl_state.Instance.health -= dmgInfo.dmgAmount;
 
-        healthUI.HealthChange();
+        manager.HandleHealthChange();
 
         if(currentDmgAnimProgress != 0) currentDmgAnimProgress = 0;
     }

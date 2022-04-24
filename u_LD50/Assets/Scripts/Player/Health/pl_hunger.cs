@@ -8,7 +8,10 @@ public class pl_hunger : MonoBehaviour
     private float interval;
 
     [SerializeField]
-    private pl_health_ui healthUI;
+    private pl_health_damage healthDMG;
+
+    [SerializeField]
+    private dmg_base dmgInfo;
 
     private void Start()
     {
@@ -19,8 +22,8 @@ public class pl_hunger : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
 
-        pl_state.Instance.health = pl_state.Instance.health - 1 * pl_state.Instance.currentHungerMult;
-        healthUI.HealthChange();
+        dmgInfo.dmgAmount = 1 * pl_state.Instance.currentHungerMult;
+        healthDMG.HandleDamage(dmgInfo);
 
         RestartHungerRoutine();
     }

@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float sensMin, sensMax, sensStep;
 
+    [SerializeField]
+    private Rigidbody plRB;
+
+    [SerializeField]
+    private pl_input plInput;
+
     private void Start()
     {
         sunObj.SetActive(false); // disable global directional light on start so I don't have to always disable it manually (i have it enabled in inspector for general visibility)
@@ -35,5 +41,11 @@ public class GameManager : MonoBehaviour
     private void AdjustSens(int mult) // mult = 1 or -1
     {
         pl_settings.Instance.mouseSens = Mathf.Clamp(pl_settings.Instance.mouseSens + sensStep * mult, sensMin, sensMax);
+    }
+
+    public void Death()
+    {
+        plRB.isKinematic = true;
+        plInput.enabled = false;
     }
 }
