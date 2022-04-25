@@ -33,6 +33,8 @@ public class pl_health_damage : MonoBehaviour
 
     public void HandleDamage(dmg_base dmgInfo)
     {
+        if (pl_state.Instance.currentlyDead) return;
+
         pl_state.Instance.health -= dmgInfo.dmgAmount;
 
         manager.HandleHealthChange();

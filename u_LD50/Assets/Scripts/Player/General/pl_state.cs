@@ -19,5 +19,7 @@ public class pl_state : ut_singleton<pl_state>
 
     public Transform GLOBAL_PL_TRANS_REF;
 
+    public bool currentlyDead;
+
     public bool spiderCanLock;
 }
