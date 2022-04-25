@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7911892722535935458}
   - component: {fileID: 7561769431145769693}
   - component: {fileID: 4660930513188906503}
-  - component: {fileID: 4798346316792937763}
+  - component: {fileID: 8584437723358532357}
   m_Layer: 10
   m_Name: item_orb
   m_TagString: Interactable
@@ -179,7 +179,7 @@ MonoBehaviour:
   takesItem: 0
   isMonolith: 0
   itemType: Consumable
---- !u!114 &4798346316792937763
+--- !u!114 &8584437723358532357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,21 +188,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7911892722535935462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c1867dce71fd843a621d48c36174f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 627b8193e49d93245bc2aa7a7a57fe3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ID: orb
   rb: {fileID: 7561769431145769693}
   col: {fileID: 8363875619288510888}
-  type: 
+  type: orb
   value: 5
-  hpAmount: 42
-  useCooldown: 0.3
+  hpAmount: 0
+  useCooldown: 0.1337
   currentConsumptionStep: 0
   consumptionModelSteps:
   - {fileID: 2968533218622725448}
   itemManager: {fileID: 0}
-  healthUI: {fileID: 0}
+  healthManager: {fileID: 0}
 --- !u!1 &8363875619288510888
 GameObject:
   m_ObjectHideFlags: 0

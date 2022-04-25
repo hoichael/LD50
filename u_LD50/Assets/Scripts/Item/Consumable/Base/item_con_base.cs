@@ -20,7 +20,7 @@ public class item_con_base : item_base
     protected List<GameObject> consumptionModelSteps;
 
     public pl_item_manager itemManager;
-    public pl_health_ui healthUI;
+    public pl_health_manager healthManager;
 
     public override void Use()
     {
@@ -48,7 +48,7 @@ public class item_con_base : item_base
         {
             pl_state.Instance.health = pl_settings.Instance.maxHealth;
         }
-        healthUI.HealthChange();
+        healthManager.HandleHealthChange();
 
         if (currentConsumptionStep == consumptionModelSteps.Count)
         {
@@ -65,7 +65,6 @@ public class item_con_base : item_base
     {
         itemManager.currentItemInfo = null;
         itemManager.currentlyInPickupAnim = false;
-        print("consumable depleted");
         Destroy(gameObject);
     }
 

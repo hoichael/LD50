@@ -41,8 +41,6 @@ public class pl_health_pp : MonoBehaviour
     [SerializeField]
     private float deathAnimSpeed;
 
-    private bool dead;
-
     private float currentDeathAnimProgress;
 
     private void Start()
@@ -57,14 +55,7 @@ public class pl_health_pp : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            //    ppVignette.enabled.value = !ppVignette.enabled.value;
-        //    ppVignette.intensity.value += 0.2f;
-        //    ppVignette.color.value = new Color(0, 255, 0);
-        }
-
-        if(dead)
+        if(pl_state.Instance.currentlyDead)
         {
             UpdatePostProcessing();
         }
@@ -72,7 +63,7 @@ public class pl_health_pp : MonoBehaviour
 
     public void HealthChange()
     {
-        if (dead) return;
+        if (pl_state.Instance.currentlyDead) return;
 
         if (pl_state.Instance.health < pl_settings.Instance.maxHealth / ppTriggerHpDivider)
         {
@@ -82,7 +73,10 @@ public class pl_health_pp : MonoBehaviour
             if (pl_state.Instance.health <= 0)
             {
                 ppAutoEx.active = true;
-                dead = true;
+            }
+            else
+            {
+                ppAutoEx.active = false;
             }
         }
         else
@@ -111,7 +105,7 @@ public class pl_health_pp : MonoBehaviour
         if (ppChroma.intensity.value > grainMax) ppChroma.intensity.value = chromaMax;
 
 
-        if (dead)
+        if (pl_state.Instance.currentlyDead)
         {
             currentDeathAnimProgress = Mathf.MoveTowards(currentDeathAnimProgress, 1, deathAnimSpeed * Time.deltaTime);
 
@@ -133,6 +127,7 @@ public class pl_health_pp : MonoBehaviour
         ppVignette.intensity.value = ppGrain.intensity.value = ppChroma.intensity.value = 0;
         ppAutoEx.minLuminance.value = ppAutoEx.maxLuminance.value = 0;
         ppAutoEx.active = false;
+        currentDeathAnimProgress = 0;
     }
 
     private void OnDisable()

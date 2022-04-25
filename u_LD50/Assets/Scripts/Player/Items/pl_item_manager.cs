@@ -34,7 +34,7 @@ public class pl_item_manager : MonoBehaviour
     private float chargeStep;
 
     [SerializeField]
-    private pl_health_ui healthUI;
+    private pl_health_manager healthManager;
 
     [SerializeField]
     private Transform itemAnchor;
@@ -91,7 +91,7 @@ public class pl_item_manager : MonoBehaviour
         {
             item_con_base conInfo = currentItemObj.GetComponent<item_con_base>();
             conInfo.itemManager = this;
-            conInfo.healthUI = healthUI;
+            conInfo.healthManager = healthManager;
         }
         // this is ugly. mb global ref in pl_state instance to itemAnchor would be better? ugly too but mb better
         else if(pickupInfo.itemType == "Prop")

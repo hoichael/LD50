@@ -38,34 +38,9 @@ public class pl_health_manager : MonoBehaviour
 
         if(pl_state.Instance.health <= 0)
         {
-            HandleDeath();
+            Vector3 rebirthPos = savePos;
+            savePos = Vector3.zero;
+            gameManager.Death(rebirthPos);
         }
     }
-
-    private void HandleDeath()
-    {
-        if(savePos != Vector3.zero) // kinda ugly but vector3 isnt nullable and it works as player can never be at 000 world pos due to terrain layout
-        {
-            StartCoroutine(HandleRebirth());
-        }
-        else
-        {
-            gameManager.Death();
-        }
-    }
-
-    private IEnumerator HandleRebirth()
-    {
-        yield return new WaitForSeconds(1.2f);
-
-        transform.position = savePos;
-        savePos = Vector3.zero;
-        rb.isKinematic = false;
-        input.enabled = true;
-
-        pl_state.Instance.health = pl_settings.Instance.maxHealth;
-
-        UpdateOthers();
-    }
-
 }

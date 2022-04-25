@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private pl_input plInput;
 
+    [SerializeField]
+    private pl_health_manager plHealthManager;
+
     [Header("UI Overlay Fade")]
 
     [SerializeField]
@@ -81,24 +84,55 @@ public class GameManager : MonoBehaviour
         fadeImage.color = new Color32((byte)currentFadeColor, (byte)currentFadeColor, (byte)currentFadeColor, (byte)Mathf.RoundToInt(opacity));
     }
 
-    public void Death()
+    public void Death(Vector3 rebirthPos)
     {
         pl_state.Instance.currentlyDead = true;
 
         plRB.isKinematic = true;
+        plInput.mouseX = plInput.mouseY = 0;
         plInput.enabled = false;
 
         fadeAnimProgress = 0;
-        currentFadeColor = 0;
         fadeOpacityStart = 0;
         fadeOpacityTarget = 255;
 
-        StartCoroutine(DelayedReload());
+        if(rebirthPos == Vector3.zero)
+        {
+            currentFadeColor = 0;
+            StartCoroutine(DelayedReload());
+        }
+        else
+        {
+            currentFadeColor = 255;
+            StartCoroutine(DelayedRebirth(rebirthPos));
+        }
+
+    }
+
+    private IEnumerator DelayedRebirth(Vector3 rebirthPos)
+    {
+        yield return new WaitForSeconds(5.5f);
+
+        pl_state.Instance.GLOBAL_PL_TRANS_REF.position = rebirthPos;
+
+        pl_state.Instance.currentlyDead = false;
+
+        plRB.isKinematic = false;
+        plInput.enabled = true;
+
+        pl_state.Instance.health = pl_settings.Instance.maxHealth;
+
+        plHealthManager.HandleHealthChange();
+
+        fadeAnimProgress = 0;
+        fadeOpacityStart = 255;
+        fadeOpacityTarget = 0;
+        currentFadeColor = 255;
     }
 
     private IEnumerator DelayedReload()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(5.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

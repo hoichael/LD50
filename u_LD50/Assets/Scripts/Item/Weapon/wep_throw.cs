@@ -36,7 +36,6 @@ public class wep_throw : MonoBehaviour
         if (col.transform.CompareTag("Enemy"))
         {
             dmgInfo.dmgAmount = Mathf.RoundToInt((dmgInfo.dmgAmount * itemInfo.rb.velocity.magnitude) * 0.4f);
-            print(dmgInfo.dmgAmount);
             col.transform.GetComponent<en_health_base>().HandleDamage(dmgInfo);
          //   gameObject.SetActive(false);
         }
