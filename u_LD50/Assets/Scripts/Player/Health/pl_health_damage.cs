@@ -26,6 +26,9 @@ public class pl_health_damage : MonoBehaviour
     [SerializeField]
     private pl_health_manager manager;
 
+    [SerializeField]
+    private pl_health_iframes iFrameManager;
+
     private void Start()
     {
         defaultDrag = rb.drag;
@@ -33,7 +36,9 @@ public class pl_health_damage : MonoBehaviour
 
     public void HandleDamage(dmg_base dmgInfo)
     {
-        if (pl_state.Instance.currentlyDead) return;
+        if (iFrameManager.enabled || pl_state.Instance.currentlyDead) return;
+
+        iFrameManager.enabled = true;
 
         pl_state.Instance.health -= dmgInfo.dmgAmount;
 
