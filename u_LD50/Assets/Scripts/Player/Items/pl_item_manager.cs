@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class pl_item_manager : MonoBehaviour
 {
+    [Header("Refs")]
+
+    [SerializeField]
+    private pl_health_manager healthManager;
+
+    [SerializeField]
+    private Transform itemAnchor;
+
+    [SerializeField]
+    private pl_D_flashlight flashlight;
+
     [SerializeField]
     private Transform itemHolder;
 
@@ -16,10 +27,26 @@ public class pl_item_manager : MonoBehaviour
 
     private Transform currentItemTrans;
 
+    [Header("Pickup Anim")]
+
     [SerializeField]
     private float pickupLerpFactor;
 
+    [SerializeField]
+    private float pickupAnimSpeed;
+
+    [SerializeField]
+    private AnimationCurve pickupAnimCurve;
+
+    private float currentAnimProgress;
+
     public bool currentlyInPickupAnim;
+
+    private Vector3 pickupInitPos;
+
+    private Quaternion pickupInitRot;
+
+    [Header("Item Throw")]
 
     [SerializeField]
     private float baseCharge;
@@ -32,15 +59,6 @@ public class pl_item_manager : MonoBehaviour
 
     [SerializeField]
     private float chargeStep;
-
-    [SerializeField]
-    private pl_health_manager healthManager;
-
-    [SerializeField]
-    private Transform itemAnchor;
-
-    [SerializeField]
-    private pl_D_flashlight flashlight;
 
     public void InitPickup(int_item pickupInfo)  // called from pl_interact
     {
@@ -76,6 +94,9 @@ public class pl_item_manager : MonoBehaviour
      //    currentItemTrans.localRotation = Quaternion.identity;
         
         currentlyInPickupAnim = true;
+        currentAnimProgress = 0;
+        pickupInitPos = currentItemTrans.localPosition;
+        pickupInitRot = currentItemTrans.localRotation;
 
         currentItemInfo = currentItemObj.GetComponent<item_base>();
         currentItemInfo.enabled = true;
@@ -145,28 +166,24 @@ public class pl_item_manager : MonoBehaviour
             currentlyInPickupAnim = false;
             return;
         }
+
+        currentAnimProgress = Mathf.MoveTowards(currentAnimProgress, 1, pickupAnimSpeed * Time.deltaTime);
         
         // lerp position
         currentItemTrans.localPosition = Vector3.Lerp(
-            currentItemTrans.localPosition,
+            pickupInitPos,
             Vector3.zero,
-            pickupLerpFactor * Time.deltaTime
+            pickupAnimCurve.Evaluate(currentAnimProgress)
             );
-        /*
-        currentItemTrans.localPosition = Vector3.MoveTowards(
-            currentItemTrans.localPosition,
-            Vector3.zero,
-            pickupLerpFactor * Time.deltaTime
-            );
-        */
+
         // lerp rotation
         currentItemTrans.localRotation = Quaternion.Lerp(
-            currentItemTrans.localRotation,
+            pickupInitRot,
             Quaternion.identity,
-            pickupLerpFactor * Time.deltaTime
+            pickupAnimCurve.Evaluate(currentAnimProgress)
             );
         
-        if(currentItemTrans.localPosition == Vector3.zero && currentItemTrans.localRotation == Quaternion.identity)
+        if(currentAnimProgress == 1)
         {
             currentlyInPickupAnim = false;
         }

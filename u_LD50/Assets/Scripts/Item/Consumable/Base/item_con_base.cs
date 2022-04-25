@@ -11,8 +11,6 @@ public class item_con_base : item_base
     [SerializeField]
     protected float useCooldown;
 
-    protected IEnumerator currentCooldownRoutine;
-
     [SerializeField]
     protected int currentConsumptionStep;
 
@@ -22,6 +20,21 @@ public class item_con_base : item_base
     public pl_item_manager itemManager;
     public pl_health_manager healthManager;
 
+    [Header("Eat Animation")]
+
+    [SerializeField]
+    private float animSpeed;
+
+    [SerializeField]
+    private Vector3 eatTargetPos;
+
+    [SerializeField]
+    private AnimationCurve eatAnimCurve;
+
+    private float currentAnimProgress;
+
+    private float currentAnimTarget, currentAnimStart;
+
     public override void Use()
     {
         if (!canUse) return;
@@ -29,9 +42,41 @@ public class item_con_base : item_base
         base.Use();
 
         canUse = false;
-        currentCooldownRoutine = UseCooldown();
-        StartCoroutine(currentCooldownRoutine);
-        HandleConsumption();
+        currentAnimProgress = 0;
+        currentAnimStart = 0;
+        currentAnimTarget = 1;
+    }
+
+    private void Update()
+    {
+        if (currentAnimProgress == currentAnimTarget) return;
+        HandleEatAnim();
+    }
+
+    private void HandleEatAnim()
+    {
+        currentAnimProgress = Mathf.MoveTowards(currentAnimProgress, currentAnimTarget, animSpeed * Time.deltaTime);
+
+        transform.localPosition = Vector3.Lerp(
+            Vector3.zero,
+            eatTargetPos,
+            eatAnimCurve.Evaluate(currentAnimProgress)
+            );
+
+        if(currentAnimProgress == currentAnimTarget)
+        {
+            if(currentAnimTarget == 1)
+            {
+                HandleConsumption();
+                currentAnimStart = 1;
+                currentAnimTarget = 0;
+                currentAnimProgress = 1;
+            }
+            else
+            {
+                canUse = true;
+            }
+        }
     }
 
     protected virtual void HandleConsumption()
@@ -66,11 +111,5 @@ public class item_con_base : item_base
         itemManager.currentItemInfo = null;
         itemManager.currentlyInPickupAnim = false;
         Destroy(gameObject);
-    }
-
-    protected virtual IEnumerator UseCooldown()
-    {
-        yield return new WaitForSeconds(useCooldown);
-        canUse = true;
     }
 }
