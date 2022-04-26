@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpMax: 60
   hpCurrent: 0
+  hitVFX: {fileID: 6404665465138878900, guid: 718626927979522498eacdfcdfbd5e8f, type: 3}
   brain: {fileID: 281362386745137869}
   info: {fileID: 281362386376746453}
   states: {fileID: 281362386745137871}
@@ -195,6 +196,7 @@ MonoBehaviour:
     dmgAmount: 40
     type: 
     force: 0
+    hitPos: {x: 0, y: 0, z: 0}
   dmgInterval: 0.3
   modelTrans: {fileID: 281362387797853683}
   colOffset: {x: 0, y: 3, z: 0}

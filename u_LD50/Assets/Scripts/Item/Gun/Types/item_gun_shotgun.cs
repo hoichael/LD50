@@ -70,6 +70,7 @@ public class item_gun_shotgun : item_gun_base
                 if (hit.transform.gameObject.CompareTag("Enemy"))
                 {
                     dmgInfo.origin = firePoint.position;
+                    dmgInfo.hitPos = hit.point;
                     hit.transform.GetComponent<en_health_base>().HandleDamage(dmgInfo);
                 }
             }

@@ -10,4 +10,5 @@ public class dmg_base
     public int dmgAmount;
     public string type; // melee / throw / hitscan / fall
     public float force; // used for knockback
+    public Vector3 hitPos;
 }

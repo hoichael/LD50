@@ -981,6 +981,7 @@ MonoBehaviour:
     dmgAmount: 180
     type: Melee
     force: 0
+    hitPos: {x: 0, y: 0, z: 0}
   sfxEngage: {fileID: 3233951780939371055}
 --- !u!1 &4406879990686470219
 GameObject:
@@ -1304,6 +1305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpMax: 90
   hpCurrent: 0
+  hitVFX: {fileID: 6404665465138878900, guid: 718626927979522498eacdfcdfbd5e8f, type: 3}
   ragdoll: {fileID: 4406879991566573492}
   states: {fileID: 4406879990303825574}
   brain: {fileID: 4406879990303825570}

@@ -45,6 +45,9 @@ public class item_wep_base : item_base
     [SerializeField]
     private FMODUnity.EventReference sfxImpact;
 
+    [SerializeField]
+    private Transform hitPosTrans;
+
     public override void Use()
     {
         if (currentlyAttacking) return;
@@ -136,6 +139,10 @@ public class item_wep_base : item_base
             {
                 if (hitColliders[i].CompareTag("Enemy"))
                 {
+                    if(hitPosTrans != null)
+                    {
+                        dmgInfo.hitPos = hitPosTrans.position;
+                    }
                     hitColliders[i].GetComponentInParent<en_health_base>().HandleDamage(dmgInfo);
                 }
             }

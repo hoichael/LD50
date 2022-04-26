@@ -1201,7 +1201,8 @@ MonoBehaviour:
   dmgInfo:
     dmgAmount: 20
     type: Hitscan
-    force: 16
+    force: 0.85
+    hitPos: {x: 0, y: 0, z: 0}
     origin: {x: 0, y: 0, z: 0}
   trailContainer: {fileID: 6001413876977868566}
   trailList:

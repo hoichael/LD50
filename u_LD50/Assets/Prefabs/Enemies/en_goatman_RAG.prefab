@@ -902,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpMax: 70
   hpCurrent: 0
+  hitVFX: {fileID: 6404665465138878900, guid: 718626927979522498eacdfcdfbd5e8f, type: 3}
   ragdoll: {fileID: 5646726972417421078}
   brain: {fileID: 3741859891393508652}
   sfxScreamEmitter: {fileID: 8042308935329288067}
@@ -1137,6 +1138,7 @@ MonoBehaviour:
     dmgAmount: 40
     type: Melee
     force: 0
+    hitPos: {x: 0, y: 0, z: 0}
   attackPosTrans: {fileID: 2208475198680690686}
   attackColHalfExtents: {x: 2, y: 2, z: 2}
   playerLayerMask:

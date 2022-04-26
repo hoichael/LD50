@@ -45,6 +45,36 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3213388140244033404, guid: faf964bda78ba914f86e7e0d244be2e7, type: 3}
+--- !u!1 &1302389815795342200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710704045333289189}
+  m_Layer: 10
+  m_Name: HitPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710704045333289189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302389815795342200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2909991552886251652}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2640011219765051225
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +229,8 @@ MonoBehaviour:
   dmgInfo:
     dmgAmount: 30
     type: Melee
-    force: 4
+    force: 0.5
+    hitPos: {x: 0, y: 0, z: 0}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 9.4
   animSpeedReset: 2
@@ -276,6 +307,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  hitPosTrans: {fileID: 710704045333289189}
 --- !u!54 &2909991552196994257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -307,7 +339,8 @@ MonoBehaviour:
   dmgInfo:
     dmgAmount: 1
     type: Throw
-    force: 2
+    force: 0.5
+    hitPos: {x: 0, y: 0, z: 0}
   itemInfo: {fileID: 2909991552196994258}
   sfxImpact:
     Guid:
@@ -344,6 +377,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3452260469146150371}
+  - {fileID: 710704045333289189}
   m_Father: {fileID: 2909991552196994256}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

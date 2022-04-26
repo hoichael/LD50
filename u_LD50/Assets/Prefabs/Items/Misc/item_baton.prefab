@@ -31,6 +31,7 @@ Transform:
   - {fileID: 8626883921009735687}
   - {fileID: 8626883921017413597}
   - {fileID: 8626883921777785112}
+  - {fileID: 4885629312064837214}
   m_Father: {fileID: 7447639547097675324}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,7 +107,8 @@ MonoBehaviour:
   dmgInfo:
     dmgAmount: 38
     type: Melee
-    force: 14
+    force: 0.8
+    hitPos: {x: 0, y: 0, z: 0}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 13.5
   animSpeedReset: 2
@@ -183,6 +185,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  hitPosTrans: {fileID: 4885629312064837214}
 --- !u!54 &7447639547097675325
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -214,7 +217,8 @@ MonoBehaviour:
   dmgInfo:
     dmgAmount: 1
     type: Throw
-    force: 2
+    force: 0.6
+    hitPos: {x: 0, y: 0, z: 0}
   itemInfo: {fileID: 7447639547097675326}
   sfxImpact:
     Guid:
@@ -223,6 +227,36 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+--- !u!1 &7858581531202214188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4885629312064837214}
+  m_Layer: 10
+  m_Name: HitPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4885629312064837214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7858581531202214188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.718, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7447639545603076712}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8626883921009735680
 GameObject:
   m_ObjectHideFlags: 0
