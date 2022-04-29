@@ -46,27 +46,32 @@ public class pl_groundcheck : MonoBehaviour
     {
         float vel = rb.velocity.y;
 
-        if(vel < -2.3f)
+        if(vel < -3f)
         {
             FMODUnity.RuntimeManager.PlayOneShot(sfxFootstep);
 
-            if (vel < -14.4f)
+            if (vel < -7.6f)
             {
-                if (vel < -17f)
-                {
-                    dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgMultHigh);
-                }
-                else if (vel < -15.4f)
-                {
-                    dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgAmountMid);
-                }
-                else
-                {
-                    dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgMultLow);
-                }
-
                 FMODUnity.RuntimeManager.PlayOneShot(sfxFallDamage);
-                healthDamage.HandleDamage(dmgInfo);
+
+                if (vel < -14.4f)
+                {
+                    if (vel < -17f)
+                    {
+                        dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgMultHigh);
+                    }
+                    else if (vel < -15.4f)
+                    {
+                        dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgAmountMid);
+                    }
+                    else
+                    {
+                        dmgInfo.dmgAmount = Mathf.RoundToInt(vel * -fallDmgMultLow);
+                    }
+
+                    FMODUnity.RuntimeManager.PlayOneShot(sfxFallDamage);
+                    healthDamage.HandleDamage(dmgInfo);
+                }
             }
         }
     }

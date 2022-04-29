@@ -38,7 +38,7 @@ public class wep_throw : MonoBehaviour
             dmgInfo.dmgAmount = Mathf.RoundToInt((dmgInfo.dmgAmount * itemInfo.rb.velocity.magnitude) * 0.4f);
             dmgInfo.force = 1 * (itemInfo.rb.velocity.magnitude * 0.1f);
 
-            print(1 * (itemInfo.rb.velocity.magnitude * 0.1f));
+         //   print(1 * (itemInfo.rb.velocity.magnitude * 0.1f));
 
             dmgInfo.hitPos = transform.position;
             col.transform.GetComponent<en_health_base>().HandleDamage(dmgInfo);
