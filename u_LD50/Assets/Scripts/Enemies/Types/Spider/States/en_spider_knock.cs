@@ -29,8 +29,18 @@ public class en_spider_knock : en_state_base
 
     private void GroundCheck()
     {
+        /*
         if (Physics.CheckSphere(
             groundCheckTrans.position,
+            groundCheckRadius,
+            groundLayerMask))
+        {
+            checkForGround = false;
+            ChangeState("chase");
+        }
+        */
+        if (Physics.CheckSphere(
+            info.trans.position - Vector3.down,
             groundCheckRadius,
             groundLayerMask))
         {

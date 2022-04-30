@@ -74,6 +74,7 @@ MonoBehaviour:
     dmgAmount: 64
     type: Melee
     force: 13
+    hitPos: {x: 0, y: 0, z: 0}
   itemAnchor: {fileID: 0}
   animSpeedSwing: 9.4
   animSpeedReset: 2
@@ -140,6 +141,17 @@ MonoBehaviour:
   enemiesLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  sfxImpact:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  hitPosTrans: {fileID: 0}
 --- !u!54 &2310468448776520895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,7 +184,15 @@ MonoBehaviour:
     dmgAmount: 1
     type: Throw
     force: 2
+    hitPos: {x: 0, y: 0, z: 0}
   itemInfo: {fileID: 2310468448776520892}
+  sfxImpact:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &2310468450539552997
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,8 +393,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0.017126083, a: 1}
-  m_Intensity: 3
-  m_Range: 9
+  m_Intensity: 3.4
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

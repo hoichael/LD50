@@ -86,7 +86,7 @@ public class en_spider_jump : en_state_base
     private void GroundCheck()
     {
         if (Physics.CheckSphere(
-            groundCheckTrans.position,
+            info.trans.position,
             groundCheckRadius,
             groundLayerMask))
         {

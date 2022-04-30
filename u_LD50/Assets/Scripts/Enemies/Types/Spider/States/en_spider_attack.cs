@@ -32,15 +32,16 @@ public class en_spider_attack : en_state_base
     private void Start()
     {
         plDamage = pl_state.Instance.GLOBAL_PL_TRANS_REF.GetComponentInChildren<pl_health_damage>();
-        colDefaultPos = col.center;
+//        colDefaultPos = col.center;
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+
         info.rb.isKinematic = true;
         //   col.isTrigger = true;
-
+        colDefaultPos = col.center;
         col.center = colOffset;
 
         info.trans.SetParent(pl_state.Instance.GLOBAL_CAM_REF.transform);
@@ -77,10 +78,12 @@ public class en_spider_attack : en_state_base
     protected override void OnDisable()
     {
         base.OnDisable();
+        /*
         if(info.trans.parent.gameObject.activeInHierarchy)
         {
             info.trans.SetParent(null);
         }
+        */
      //   info.trans.parent = null;
         info.rb.isKinematic = false;
         col.center = colDefaultPos;

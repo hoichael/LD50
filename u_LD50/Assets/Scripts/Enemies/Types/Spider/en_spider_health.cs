@@ -18,10 +18,16 @@ public class en_spider_health : en_health_base
 
     public override void HandleDamage(dmg_base dmgInfo)
     {
+        info.trans.SetParent(null);
+
         base.HandleDamage(dmgInfo);
 
         HandleKnockback();
-        brain.ChangeState("knock");
+
+        if(hpCurrent > 0)
+        {
+            brain.ChangeState("knock");
+        }
 
         sfxDamage.Play();
 
@@ -29,7 +35,7 @@ public class en_spider_health : en_health_base
 
     private void HandleKnockback()
     {
-        info.rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        info.rb.AddForce(Vector3.up * 7f, ForceMode.Impulse);
         info.rb.AddForce((info.trans.position - pl_state.Instance.GLOBAL_CAM_REF.transform.position).normalized * 3f, ForceMode.Impulse);
     }
 
@@ -43,7 +49,6 @@ public class en_spider_health : en_health_base
         */
         states.SetActive(false);
 
-        info.trans.SetParent(null);
         info.trans.GetComponent<CapsuleCollider>().center = new Vector3(0, 0.5f, 0);
 
 

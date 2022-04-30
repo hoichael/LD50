@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79eefa28d73ab934bb50f0b751aac1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 60
+  hpMax: 20
   hpCurrent: 0
   hitVFX: {fileID: 6404665465138878900, guid: 718626927979522498eacdfcdfbd5e8f, type: 3}
   brain: {fileID: 281362386745137869}
@@ -260,7 +260,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckRadius: 0.6
+  groundCheckRadius: 2
   attackTriggerDist: 1.8
   maxAttackAngle: 82
   sfxScream: {fileID: 4127205444945241438}
@@ -283,7 +283,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckRadius: 0.6
+  groundCheckRadius: 2
 --- !u!1 &281362387797853682
 GameObject:
   m_ObjectHideFlags: 0
