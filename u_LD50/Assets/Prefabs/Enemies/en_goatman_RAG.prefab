@@ -1082,7 +1082,7 @@ MonoBehaviour:
   brain: {fileID: 3741859891393508652}
   info: {fileID: 3741859890443118842}
   checkInterval: 0.3
-  triggerDistEngage: 28
+  triggerDistEngage: 34
   triggerDistAttack: 4.2
   sfxIdleEmitter: {fileID: 2449411370005062790}
 --- !u!114 &3741859891393508643
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckRadius: 0.2
+  groundCheckRadius: 0.8
   sfxScreamEmitter: {fileID: 8042308935329288067}
   sfxGroundImpact:
     Guid:
