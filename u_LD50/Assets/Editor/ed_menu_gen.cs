@@ -10,7 +10,7 @@ public class ed_menu_gen : EditorWindow
     private string text;
     private char[] charArr;
 
-    private int charSpacing = 2;
+    private int charSpacing = 1;
 
     [MenuItem("Custom/GenerateButton")]
     public static void OpenWindow()
@@ -50,7 +50,10 @@ public class ed_menu_gen : EditorWindow
         container.name = "CharacterContainer";
         container.transform.SetParent(buttonContainer.transform);
 
-        for(int i = 0; i < charArr.Length; i++)
+        menu_button buttonInfo = buttonContainer.GetComponent<menu_button>();
+        buttonInfo.textArr = new TMPro.TMP_Text[charArr.Length];
+
+        for (int i = 0; i < charArr.Length; i++)
         {
             var charHolder = new GameObject();
             charHolder.name = "CharHolder";
@@ -63,6 +66,8 @@ public class ed_menu_gen : EditorWindow
 
             TMPro.TMP_Text textEl = tmpBase.GetComponent<TMPro.TMP_Text>();
             textEl.text = charArr[i].ToString();
+
+            buttonInfo.textArr[i] = textEl;
         }
     }
 }

@@ -10,29 +10,44 @@ public class menu_button : MonoBehaviour
     [SerializeField]
     private MenuButtonType type;
 
+//    [SerializeField]
+//    private TMPro.TMP_Text text;
+
+    public TMPro.TMP_Text[] textArr;
+
+    private float currentAnimProgress = 1;
+
     [SerializeField]
-    private TMPro.TMP_Text text;
+    private float animSpeed;
 
-    private RectTransform rc;
 
-    private Material fontMat;
 
-    private void Start()
+    private void Update()
     {
-        fontMat = text.fontMaterial;
-        rc = text.rectTransform;
+        
     }
 
     private void OnMouseEnter()
     {
-        fontMat.SetFloat("_GlowPower", 0.5f);
-        rc.localScale = Vector3.one * 1.2f;
+        for (int i = 0; i < textArr.Length; i++)
+        {
+            textArr[i].fontMaterial.SetFloat("_GlowPower", 0.5f);
+            textArr[i].rectTransform.localScale = Vector3.one * 1.2f;
+        }
+
+     //   fontMat.SetFloat("_GlowPower", 0.5f);
+     //   rc.localScale = Vector3.one * 1.2f;
     }
 
     private void OnMouseExit()
     {
-        fontMat.SetFloat("_GlowPower", 0f);
-        rc.localScale = Vector3.one;
+        for (int i = 0; i < textArr.Length; i++)
+        {
+            textArr[i].fontMaterial.SetFloat("_GlowPower", 0);
+            textArr[i].rectTransform.localScale = Vector3.one;
+        }
+        //   fontMat.SetFloat("_GlowPower", 0f);
+        //   rc.localScale = Vector3.one;
     }
 
     private void OnMouseDown()
