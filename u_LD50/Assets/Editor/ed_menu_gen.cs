@@ -49,9 +49,12 @@ public class ed_menu_gen : EditorWindow
         var container = new GameObject();
         container.name = "CharacterContainer";
         container.transform.SetParent(buttonContainer.transform);
+        container.transform.localPosition = Vector3.zero;
 
         menu_button buttonInfo = buttonContainer.GetComponent<menu_button>();
-        buttonInfo.textArr = new TMPro.TMP_Text[charArr.Length];
+
+        //   buttonInfo.textArr = new TMPro.TMP_Text[charArr.Length];
+        buttonInfo.charInfoArr = new menu_char_info[charArr.Length];
 
         for (int i = 0; i < charArr.Length; i++)
         {
@@ -67,7 +70,11 @@ public class ed_menu_gen : EditorWindow
             TMPro.TMP_Text textEl = tmpBase.GetComponent<TMPro.TMP_Text>();
             textEl.text = charArr[i].ToString();
 
-            buttonInfo.textArr[i] = textEl;
+            buttonInfo.charInfoArr[i] = new menu_char_info();
+            buttonInfo.charInfoArr[i].containerTrans = charHolder.transform;
+            buttonInfo.charInfoArr[i].textComponent = textEl;
         }
+
+        container.transform.localRotation = Quaternion.Euler(new Vector3(menu_settings.baseRotX, 0, 0));
     }
 }

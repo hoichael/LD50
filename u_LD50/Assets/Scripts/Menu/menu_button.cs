@@ -13,7 +13,7 @@ public class menu_button : MonoBehaviour
 //    [SerializeField]
 //    private TMPro.TMP_Text text;
 
-    public TMPro.TMP_Text[] textArr;
+    public menu_char_info[] charInfoArr;
 
     private float currentAnimProgress = 1;
 
@@ -29,10 +29,10 @@ public class menu_button : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        for (int i = 0; i < textArr.Length; i++)
+        for (int i = 0; i < charInfoArr.Length; i++)
         {
-            textArr[i].fontMaterial.SetFloat("_GlowPower", 0.5f);
-            textArr[i].rectTransform.localScale = Vector3.one * 1.2f;
+            charInfoArr[i].textComponent.fontMaterial.SetFloat("_GlowPower", 0.5f);
+            charInfoArr[i].textComponent.rectTransform.localScale = Vector3.one * 1.2f;
         }
 
      //   fontMat.SetFloat("_GlowPower", 0.5f);
@@ -41,10 +41,10 @@ public class menu_button : MonoBehaviour
 
     private void OnMouseExit()
     {
-        for (int i = 0; i < textArr.Length; i++)
+        for (int i = 0; i < charInfoArr.Length; i++)
         {
-            textArr[i].fontMaterial.SetFloat("_GlowPower", 0);
-            textArr[i].rectTransform.localScale = Vector3.one;
+            charInfoArr[i].textComponent.fontMaterial.SetFloat("_GlowPower", 0);
+            charInfoArr[i].textComponent.rectTransform.localScale = Vector3.one;
         }
         //   fontMat.SetFloat("_GlowPower", 0f);
         //   rc.localScale = Vector3.one;
@@ -60,4 +60,12 @@ public class menu_button : MonoBehaviour
         print("click!");
         menu.HandleButtonPress(type);
     }
+}
+
+public class menu_char_info
+{
+    public Transform containerTrans;
+    public TMPro.TMP_Text textComponent;
+    public Vector3 animStartPos, animTargetPos;
+    public Quaternion animStartRot, animTargetRot;
 }
