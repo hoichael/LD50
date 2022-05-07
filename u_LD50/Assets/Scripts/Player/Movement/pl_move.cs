@@ -25,6 +25,17 @@ public class pl_move : MonoBehaviour
     private float sprintMult; 
     private int hungerMult;
 
+    [SerializeField]
+    private float maxSlopeNormal;
+
+    /*
+    [SerializeField]
+    private float maxGroundSpeedWalk;
+
+    [SerializeField]
+    private float maxGroundSpeedSprint;
+    */
+
     private void Start()
     {
         rb.freezeRotation = true;
@@ -81,8 +92,8 @@ public class pl_move : MonoBehaviour
 
     private void ApplyMovement()
     {
-
-        if(pl_state.Instance.grounded && Physics.Raycast(transform.position, Vector3.down, out hit, 3))
+        print(rb.velocity.magnitude);
+        if (pl_state.Instance.grounded && Physics.Raycast(transform.position, Vector3.down, out hit, 3))
         {
             /*
             if(hit.normal != Vector3.up)
@@ -90,9 +101,26 @@ public class pl_move : MonoBehaviour
                 currentDir = Vector3.ProjectOnPlane(currentDir, hit.normal).normalized;
             }
             */
+
+            if (Mathf.Abs(hit.normal.x) < maxSlopeNormal && Mathf.Abs(hit.normal.z) < maxSlopeNormal)
+            {
+                currentDir = Vector3.ProjectOnPlane(currentDir, hit.normal).normalized;
+            }
         }
 
         rb.AddForce(currentDir * pl_settings.Instance.moveSpeed * currentMult, ForceMode.Acceleration);
+
+        if (pl_state.Instance.grounded)
+        {
+            if (currentlySprinting)
+            {
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, pl_settings.Instance.maxGroundSpeedSprint);
+            }
+            else
+            {
+                rb.velocity = Vector3.ClampMagnitude(rb.velocity, pl_settings.Instance.maxGroundSpeedWalk);
+            }
+        }
     }
 
     private void CalcCamTilt()

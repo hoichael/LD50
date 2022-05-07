@@ -18,6 +18,8 @@ public class pl_settings : ut_singleton<pl_settings>
     [Header("Move")]
     public float moveSpeed;
     public float moveSprintMult;
+    public float maxGroundSpeedWalk;
+    public float maxGroundSpeedSprint;
     public float moveAirMult;
     public float dragGround;
     public float dragAir;
