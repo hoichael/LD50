@@ -10,44 +10,71 @@ public class menu_button : MonoBehaviour
     [SerializeField]
     private MenuButtonType type;
 
-//    [SerializeField]
-//    private TMPro.TMP_Text text;
-
-    public menu_char_info[] charInfoArr;
+    [SerializeField]
+    public List<menu_char_info> charInfoList;
 
     private float currentAnimProgress = 1;
 
     [SerializeField]
     private float animSpeed;
 
+    [SerializeField]
+    private AnimationCurve animCurve;
 
+    private void Start()
+    {
+        print(charInfoList);
+    }
 
     private void Update()
     {
-        
+        if(currentAnimProgress != 1)
+        {
+            HandleHoverAnim();
+        }
+    }
+
+    private void HandleHoverAnim()
+    {
+        currentAnimProgress = Mathf.MoveTowards(currentAnimProgress, 1, animSpeed * Time.deltaTime);
+
+        for(int i = 0; i < charInfoList.Count; i++)
+        {
+            charInfoList[i].containerTrans.localPosition = Vector3.Lerp(
+                charInfoList[i].animStartPos,
+                charInfoList[i].animTargetPos,
+                currentAnimProgress
+                );
+
+            charInfoList[i].containerTrans.localRotation = Quaternion.Slerp(
+                charInfoList[i].animStartRot,
+                charInfoList[i].animTargetRot,
+                currentAnimProgress
+                );
+        }
     }
 
     private void OnMouseEnter()
     {
-        for (int i = 0; i < charInfoArr.Length; i++)
+        for (int i = 0; i < charInfoList.Count; i++)
         {
-            charInfoArr[i].textComponent.fontMaterial.SetFloat("_GlowPower", 0.5f);
-            charInfoArr[i].textComponent.rectTransform.localScale = Vector3.one * 1.2f;
+            charInfoList[i].animStartPos = charInfoList[i].containerTrans.localPosition;
+            charInfoList[i].animTargetPos = charInfoList[i].hoverPos;
+
+            charInfoList[i].animStartRot = charInfoList[i].containerTrans.localRotation;
+            charInfoList[i].animTargetRot = charInfoList[i].hoverRot;
         }
 
-     //   fontMat.SetFloat("_GlowPower", 0.5f);
-     //   rc.localScale = Vector3.one * 1.2f;
+        currentAnimProgress = 0;
     }
 
     private void OnMouseExit()
     {
-        for (int i = 0; i < charInfoArr.Length; i++)
+        for (int i = 0; i < charInfoList.Count; i++)
         {
-            charInfoArr[i].textComponent.fontMaterial.SetFloat("_GlowPower", 0);
-            charInfoArr[i].textComponent.rectTransform.localScale = Vector3.one;
+            charInfoList[i].textComponent.fontMaterial.SetFloat("_GlowPower", 0);
+            charInfoList[i].textComponent.rectTransform.localScale = Vector3.one;
         }
-        //   fontMat.SetFloat("_GlowPower", 0f);
-        //   rc.localScale = Vector3.one;
     }
 
     private void OnMouseDown()
@@ -62,10 +89,13 @@ public class menu_button : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class menu_char_info
 {
     public Transform containerTrans;
     public TMPro.TMP_Text textComponent;
     public Vector3 animStartPos, animTargetPos;
     public Quaternion animStartRot, animTargetRot;
+    public Vector3 hoverPos;
+    public Quaternion hoverRot;
 }
