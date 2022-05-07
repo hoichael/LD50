@@ -62,7 +62,7 @@ public class pl_item_manager : MonoBehaviour
 
     public void InitPickup(int_item pickupInfo)  // called from pl_interact
     {
-        if(pickupInfo.itemType == "Battery" && flashlight.currentlyEnabled)
+        if(pickupInfo.itemType == "Battery" && flashlight.currentlyEnabled && flashlight.CanPickup(pickupInfo.GetComponent<item_battery_base>()))
         {
             flashlight.InitBatteryPickup(pickupInfo.GetComponent<item_battery_base>());
         }

@@ -89,16 +89,20 @@ public class pl_D_flashlight : MonoBehaviour
         }
     }
 
-    public void InitBatteryPickup(item_battery_base batteryInfo)
+    public bool CanPickup(item_battery_base batteryInfo)
     {
-        if (batteryInfo.currentUse >= batteryInfo.totalUses) return;
+        if (batteryInfo.currentUse >= batteryInfo.totalUses) return false;
 
         if (batteryInfoList.Count + 1 > batteryCapacity || currentPickupTrans != null)
         {
-            // play sfx
-            return;
+            return false;
         }
 
+        return true;
+    }
+
+    public void InitBatteryPickup(item_battery_base batteryInfo)
+    {
         HandleBatteryPickup(batteryInfo);
     }
 
@@ -151,9 +155,12 @@ public class pl_D_flashlight : MonoBehaviour
         else
         {
             FMODUnity.RuntimeManager.PlayOneShot(sfxOn, sfxOriginPos.position);
-            sfxLoopEmitter.Play();
-            StartCoroutine(FlickerCheck(10));
-            StartCoroutine(BatteryRoutine());
+            if (gotJuice)
+            {
+                sfxLoopEmitter.Play();
+                StartCoroutine(FlickerCheck(10));
+                StartCoroutine(BatteryRoutine());
+            }
         }
     }
 
@@ -203,6 +210,7 @@ public class pl_D_flashlight : MonoBehaviour
             currentPickupTrans = null;
 
             lightPrimary.enabled = lightSecondary.enabled = gotJuice = true;
+            sfxLoopEmitter.Play();
 
             if (batteryInfoList.Count == 1)
             {
@@ -220,6 +228,7 @@ public class pl_D_flashlight : MonoBehaviour
         if(batteryInfoList.Count < 1)
         {
             lightPrimary.enabled = lightSecondary.enabled = gotJuice = false;
+            sfxLoopEmitter.Stop();
             StopAllCoroutines();
         }
 

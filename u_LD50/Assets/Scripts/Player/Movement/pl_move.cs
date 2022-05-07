@@ -92,7 +92,6 @@ public class pl_move : MonoBehaviour
 
     private void ApplyMovement()
     {
-        print(rb.velocity.magnitude);
         if (pl_state.Instance.grounded && Physics.Raycast(transform.position, Vector3.down, out hit, 3))
         {
             /*
