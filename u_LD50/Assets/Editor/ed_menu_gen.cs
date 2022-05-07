@@ -52,32 +52,37 @@ public class ed_menu_gen : EditorWindow
         container.transform.localPosition = Vector3.zero;
 
         buttonInfo = buttonContainer.GetComponent<menu_button>();
-
-        //   buttonInfo.textArr = new TMPro.TMP_Text[charArr.Length];
-        //    buttonInfo.charInfoArr = new menu_char_info[charArr.Length];
         buttonInfo.charInfoList = new List<menu_char_info>();
 
+        Debug.Log("yoyo");
         for (int i = 0; i < charArr.Length; i++)
         {
+            buttonInfo.charInfoList.Add(new menu_char_info());
+
             var charHolder = new GameObject();
             charHolder.name = "CharHolder";
             charHolder.transform.SetParent(container.transform);
+            charHolder.transform.localPosition = Vector3.zero;
+
+            Debug.Log("yoyo");
+
+            charHolder.AddComponent<menu_char>();
+            buttonInfo.charInfoList[i].charAnim = charHolder.GetComponent<menu_char>();
 
             var tmpBase = Instantiate(charTMPbase);
             tmpBase.transform.SetParent(charHolder.transform);
 
-            charHolder.transform.localPosition = Vector3.zero;
-
             TMPro.TMP_Text textEl = tmpBase.GetComponent<TMPro.TMP_Text>();
             textEl.text = charArr[i].ToString();
+            textEl.rectTransform.localPosition = Vector3.zero;
 
-            buttonInfo.charInfoList.Add(new menu_char_info());
             buttonInfo.charInfoList[i].containerTrans = charHolder.transform;
             buttonInfo.charInfoList[i].textComponent = textEl;
-            buttonInfo.charInfoList[i].hoverRot = Quaternion.Euler(new Vector3(menu_settings.baseRotX, 0, 0));
         }
 
-        if(charArr.Length % 2 == 0)
+        Debug.Log("yoyo");
+
+        if (charArr.Length % 2 == 0)
         {
             PositionCharsEven();
         }

@@ -21,11 +21,6 @@ public class menu_button : MonoBehaviour
     [SerializeField]
     private AnimationCurve animCurve;
 
-    private void Start()
-    {
-        print(charInfoList);
-    }
-
     private void Update()
     {
         if(currentAnimProgress != 1)
@@ -43,14 +38,22 @@ public class menu_button : MonoBehaviour
             charInfoList[i].containerTrans.localPosition = Vector3.Lerp(
                 charInfoList[i].animStartPos,
                 charInfoList[i].animTargetPos,
-                currentAnimProgress
+                animCurve.Evaluate(currentAnimProgress)
                 );
 
             charInfoList[i].containerTrans.localRotation = Quaternion.Slerp(
                 charInfoList[i].animStartRot,
                 charInfoList[i].animTargetRot,
-                currentAnimProgress
+                animCurve.Evaluate(currentAnimProgress)
                 );
+        }
+
+        if(currentAnimProgress == 1 && charInfoList[0].animStartPos == charInfoList[0].hoverPos)
+        {
+            for (int i = 0; i < charInfoList.Count; i++)
+            {
+                charInfoList[i].charAnim.pauseAnim = false;
+            }
         }
     }
 
@@ -62,7 +65,9 @@ public class menu_button : MonoBehaviour
             charInfoList[i].animTargetPos = charInfoList[i].hoverPos;
 
             charInfoList[i].animStartRot = charInfoList[i].containerTrans.localRotation;
-            charInfoList[i].animTargetRot = charInfoList[i].hoverRot;
+            charInfoList[i].animTargetRot = Quaternion.Euler(Vector3.zero);
+
+            charInfoList[i].charAnim.pauseAnim = true;
         }
 
         currentAnimProgress = 0;
@@ -72,8 +77,20 @@ public class menu_button : MonoBehaviour
     {
         for (int i = 0; i < charInfoList.Count; i++)
         {
-            charInfoList[i].textComponent.fontMaterial.SetFloat("_GlowPower", 0);
-            charInfoList[i].textComponent.rectTransform.localScale = Vector3.one;
+            charInfoList[i].animTargetPos = charInfoList[i].animStartPos;
+            charInfoList[i].animStartPos = charInfoList[i].hoverPos;
+
+            charInfoList[i].animTargetRot = charInfoList[i].animStartRot;
+            charInfoList[i].animStartRot = Quaternion.Euler(Vector3.zero);
+        }
+
+        if(currentAnimProgress != 1)
+        {
+            currentAnimProgress = 1 - currentAnimProgress;
+        }
+        else
+        {
+            currentAnimProgress = 0;
         }
     }
 
@@ -97,5 +114,6 @@ public class menu_char_info
     public Vector3 animStartPos, animTargetPos;
     public Quaternion animStartRot, animTargetRot;
     public Vector3 hoverPos;
-    public Quaternion hoverRot;
+    public menu_char charAnim;
+//    public Quaternion hoverRot;
 }
