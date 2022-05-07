@@ -84,10 +84,12 @@ public class pl_move : MonoBehaviour
 
         if(pl_state.Instance.grounded && Physics.Raycast(transform.position, Vector3.down, out hit, 3))
         {
+            /*
             if(hit.normal != Vector3.up)
             {
                 currentDir = Vector3.ProjectOnPlane(currentDir, hit.normal).normalized;
             }
+            */
         }
 
         rb.AddForce(currentDir * pl_settings.Instance.moveSpeed * currentMult, ForceMode.Acceleration);

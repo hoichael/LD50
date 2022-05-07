@@ -10,11 +10,25 @@ public class pl_jump : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
+    [SerializeField]
+    private LayerMask groundMask;
+
+    [SerializeField]
+    private float maxSlopeNormal;
+
     private void Update()
     {
         if(input.jumpKeyDown && pl_state.Instance.grounded)
         {
-            InitJump();
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 5f, groundMask))
+            {
+                if(Mathf.Abs(hit.normal.x) < maxSlopeNormal && Mathf.Abs(hit.normal.z) < maxSlopeNormal) 
+                {
+                    InitJump();
+                }
+            }
         }
     }
 
