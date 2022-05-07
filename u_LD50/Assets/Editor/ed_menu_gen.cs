@@ -54,7 +54,6 @@ public class ed_menu_gen : EditorWindow
         buttonInfo = buttonContainer.GetComponent<menu_button>();
         buttonInfo.charInfoList = new List<menu_char_info>();
 
-        Debug.Log("yoyo");
         for (int i = 0; i < charArr.Length; i++)
         {
             buttonInfo.charInfoList.Add(new menu_char_info());
@@ -63,8 +62,6 @@ public class ed_menu_gen : EditorWindow
             charHolder.name = "CharHolder";
             charHolder.transform.SetParent(container.transform);
             charHolder.transform.localPosition = Vector3.zero;
-
-            Debug.Log("yoyo");
 
             charHolder.AddComponent<menu_char>();
             buttonInfo.charInfoList[i].charAnim = charHolder.GetComponent<menu_char>();
@@ -75,12 +72,11 @@ public class ed_menu_gen : EditorWindow
             TMPro.TMP_Text textEl = tmpBase.GetComponent<TMPro.TMP_Text>();
             textEl.text = charArr[i].ToString();
             textEl.rectTransform.localPosition = Vector3.zero;
+            textEl.fontSize = menu_settings.fontSize;
 
             buttonInfo.charInfoList[i].containerTrans = charHolder.transform;
             buttonInfo.charInfoList[i].textComponent = textEl;
         }
-
-        Debug.Log("yoyo");
 
         if (charArr.Length % 2 == 0)
         {
@@ -96,9 +92,26 @@ public class ed_menu_gen : EditorWindow
 
     private void PositionCharsEven()
     {
-        for (int i = 0; i < buttonInfo.charInfoList.Count; i++)
+        for (int i = 0; i < buttonInfo.charInfoList.Count / 2; i++)
         {
-            
+            Vector3 pos;
+            Vector3 hoverPos;
+            if(i == 0)
+            {
+                pos = new Vector3(menu_settings.charSpacingDefault / 2, 0, 0);
+                hoverPos = new Vector3(menu_settings.charSpacingHover / 2, 0, 0);
+            }
+            else
+            {
+                pos = new Vector3(menu_settings.charSpacingDefault * i + menu_settings.charSpacingDefault / 2, 0, 0);
+                hoverPos = new Vector3(menu_settings.charSpacingHover * i + menu_settings.charSpacingHover / 2, 0, 0);
+            }
+
+            buttonInfo.charInfoList[Mathf.RoundToInt(((float)buttonInfo.charInfoList.Count - 1) / 2 + i + 0.5f)].containerTrans.localPosition = pos;
+            buttonInfo.charInfoList[Mathf.RoundToInt(((float)buttonInfo.charInfoList.Count - 1) / 2 + i + 0.5f)].hoverPos = hoverPos;
+
+            buttonInfo.charInfoList[Mathf.RoundToInt(((float)buttonInfo.charInfoList.Count - 1) / 2 - i - 0.5f)].containerTrans.localPosition = -pos;
+            buttonInfo.charInfoList[Mathf.RoundToInt(((float)buttonInfo.charInfoList.Count - 1) / 2 - i - 0.5f)].hoverPos = -hoverPos;
         }
     }
 

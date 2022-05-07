@@ -10,7 +10,13 @@ public class menu_char : MonoBehaviour
 
     private Vector3 currentTargetPos;
 
-    private float moveSpeed = 0.03f;
+    private Vector3 currentTargetRot;
+
+    // private float moveSpeed = 0.03f;
+    // private float rotSpeed = 0.4f;
+
+    private float moveSpeed = 0.14f;
+    private float rotSpeed = 1.2f;
 
     private Vector3 initPos;
 
@@ -19,6 +25,7 @@ public class menu_char : MonoBehaviour
         //   StartCoroutine(GetRandomPos());
         initPos = transform.localPosition;
         UpdateTargetPos();
+        UpdateTargetRot();
     }
 
     private void Update()
@@ -30,15 +37,17 @@ public class menu_char : MonoBehaviour
     private void Anim()
     {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, currentTargetPos, moveSpeed * Time.deltaTime);
-
         if(transform.localPosition == currentTargetPos) UpdateTargetPos();
+
+        transform.localRotation = Quaternion.Euler(Vector3.MoveTowards(transform.localEulerAngles, currentTargetRot, rotSpeed * Time.deltaTime));
+        if (transform.localRotation == Quaternion.Euler(currentTargetRot)) UpdateTargetRot();
     }
 
     private void UpdateTargetPos()
     {
         Vector3 randomOffset = new Vector3(
             Random.Range(-0.1f, 0.1f),
-            Random.Range(-0.1f, 0.1f),
+            Random.Range(-0.17f, 0.17f),
             Random.Range(-0.07f, 0.07f)
             );
 
@@ -48,10 +57,12 @@ public class menu_char : MonoBehaviour
     private void UpdateTargetRot()
     {
         Vector3 randomOffset = new Vector3(
-            Random.Range(-0.1f, 0.1f),
-            Random.Range(-0.1f, 0.1f),
-            Random.Range(-0.07f, 0.07f)
-    );
+            Random.Range(-3.2f, 3.2f),
+            Random.Range(-5.6f, 5.6f),
+            Random.Range(-0.2f, 0.2f)
+            );
+
+        currentTargetRot = transform.localEulerAngles + randomOffset;
     }
 
     /*

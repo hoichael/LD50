@@ -48,6 +48,7 @@ public class menu_button : MonoBehaviour
                 );
         }
 
+        /*
         if(currentAnimProgress == 1 && charInfoList[0].animStartPos == charInfoList[0].hoverPos)
         {
             for (int i = 0; i < charInfoList.Count; i++)
@@ -55,6 +56,7 @@ public class menu_button : MonoBehaviour
                 charInfoList[i].charAnim.pauseAnim = false;
             }
         }
+        */
     }
 
     private void OnMouseEnter()
@@ -77,13 +79,17 @@ public class menu_button : MonoBehaviour
     {
         for (int i = 0; i < charInfoList.Count; i++)
         {
+            /*
             charInfoList[i].animTargetPos = charInfoList[i].animStartPos;
             charInfoList[i].animStartPos = charInfoList[i].hoverPos;
 
             charInfoList[i].animTargetRot = charInfoList[i].animStartRot;
             charInfoList[i].animStartRot = Quaternion.Euler(Vector3.zero);
+            */
+            charInfoList[i].charAnim.pauseAnim = false;
         }
 
+        /*
         if(currentAnimProgress != 1)
         {
             currentAnimProgress = 1 - currentAnimProgress;
@@ -92,6 +98,7 @@ public class menu_button : MonoBehaviour
         {
             currentAnimProgress = 0;
         }
+        */
     }
 
     private void OnMouseDown()
