@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class nv_monolith : MonoBehaviour
-{
+public class nv_monolith : nv_monobase
+{/*
     [SerializeField]
     private List<nv_monosocket> socketInfoList;
 
@@ -42,6 +42,19 @@ public class nv_monolith : MonoBehaviour
 
     private void InitTheEnd()
     {
+        print("dun duuuuun");
+        plDmg.HandleDamage(dmgInfo);
+    }
+    */
+    [SerializeField]
+    private pl_health_damage plDmg;
+
+    [SerializeField]
+    private dmg_base dmgInfo;
+
+    protected override void HandleCompletion()
+    {
+        base.HandleCompletion();
         print("dun duuuuun");
         plDmg.HandleDamage(dmgInfo);
     }

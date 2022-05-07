@@ -208,6 +208,7 @@ MonoBehaviour:
   isItem: 1
   takesItem: 0
   isMonolith: 0
+  isMinilith: 0
   itemType: Prop
 --- !u!114 &2909991552196994258
 MonoBehaviour:
@@ -424,8 +425,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.04957037, g: 0.754717, b: 0, a: 1}
-  m_Intensity: 4
-  m_Range: 9
+  m_Intensity: 2.9
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

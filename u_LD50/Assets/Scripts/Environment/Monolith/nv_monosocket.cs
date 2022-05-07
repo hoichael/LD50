@@ -5,7 +5,7 @@ using UnityEngine;
 public class nv_monosocket : MonoBehaviour, I_TakeItem
 {
     [SerializeField]
-    private nv_monolith manager;
+    private nv_monobase manager;
 
     [SerializeField]
     private int_base intInfoRef;
