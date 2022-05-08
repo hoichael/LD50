@@ -63,7 +63,7 @@ public class pl_move : MonoBehaviour
 
         if(pl_state.Instance.grounded)
         {
-            rb.drag = pl_settings.Instance.dragGround;
+         //   rb.drag = pl_settings.Instance.dragGround;
 
             if(input.sprintKey && input.moveY > 0)
             {
@@ -79,7 +79,7 @@ public class pl_move : MonoBehaviour
         }
         else
         {
-            rb.drag = pl_settings.Instance.dragAir;
+         //   rb.drag = pl_settings.Instance.dragAir;
             currentMult = pl_settings.Instance.moveAirMult;
         }
     }

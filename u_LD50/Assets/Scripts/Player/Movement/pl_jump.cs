@@ -16,6 +16,9 @@ public class pl_jump : MonoBehaviour
     [SerializeField]
     private float maxSlopeNormal;
 
+    [SerializeField]
+    private pl_groundcheck groundcheck;
+
     private void Update()
     {
         if(input.jumpKeyDown && pl_state.Instance.grounded)
@@ -35,5 +38,6 @@ public class pl_jump : MonoBehaviour
     private void InitJump()
     {
         rb.AddForce(new Vector3(0, pl_settings.Instance.jumpForce, 0), ForceMode.Impulse);
+        groundcheck.HandleJump();
     }
 }

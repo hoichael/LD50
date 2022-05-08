@@ -17,6 +17,7 @@ public class pl_health_damage : MonoBehaviour
     private AnimationCurve animCurve;
 
     private float currentDmgAnimProgress = 1;
+    private float currentStunProgress = 1;
 
     [SerializeField]
     private float stunDragAmount;
@@ -44,10 +45,16 @@ public class pl_health_damage : MonoBehaviour
 
         manager.HandleHealthChange();
 
-        if(currentDmgAnimProgress != 0) currentDmgAnimProgress = 0;
+        currentDmgAnimProgress = currentStunProgress = 0;
     }
 
     private void Update()
+    {
+        HandleHitAnim();
+        HandleHitStun();
+    }
+
+    private void HandleHitAnim()
     {
         if (currentDmgAnimProgress == 1) return;
 
@@ -61,13 +68,29 @@ public class pl_health_damage : MonoBehaviour
             );
     }
 
-    private void LateUpdate()
+    private void HandleHitStun()
     {
+        if (currentStunProgress == 1)
+        {
+            if (pl_state.Instance.grounded) // yes
+            {
+                rb.drag = pl_settings.Instance.dragGround;
+            }
+            else
+            {
+                rb.drag = pl_settings.Instance.dragAir;
+            }
+
+            return;
+        }
+
+        currentStunProgress = Mathf.MoveTowards(currentStunProgress, 1, 1.2f * Time.deltaTime);
+
         // apply "stun" / adjust drag
         rb.drag = Mathf.Lerp(
-            defaultDrag,
             stunDragAmount,
-            animCurve.Evaluate(Mathf.PingPong(currentDmgAnimProgress, 0.5f))
+            defaultDrag,
+            animCurve.Evaluate(currentStunProgress)
             );
     }
 }

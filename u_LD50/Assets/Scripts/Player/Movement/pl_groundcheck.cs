@@ -30,16 +30,31 @@ public class pl_groundcheck : MonoBehaviour
     [SerializeField]
     private FMODUnity.EventReference sfxFallDamage;
 
+    private bool checkGround = true;
+
     private void Update()
     {
-        pl_state.Instance.grounded = GetGroundedBool();
+        if(checkGround) pl_state.Instance.grounded = GetGroundedBool();
 
-        if(pl_state.Instance.grounded != groundedLastFrame)
+        if (pl_state.Instance.grounded != groundedLastFrame)
         {
             CheckForFallDamage();
         }
 
         groundedLastFrame = pl_state.Instance.grounded;
+    }
+
+    public void HandleJump()
+    {
+        pl_state.Instance.grounded = false;
+        checkGround = false;
+        StartCoroutine(JumpRoutine());
+    }
+
+    private IEnumerator JumpRoutine()
+    {
+        yield return new WaitForSeconds(0.08f);
+        checkGround = true;
     }
 
     private void CheckForFallDamage()
